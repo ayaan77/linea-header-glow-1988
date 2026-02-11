@@ -80,7 +80,7 @@ const Timeline = () => {
       </section>
 
       {/* ── Timeline Entry Section — Stable Grid ── */}
-      <section className="bg-limestone text-ink">
+      <section className="bg-limestone text-ink py-10 md:py-16 lg:py-20">
         <div className="lg:grid lg:grid-cols-[45%_55%] lg:h-[80vh] overflow-hidden">
           {/* Left column — text content */}
           <div className="relative overflow-hidden px-6 md:px-12 lg:px-16 xl:px-20 py-16 lg:py-20 flex flex-col justify-center lg:h-full lg:overflow-y-auto">
@@ -123,7 +123,7 @@ const Timeline = () => {
           </div>
 
           {/* Right column — image */}
-          <div key={`img-${currentIndex}`} className="animate-fade-in h-[400px] lg:h-full overflow-hidden">
+          <div key={`img-${currentIndex}`} className="animate-fade-in h-[400px] lg:h-full overflow-hidden px-6 md:px-12 lg:px-0">
             <img
               src={entry.image}
               alt={entry.heading}
