@@ -80,8 +80,8 @@ const Timeline = () => {
       </section>
 
       {/* ── Timeline Entry Section — Stable Grid ── */}
-      <section className="bg-limestone text-ink py-10 md:py-16 lg:py-20">
-        <div className="lg:grid lg:grid-cols-[45%_55%] lg:h-[80vh] overflow-hidden">
+      <section className="bg-limestone text-ink py-14 md:py-20 lg:py-28 px-6 md:px-12 lg:px-16">
+        <div className="lg:grid lg:grid-cols-[45%_55%] lg:h-[90vh] overflow-hidden">
           {/* Left column — text content */}
           <div className="relative overflow-hidden px-6 md:px-12 lg:px-16 xl:px-20 py-16 lg:py-20 flex flex-col justify-center lg:h-full lg:overflow-y-auto">
             {/* Year watermark */}
