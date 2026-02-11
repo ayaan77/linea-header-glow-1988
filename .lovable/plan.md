@@ -1,40 +1,28 @@
 
 
-## Fix Video Section Edge-to-Edge Layout
+## Add Top Padding and Breathing Space to the Timeline Entry Section
 
-### Problem
-The video section has a nested `<div>` with `rounded-sm` and the outer section has vertical padding. The page wrapper uses `bg-ink` (dark background). The `rounded-sm` creates tiny rounded corner gaps, and any sub-pixel rendering differences can expose the dark background on the left and right edges.
+### Target
+The Timeline Entry section (line 83-132 in `src/pages/about/Timeline.tsx`) -- the grid containing the year watermark, text content, year tab bar, and the right-side image.
 
-### Fix (lines 136-151 in `src/pages/about/Timeline.tsx`)
+### Change
 
-**Remove `rounded-sm` from both the inner wrapper div and the overlay.** This eliminates any corner gaps that expose the dark background. The video/poster will render truly edge-to-edge within the section.
+Add top padding to the `<section>` wrapper at line 83. Currently it has no vertical padding of its own -- the inner columns handle their own padding.
 
-Change:
+**Line 83** -- change:
 ```jsx
-<section className="relative w-full overflow-hidden bg-limestone py-10 md:py-16 lg:py-20">
-  <div className="relative w-full overflow-hidden rounded-sm">
-    <video ... />
-    <div className="absolute inset-0 bg-black/20 rounded-sm" />
-  </div>
-</section>
+<section className="bg-limestone text-ink">
 ```
 
 To:
 ```jsx
-<section className="relative w-full overflow-hidden bg-limestone py-10 md:py-16 lg:py-20">
-  <div className="relative w-full overflow-hidden">
-    <video ... />
-    <div className="absolute inset-0 bg-black/20" />
-  </div>
-</section>
+<section className="bg-limestone text-ink pt-10 md:pt-16 lg:pt-20">
 ```
 
-### What changes
-- Remove `rounded-sm` from the inner wrapper div (line 138)
-- Remove `rounded-sm` from the overlay div (line 149)
+This adds responsive top padding (40px mobile, 64px tablet, 80px desktop) matching the breathing space pattern used elsewhere on the page.
 
 ### What stays the same
-- All padding, aspect ratios, and responsive behavior unchanged
-- Video element and poster image unchanged
-- All other sections unchanged
+- All inner content, layout, animations, and tab bar unchanged
+- Image column unchanged
+- Video section and alternating blocks unchanged
 
