@@ -1,16 +1,16 @@
 
 
-## Add Desktop Padding to Images
+## Change OurStory Background to Match Homepage
 
-Both `ArtisticSignatureSection.tsx` and `StoreSection.tsx` use the same image container styling. The change adds padding around the images only on desktop (md breakpoint and above), leaving mobile/tablet untouched.
+Update the hero section and bento grid section in `OurStory.tsx` to use the same light limestone background (`bg-background`) as the homepage, instead of the current dark `bg-ink`.
 
-### Changes
+### Changes in `src/pages/about/OurStory.tsx`
 
-**src/components/content/ArtisticSignatureSection.tsx** (line 29)
-- Change the image container div class from `px-5 md:px-0` to `px-5 md:p-8` to add padding on all sides at desktop.
+**1. Hero Section (line 59)**
+- Change `bg-ink text-limestone` to `bg-background text-foreground`
+- Update subtitle color from `text-concrete` to `text-muted-foreground`
+- Update paragraph text color from `text-concrete` to `text-muted-foreground`
 
-**src/components/content/StoreSection.tsx** (line 10)
-- Change the image container div class from `px-5 md:px-0` to `px-5 md:p-8` to add padding on all sides at desktop.
-
-This ensures mobile stays with horizontal padding only (`px-5`), while desktop gets uniform breathing room (`p-8`) around the images.
+**2. Bento Grid Section (line 79)**
+- Change `bg-ink` to `bg-background`
 
