@@ -1,49 +1,56 @@
 
 
-## Increase Height and Add Breathing Space to Timeline Entry Section
+## Add Padding, Height, and Video Logo to the Landscape Divider Section
 
 ### Target
-The Timeline Entry section (lines 83-134 in `src/pages/about/Timeline.tsx`) -- the two-column grid with year watermark, text, tab bar, and image.
+The Full-width Landscape Divider section (lines 137-144 in `src/pages/about/Timeline.tsx`) -- the wide image with the dark overlay.
 
 ### Changes
 
-**1. Increase section height (line 84)** -- bump the desktop grid height from `80vh` to `90vh`:
+**1. Add horizontal padding and increase mobile height (line 137)**
+
+Update the section wrapper to add responsive horizontal padding and a taller aspect ratio on mobile:
 
 ```jsx
 // From:
-<div className="lg:grid lg:grid-cols-[45%_55%] lg:h-[80vh] overflow-hidden">
+<section className="relative w-full overflow-hidden">
 
 // To:
-<div className="lg:grid lg:grid-cols-[45%_55%] lg:h-[90vh] overflow-hidden">
+<section className="relative w-full overflow-hidden px-6 md:px-12 lg:px-16">
 ```
 
-**2. Increase section vertical padding (line 83)** -- add more generous top/bottom padding:
+**2. Increase mobile height by changing the image aspect ratio to be taller on small screens (line 141)**
 
 ```jsx
 // From:
-<section className="bg-limestone text-ink py-10 md:py-16 lg:py-20">
+className="w-full aspect-[21/9] object-cover"
 
 // To:
-<section className="bg-limestone text-ink py-14 md:py-20 lg:py-28">
+className="w-full aspect-[4/3] md:aspect-[16/9] lg:aspect-[21/9] object-cover"
 ```
 
-This increases from 40/64/80px to 56/80/112px across mobile/tablet/desktop.
+This makes the section significantly taller on mobile (4:3 ratio) and tablet (16:9), while keeping the cinematic 21:9 on desktop.
 
-**3. Add horizontal padding to the section wrapper (line 83)** -- so the entire grid is contained with breathing room on left and right:
+**3. Add the LINEA logo centered on the overlay (line 143)**
 
-Combined with the above, line 83 becomes:
+Replace the plain overlay div with one that displays the LINEA logo centered:
 
 ```jsx
-<section className="bg-limestone text-ink py-14 md:py-20 lg:py-28 px-6 md:px-12 lg:px-16">
-```
+// From:
+<div className="absolute inset-0 bg-black/20" />
 
-- `px-6` on mobile (24px each side)
-- `md:px-12` on tablet (48px each side)
-- `lg:px-16` on desktop (64px each side)
+// To:
+<div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+  <img
+    src="/LINEA.svg"
+    alt="LINEA"
+    className="w-32 md:w-40 lg:w-48 opacity-90"
+  />
+</div>
+```
 
 ### What stays the same
-- Grid column ratios (`45% / 55%`) unchanged
-- Left column inner padding, animations, year tab bar unchanged
-- Image container, `object-contain`, fade animation unchanged
-- All other sections (hero, video, alternating blocks) unchanged
+- The background image (`scarfOrangePortrait`) unchanged
+- All other sections (timeline entry, alternating blocks) unchanged
+- Overall page structure unchanged
 
