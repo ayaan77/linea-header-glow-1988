@@ -1,56 +1,37 @@
 
 
-## Add Padding, Height, and Video Logo to the Landscape Divider Section
+## Update Landscape Divider Section
 
 ### Target
-The Full-width Landscape Divider section (lines 137-144 in `src/pages/about/Timeline.tsx`) -- the wide image with the dark overlay.
+The overlay and padding area of the Full-width Landscape Divider section (lines 137-150 in `src/pages/about/Timeline.tsx`).
 
 ### Changes
 
-**1. Add horizontal padding and increase mobile height (line 137)**
+**1. Remove the LINEA logo and black overlay (lines 143-149)**
 
-Update the section wrapper to add responsive horizontal padding and a taller aspect ratio on mobile:
-
-```jsx
-// From:
-<section className="relative w-full overflow-hidden">
-
-// To:
-<section className="relative w-full overflow-hidden px-6 md:px-12 lg:px-16">
-```
-
-**2. Increase mobile height by changing the image aspect ratio to be taller on small screens (line 141)**
+Delete the entire overlay div containing the logo and dark tint:
 
 ```jsx
-// From:
-className="w-full aspect-[21/9] object-cover"
-
-// To:
-className="w-full aspect-[4/3] md:aspect-[16/9] lg:aspect-[21/9] object-cover"
-```
-
-This makes the section significantly taller on mobile (4:3 ratio) and tablet (16:9), while keeping the cinematic 21:9 on desktop.
-
-**3. Add the LINEA logo centered on the overlay (line 143)**
-
-Replace the plain overlay div with one that displays the LINEA logo centered:
-
-```jsx
-// From:
-<div className="absolute inset-0 bg-black/20" />
-
-// To:
+// Remove this entirely:
 <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-  <img
-    src="/LINEA.svg"
-    alt="LINEA"
-    className="w-32 md:w-40 lg:w-48 opacity-90"
-  />
+  <img src="/LINEA.svg" alt="LINEA" className="w-32 md:w-40 lg:w-48 opacity-90" />
 </div>
 ```
 
-### What stays the same
-- The background image (`scarfOrangePortrait`) unchanged
-- All other sections (timeline entry, alternating blocks) unchanged
-- Overall page structure unchanged
+**2. Add limestone background to the section wrapper (line 137)**
+
+Add `bg-limestone` so the horizontal padding areas show the site's signature background color instead of being transparent:
+
+```jsx
+// From:
+<section className="relative w-full overflow-hidden px-6 md:px-12 lg:px-16">
+
+// To:
+<section className="relative w-full overflow-hidden px-6 md:px-12 lg:px-16 bg-limestone">
+```
+
+### Result
+- The image displays without any dark tint or logo on top
+- The left and right padding strips match the limestone background used across the site
+- Image itself and its responsive aspect ratios remain unchanged
 
