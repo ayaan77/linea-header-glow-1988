@@ -135,7 +135,7 @@ const Timeline = () => {
 
       {/* ── Full-width Landscape Divider ── */}
       <section className="relative w-full overflow-hidden bg-limestone py-10 md:py-16 lg:py-20">
-        <div className="relative w-full overflow-hidden rounded-sm">
+        <div className="relative w-full overflow-hidden">
           <video
             autoPlay
             muted
@@ -146,7 +146,7 @@ const Timeline = () => {
           >
             {/* <source src="/your-video.mp4" type="video/mp4" /> */}
           </video>
-          <div className="absolute inset-0 bg-black/20 rounded-sm" />
+          <div className="absolute inset-0 bg-black/20" />
         </div>
       </section>
 
