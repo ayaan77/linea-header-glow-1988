@@ -13,7 +13,7 @@ import editorialSide from "@/assets/editorial-side.png";
 
 const Heritage = () => {
   return (
-    <div className="min-h-screen bg-ink text-limestone">
+    <div className="min-h-screen bg-background text-foreground">
       <Header />
 
       {/* ── Hero Section ── */}
@@ -83,16 +83,16 @@ const Heritage = () => {
             />
           </div>
           <div className="flex-1 space-y-6 md:pl-8">
-            <span className="text-[10px] tracking-[0.3em] uppercase font-sans font-medium text-concrete block">
+            <span className="text-[10px] tracking-[0.3em] uppercase font-sans font-medium text-muted-foreground block">
               Artisan Craft
             </span>
             <h3 className="font-serif text-2xl md:text-4xl tracking-[0.08em] uppercase font-semibold">
               Made by Hand
             </h3>
-            <p className="text-sm font-normal leading-relaxed text-concrete max-w-md">
+            <p className="text-sm font-normal leading-relaxed text-muted-foreground max-w-md">
               Every LINEA piece is shaped by the hands of master artisans who have dedicated their lives to the craft. Using time-honoured techniques passed down through generations, each creation is a testament to the beauty of human touch — where precision meets soul.
             </p>
-            <p className="text-sm font-normal leading-relaxed text-concrete max-w-md">
+            <p className="text-sm font-normal leading-relaxed text-muted-foreground max-w-md">
               From the initial sketch to the final polish, over 40 hours of meticulous work ensure that no two pieces are ever truly alike.
             </p>
           </div>
@@ -100,11 +100,11 @@ const Heritage = () => {
 
         {/* THEN — NOW divider */}
         <div className="flex items-center justify-center gap-6">
-          <span className="text-[10px] tracking-[0.3em] uppercase font-sans font-medium text-concrete">
+          <span className="text-[10px] tracking-[0.3em] uppercase font-sans font-medium text-muted-foreground">
             Then
           </span>
-          <div className="w-16 h-px bg-concrete" />
-          <span className="text-[10px] tracking-[0.3em] uppercase font-sans font-medium text-concrete">
+          <div className="w-16 h-px bg-muted-foreground" />
+          <span className="text-[10px] tracking-[0.3em] uppercase font-sans font-medium text-muted-foreground">
             Now
           </span>
         </div>
@@ -126,16 +126,16 @@ const Heritage = () => {
             </div>
           </div>
           <div className="flex-1 space-y-6 md:pr-8">
-            <span className="text-[10px] tracking-[0.3em] uppercase font-sans font-medium text-concrete block">
+            <span className="text-[10px] tracking-[0.3em] uppercase font-sans font-medium text-muted-foreground block">
               Our Evolution
             </span>
             <h3 className="font-serif text-2xl md:text-4xl tracking-[0.08em] uppercase font-semibold">
               Decades of Mastery
             </h3>
-            <p className="text-sm font-normal leading-relaxed text-concrete max-w-md">
+            <p className="text-sm font-normal leading-relaxed text-muted-foreground max-w-md">
               What began as a small atelier in the heart of Europe has grown into a global symbol of refined craftsmanship. Through decades of evolution, LINEA has remained steadfast in its founding principles — that beauty lies in restraint, and luxury in the quality of each line drawn.
             </p>
-            <p className="text-sm font-normal leading-relaxed text-concrete max-w-md">
+            <p className="text-sm font-normal leading-relaxed text-muted-foreground max-w-md">
               Our archive spans hundreds of designs, each reflecting the aesthetic sensibility of its era while carrying the unmistakable thread of LINEA's identity.
             </p>
           </div>
@@ -143,12 +143,12 @@ const Heritage = () => {
       </section>
 
       {/* ── Bottom CTA Section ── */}
-      <section className="py-20 md:py-28 px-6 border-t border-limestone/10">
+      <section className="py-20 md:py-28 px-6 border-t border-foreground/10">
         <div className="max-w-2xl mx-auto text-center space-y-6">
           <h2 className="font-serif text-2xl md:text-4xl tracking-[0.08em] uppercase font-semibold">
             Timeless, Yet Contemporary
           </h2>
-          <p className="text-sm font-normal leading-relaxed text-concrete max-w-lg mx-auto">
+          <p className="text-sm font-normal leading-relaxed text-muted-foreground max-w-lg mx-auto">
             Our heritage informs every new collection — bridging the enduring elegance of the past with the boldness of modern design. Discover pieces that honour tradition while defining the future.
           </p>
           <Link
