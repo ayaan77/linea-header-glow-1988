@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Linea E-commerce Design System - Minimalist & Modern */
+
+@layer base {
+  :root {
+    /* Modern Archive palette - 60/30/10 */
+    --background: 40 23% 93%; /* Limestone Paper #F2F0E9 */
+    --foreground: 0 0% 9%; /* Wet Ink #181818 */
+    
+    /* Status bar */
+    --status-bar: 0 0% 9%;
+    --status-bar-foreground: 40 23% 93%;
+    
+    /* Navigation */
+    --nav-background: 40 23% 93%;
+    --nav-foreground: 0 0% 9%;
+    --nav-hover: 15 69% 42%; /* Burnt Saffron */
+    
+    /* Interactive elements */
+    --primary: 0 0% 9%; /* Wet Ink */
+    --primary-foreground: 40 23% 93%;
+    --primary-hover: 0 0% 15%;
+    
+    /* Accent - Burnt Saffron #B64522 */
+    --accent: 15 69% 42%;
+    --accent-foreground: 40 23% 93%;
+    
+    /* Subtle elements */
+    --secondary: 40 15% 88%;
+    --secondary-foreground: 0 0% 9%;
+    
+    --muted: 40 15% 88%;
+    --muted-foreground: 0 0% 53%; /* Concrete #888888 */
+    
+    --border: 0 0% 9%;
+    --input: 0 0% 9%;
+    --ring: 0 0% 9%;
+    
+    /* Cards and surfaces */
+    --card: 40 23% 93%;
+    --card-foreground: 0 0% 9%;
+    
+    --popover: 40 23% 93%;
+    --popover-foreground: 0 0% 9%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 40 23% 93%;
+    
+    --radius: 0.375rem;
+    
+    /* Transitions */
+    --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 0 0% 9%;
+    --foreground: 0 0% 98%;
+    
+    --status-bar: 0 0% 0%;
+    --status-bar-foreground: 0 0% 100%;
+    
+    --nav-background: 0 0% 9%;
+    --nav-foreground: 0 0% 80%;
+    --nav-hover: 0 0% 95%;
+    
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --primary-hover: 0 0% 90%;
+    
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 80%;
+    
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+    
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 98%;
+    
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 0 0% 98%;
+    
+    --card: 0 0% 9%;
+    --card-foreground: 0 0% 98%;
+    
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 98%;
+    
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-foreground/15;
+  }
+
+  body {
+    @apply bg-background text-foreground font-light;
+  }
+
+  ::selection {
+    background-color: #B64522;
+    color: #F2F0E9;
+  }
+}
+
+/* Force Embla carousel containers to fill height */
+.carousel-fill-height > div,
+.carousel-fill-height > div > div {
+  height: 100%;
+}
