@@ -56,19 +56,19 @@ const OurStory = () => {
       <Header />
 
       {/* ── Hero Section ── */}
-      <section className="bg-ink text-limestone pt-32 pb-20 px-6">
+      <section className="bg-background text-foreground pt-32 pb-20 px-6">
         <div className="max-w-3xl mx-auto text-center space-y-8">
-          <span className="text-[10px] tracking-[0.3em] uppercase font-medium font-sans block text-concrete">
+          <span className="text-[10px] tracking-[0.3em] uppercase font-medium font-sans block text-muted-foreground">
             Welcome to the
           </span>
           <h1 className="font-serif text-3xl md:text-5xl tracking-[0.08em] uppercase font-semibold">
             World of LINEA
           </h1>
           <div className="space-y-6 max-w-2xl mx-auto">
-            <p className="text-sm font-normal leading-relaxed text-concrete">
+            <p className="text-sm font-normal leading-relaxed text-muted-foreground">
               Born from the intersection of architecture and fine arts, LINEA is a meditation on line, light, and form. Every piece begins as a drawing — a single, deliberate stroke that captures the tension between structure and organic beauty.
             </p>
-            <p className="text-sm font-normal leading-relaxed text-concrete">
+            <p className="text-sm font-normal leading-relaxed text-muted-foreground">
               Our founders believed that jewelry should carry the same quiet power as a perfectly proportioned space. Using sustainably sourced materials and time-honoured techniques, we craft pieces that exist at the boundary of sculpture and adornment.
             </p>
           </div>
@@ -76,7 +76,7 @@ const OurStory = () => {
       </section>
 
       {/* ── Editorial Bento Grid ── */}
-      <section className="bg-ink px-1 pb-1">
+      <section className="bg-background px-1 pb-1">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-1 auto-rows-[280px] md:auto-rows-[320px]">
           {gridTiles.map((tile, i) => {
             const content = (
