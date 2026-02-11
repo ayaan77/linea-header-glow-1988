@@ -7,7 +7,7 @@ const StoreSection = () => {
     <section className="w-full mb-8 md:mb-16">
       <div className="grid grid-cols-1 md:grid-cols-2">
         {/* Image block */}
-        <div className="w-full aspect-[3/4] overflow-hidden px-5 md:px-0">
+        <div className="w-full aspect-[3/4] overflow-hidden px-5 md:p-8">
           <img
             src={organicEarring}
             alt="London store interior"
