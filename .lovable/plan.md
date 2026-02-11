@@ -1,60 +1,41 @@
 
 
-## Refine Timeline Entry Sections for Desktop
+## Fix Timeline Entry Section - Layout Stability on Desktop
 
-The two sections (year/date selector bar at line 90, and content area at line 123) have layout instability on desktop because:
-- The massive year text (up to 150px) causes the container height to shift when switching between entries
-- The flex layout reflows as content length varies between entries
-- There are no transitions, so changes feel jarring
+### Problems Identified
 
-### Design Approach
-
-Replace the current freeform flex layout with a structured, fixed-height grid that stays rock-solid when switching dates. Add smooth crossfade transitions for a polished feel.
+1. **Grid column syntax**: `lg:grid-cols-[45fr_55fr]` may not render correctly in all browsers -- needs proper fractional units
+2. **No fixed height on desktop**: `lg:min-h-[80vh]` only sets a minimum, so the section still grows/shrinks as content changes between entries, causing the page to jump
+3. **Image overflow**: The right-column image has no height constraint on desktop -- `h-full` with no bounded parent means the image dictates height, and different images have different natural sizes
+4. **Year watermark too large**: At `lg:text-[320px]`, even with `overflow-hidden`, this massive element can cause reflow during transitions
+5. **No overflow containment on grid container**: The grid wrapper itself doesn't clip overflow
 
 ### Changes in `src/pages/about/Timeline.tsx`
 
-**1. Stable two-column grid layout (lines 88-147)**
+**1. Fix the grid container (line 84)**
+- Change `lg:min-h-[80vh]` to `lg:h-[80vh]` so height is locked on desktop
+- Add `overflow-hidden` to the grid wrapper to prevent any child from pushing the layout
 
-Replace the entire timeline entry section with a fixed-height desktop layout:
+**2. Fix grid column definition (line 84)**
+- Replace `lg:grid-cols-[45fr_55fr]` with `lg:grid-cols-[45%_55%]` for reliable cross-browser behavior
 
-- Use a CSS Grid with two columns on desktop (text left, image right) instead of stacked flex containers
-- The year display + selector + heading + paragraphs all go in the left column
-- The image fills the right column at a fixed aspect ratio
-- Set a fixed `min-h-[80vh]` on desktop so switching entries never changes the section height
+**3. Constrain the left column (line 86)**
+- Add `lg:h-full lg:overflow-y-auto` so text scrolls within the column if it ever exceeds the fixed height, rather than pushing the grid taller
 
-**2. Year display and selector redesign (lines 90-120)**
+**4. Reduce watermark size (line 88)**
+- Reduce from `lg:text-[320px]` to `lg:text-[240px]` to prevent it from overflowing the column even with clipping
 
-- Replace the dropdown selector with a horizontal pill/tab bar showing all 4 years side by side (1799 / 1867 / 1923 / 1987)
-- Active year gets an underline indicator
-- This eliminates the dropdown interaction entirely -- one click to jump to any era
-- The giant year number stays but is positioned as a subtle watermark/background element behind the text content, preventing layout shifts
+**5. Fix the image column (lines 126-132)**
+- Wrap the image in a container with `lg:h-full overflow-hidden` so it fills exactly the grid cell height
+- Remove `min-h-[350px] lg:min-h-0` and replace with a fixed `h-[400px] lg:h-full`
+- Change img to use `w-full h-full object-cover` without the conditional `lg:aspect-auto` which fights with the fixed container
 
-**3. Smooth transitions between entries (lines 123-147)**
-
-- Add a CSS transition using `key={currentIndex}` and a fade-in animation (already defined in tailwind config as `animate-fade-in`)
-- The text content and image both crossfade when switching entries
-- This makes date changes feel smooth instead of jarring
-
-**4. Content area structure**
-
-- Left column: chapter label, heading, paragraphs, and the year tab bar at the bottom
-- Right column: full-height image with `object-cover`
-- Both columns are vertically centered
-- Fixed grid proportions (roughly 45% text / 55% image) so nothing shifts
-
-### Technical Details
-
-- The year tab bar replaces `Select` component -- uses simple buttons with `border-b-2` for the active state
-- The large year number becomes an absolutely positioned watermark (opacity ~8%) behind the left column, so it adds visual drama without affecting layout flow
-- `key={currentIndex}` on the content wrapper triggers React re-mount with `animate-fade-in` class
-- Desktop uses `grid grid-cols-2` with `min-h-[80vh]`; mobile stays stacked as a single column
-- The `min-h` values on the current containers are removed since the grid handles sizing
+**6. Fix year tab bar overflow (line 108)**
+- Add `flex-wrap` or `flex-shrink-0` to prevent the tab buttons from wrapping awkwardly on narrower desktop screens
 
 ### What stays the same
-
-- Mobile/tablet layout remains a single stacked column
-- Hero section untouched
-- Landscape divider section untouched
-- Alternating image-text blocks at the bottom untouched
-- All images, text content, and data unchanged
+- All content, images, and data unchanged
+- Hero section, landscape divider, and alternating blocks untouched
+- Mobile layout remains stacked
+- Fade-in animations preserved
 
