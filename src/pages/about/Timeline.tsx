@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 
@@ -58,10 +57,6 @@ const Timeline = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const entry = timelineEntries[currentIndex];
 
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % timelineEntries.length);
-  };
-
   return (
     <div className="min-h-screen bg-ink text-limestone">
       <Header />
@@ -84,64 +79,55 @@ const Timeline = () => {
         </div>
       </section>
 
-      {/* ── Timeline Entry Section ── */}
+      {/* ── Timeline Entry Section — Stable Grid ── */}
       <section className="bg-limestone text-ink">
-        {/* Year + Date selector bar */}
-        <div className="px-6 md:px-12 lg:px-20 pt-16 pb-8 flex flex-col md:flex-row items-start md:items-end justify-between gap-6 min-h-[120px] md:min-h-[160px]">
-          <div className="space-y-2">
-            <span className="text-[10px] tracking-[0.3em] uppercase font-sans font-medium text-concrete block">
-              {entry.chapter}
-            </span>
-            <h2 className="font-serif text-[80px] md:text-[120px] lg:text-[150px] font-semibold tracking-tight leading-[1]">
+        <div className="lg:grid lg:grid-cols-[45fr_55fr] lg:min-h-[80vh]">
+          {/* Left column — text content */}
+          <div className="relative overflow-hidden px-6 md:px-12 lg:px-16 xl:px-20 py-16 lg:py-20 flex flex-col justify-center">
+            {/* Year watermark */}
+            <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-serif text-[200px] md:text-[280px] lg:text-[320px] font-bold tracking-tight leading-none text-ink/[0.06] pointer-events-none select-none">
               {entry.year}
-            </h2>
-          </div>
-          <div className="w-48 flex-shrink-0">
-            <Select
-              value={currentIndex.toString()}
-              onValueChange={(val) => setCurrentIndex(Number(val))}
-            >
-              <SelectTrigger className="border-ink/15 bg-limestone text-ink font-sans text-xs tracking-[0.15em] uppercase rounded-none h-11">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent className="bg-limestone border-ink/15 rounded-none">
-                {timelineEntries.map((e, i) => (
-                  <SelectItem
-                    key={i}
-                    value={i.toString()}
-                    className="font-sans text-xs tracking-[0.15em] uppercase text-ink"
-                  >
-                    {e.year} — {e.heading}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-        </div>
+            </span>
 
-        {/* Content: text left, image right */}
-        <div className="px-6 md:px-12 lg:px-20 pb-16 flex flex-col lg:flex-row gap-10 lg:gap-16 items-start min-h-[400px] lg:min-h-[500px]">
-          <div className="flex-1 space-y-6 max-w-xl">
-            <h3 className="font-serif text-2xl md:text-3xl font-semibold tracking-[0.06em] uppercase">
-              {entry.heading}
-            </h3>
-            {entry.paragraphs.map((p, i) => (
-              <p key={i} className="font-sans font-normal text-sm leading-relaxed text-ink/80">
-                {p}
-              </p>
-            ))}
-            <button
-              onClick={handleNext}
-              className="mt-8 border border-ink px-10 py-3 font-sans font-medium text-[11px] tracking-[0.25em] uppercase hover:bg-ink hover:text-limestone transition-colors"
-            >
-              Next
-            </button>
+            {/* Animated content */}
+            <div key={currentIndex} className="relative z-10 animate-fade-in space-y-6">
+              <span className="text-[10px] tracking-[0.3em] uppercase font-sans font-medium text-concrete block">
+                {entry.chapter}
+              </span>
+              <h3 className="font-serif text-2xl md:text-3xl font-semibold tracking-[0.06em] uppercase">
+                {entry.heading}
+              </h3>
+              {entry.paragraphs.map((p, i) => (
+                <p key={i} className="font-sans font-normal text-sm leading-relaxed text-ink/80 max-w-md">
+                  {p}
+                </p>
+              ))}
+            </div>
+
+            {/* Year tab bar */}
+            <div className="relative z-10 mt-12 flex items-center gap-1">
+              {timelineEntries.map((e, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentIndex(i)}
+                  className={`px-4 py-3 font-sans text-[11px] tracking-[0.2em] uppercase transition-all border-b-2 ${
+                    i === currentIndex
+                      ? "border-ink text-ink font-medium"
+                      : "border-transparent text-ink/40 hover:text-ink/70"
+                  }`}
+                >
+                  {e.year}
+                </button>
+              ))}
+            </div>
           </div>
-          <div className="flex-1 min-h-[300px] lg:min-h-[400px]">
+
+          {/* Right column — image */}
+          <div key={`img-${currentIndex}`} className="animate-fade-in min-h-[350px] lg:min-h-0">
             <img
               src={entry.image}
               alt={entry.heading}
-              className="w-full aspect-[3/4] object-cover"
+              className="w-full h-full object-cover lg:aspect-auto aspect-[3/4]"
             />
           </div>
         </div>
