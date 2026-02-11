@@ -123,7 +123,7 @@ const Timeline = () => {
           </div>
 
           {/* Right column — image */}
-          <div key={`img-${currentIndex}`} className="animate-fade-in h-[400px] lg:h-full overflow-hidden bg-limestone">
+          <div className="h-[400px] lg:h-full overflow-hidden bg-limestone">
             <img
               src={entry.image}
               alt={entry.heading}
