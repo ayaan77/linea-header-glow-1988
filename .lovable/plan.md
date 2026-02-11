@@ -1,35 +1,55 @@
 
 
-## Fix the Black Line Between Text and Image Columns
+## Add Breathing Space and Convert Landscape Divider to Video Section
 
-### Root Cause
+### Target
+The "Full-width Landscape Divider" section (lines 136-144 in `src/pages/about/Timeline.tsx`) -- currently an `<img>` of `scarfOrangePortrait`.
 
-The page wrapper is `<div className="min-h-screen bg-ink">` -- a dark background. The image column uses `key={img-${currentIndex}}` which causes React to **unmount** the old div and **mount** a new one. During that brief unmount moment (and the start of `animate-fade-in` at `opacity: 0`), the dark `bg-ink` page background shows through as a black vertical line/flash.
+### Changes
 
-Adding `bg-limestone` to the container helps but doesn't fully solve it because the unmount creates a frame where no child element exists in that grid cell at all.
+**1. Add top padding / breathing space**
+- Add vertical padding to the section: `py-10 md:py-16 lg:py-20` and horizontal padding `px-6 md:px-12 lg:px-20`
+- Add `bg-limestone` to maintain visual continuity with surrounding sections
 
-### Solution
+**2. Convert from image to video**
+- Replace the `<img>` tag with a `<video>` element using `autoPlay`, `muted`, `loop`, `playsInline`
+- Use `scarfOrangePortrait` as the `poster` (fallback image) so the visual stays the same until a real video file is provided
+- Include a commented-out `<source>` tag as a placeholder for the actual video URL
+- Keep `aspect-[21/9]` for desktop, but make it responsive: `aspect-[4/3] md:aspect-[16/9] lg:aspect-[21/9]` so it looks good on mobile, tablet, and desktop
+- Add `rounded-sm` for a polished look within the padded container
 
-Remove the `key` and `animate-fade-in` from the image wrapper div entirely. The image will swap instantly (which actually looks cleaner for a side panel). Only the text content keeps its fade animation.
+**3. Keep the overlay**
+- Retain the `bg-black/20` overlay div, adjusted with matching rounded corners
 
-### Changes in `src/pages/about/Timeline.tsx`
+### Technical Details
 
-**Line 126 -- Remove key and animate-fade-in from image wrapper:**
-
-Change:
-```
-<div key={`img-${currentIndex}`} className="animate-fade-in h-[400px] lg:h-full overflow-hidden bg-limestone">
+The section (lines 136-144) changes from:
+```jsx
+<section className="relative w-full overflow-hidden">
+  <img src={scarfOrangePortrait} alt="Heritage landscape"
+    className="w-full aspect-[21/9] object-cover" />
+  <div className="absolute inset-0 bg-black/20" />
+</section>
 ```
 
 To:
+```jsx
+<section className="relative w-full overflow-hidden bg-limestone px-6 md:px-12 lg:px-20 py-10 md:py-16 lg:py-20">
+  <div className="relative w-full overflow-hidden rounded-sm">
+    <video
+      autoPlay muted loop playsInline
+      poster={scarfOrangePortrait}
+      className="w-full aspect-[4/3] md:aspect-[16/9] lg:aspect-[21/9] object-cover"
+    >
+      {/* <source src="/your-video.mp4" type="video/mp4" /> */}
+    </video>
+    <div className="absolute inset-0 bg-black/20 rounded-sm" />
+  </div>
+</section>
 ```
-<div className="h-[400px] lg:h-full overflow-hidden bg-limestone">
-```
-
-This eliminates the unmount/remount cycle that causes the black flash. The image swaps instantly while the text side still fades in smoothly. No structural or layout changes needed.
 
 ### What stays the same
-- Text column fade animation preserved (line 93 keeps `key={currentIndex}` and `animate-fade-in`)
-- All layout, content, images unchanged
-- Mobile layout unchanged
+- All other sections unchanged
+- The poster image ensures the visual is identical until a video file is added
+- Mobile stacked layout unaffected
 
