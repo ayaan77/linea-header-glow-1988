@@ -26,7 +26,7 @@ const ArtisticSignatureSection = () => {
         </div>
 
         {/* Image block */}
-        <div className="order-first md:order-last w-full aspect-[3/4] overflow-hidden px-5 md:px-0">
+        <div className="order-first md:order-last w-full aspect-[3/4] overflow-hidden px-5 md:p-8">
           <img
             src={organicEarring}
             alt="Artistic jewelry piece"
