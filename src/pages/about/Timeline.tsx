@@ -81,11 +81,11 @@ const Timeline = () => {
 
       {/* ── Timeline Entry Section — Stable Grid ── */}
       <section className="bg-limestone text-ink">
-        <div className="lg:grid lg:grid-cols-[45fr_55fr] lg:min-h-[80vh]">
+        <div className="lg:grid lg:grid-cols-[45%_55%] lg:h-[80vh] overflow-hidden">
           {/* Left column — text content */}
-          <div className="relative overflow-hidden px-6 md:px-12 lg:px-16 xl:px-20 py-16 lg:py-20 flex flex-col justify-center">
+          <div className="relative overflow-hidden px-6 md:px-12 lg:px-16 xl:px-20 py-16 lg:py-20 flex flex-col justify-center lg:h-full lg:overflow-y-auto">
             {/* Year watermark */}
-            <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-serif text-[200px] md:text-[280px] lg:text-[320px] font-bold tracking-tight leading-none text-ink/[0.06] pointer-events-none select-none">
+            <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-serif text-[200px] md:text-[280px] lg:text-[240px] font-bold tracking-tight leading-none text-ink/[0.06] pointer-events-none select-none">
               {entry.year}
             </span>
 
@@ -105,7 +105,7 @@ const Timeline = () => {
             </div>
 
             {/* Year tab bar */}
-            <div className="relative z-10 mt-12 flex items-center gap-1">
+            <div className="relative z-10 mt-12 flex items-center gap-1 flex-shrink-0">
               {timelineEntries.map((e, i) => (
                 <button
                   key={i}
@@ -123,11 +123,11 @@ const Timeline = () => {
           </div>
 
           {/* Right column — image */}
-          <div key={`img-${currentIndex}`} className="animate-fade-in min-h-[350px] lg:min-h-0">
+          <div key={`img-${currentIndex}`} className="animate-fade-in h-[400px] lg:h-full overflow-hidden">
             <img
               src={entry.image}
               alt={entry.heading}
-              className="w-full h-full object-cover lg:aspect-auto aspect-[3/4]"
+              className="w-full h-full object-cover"
             />
           </div>
         </div>
