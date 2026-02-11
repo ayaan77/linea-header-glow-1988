@@ -134,13 +134,20 @@ const Timeline = () => {
       </section>
 
       {/* ── Full-width Landscape Divider ── */}
-      <section className="relative w-full overflow-hidden">
-        <img
-          src={scarfOrangePortrait}
-          alt="Heritage landscape"
-          className="w-full aspect-[21/9] object-cover"
-        />
-        <div className="absolute inset-0 bg-black/20" />
+      <section className="relative w-full overflow-hidden bg-limestone px-6 md:px-12 lg:px-20 py-10 md:py-16 lg:py-20">
+        <div className="relative w-full overflow-hidden rounded-sm">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={scarfOrangePortrait}
+            className="w-full aspect-[4/3] md:aspect-[16/9] lg:aspect-[21/9] object-cover"
+          >
+            {/* <source src="/your-video.mp4" type="video/mp4" /> */}
+          </video>
+          <div className="absolute inset-0 bg-black/20 rounded-sm" />
+        </div>
       </section>
 
       {/* ── Alternating Image-Text Blocks ── */}
