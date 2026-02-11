@@ -81,7 +81,7 @@ const Timeline = () => {
 
       {/* ── Timeline Entry Section — Stable Grid ── */}
       <section className="bg-limestone text-ink">
-        <div className="lg:grid lg:grid-cols-[45%_55%] lg:h-[80vh] overflow-hidden">
+        <div className="lg:grid lg:grid-cols-[45%_55%] lg:h-[80vh] overflow-hidden bg-limestone">
           {/* Left column — text content */}
           <div className="relative overflow-hidden px-6 md:px-12 lg:px-16 xl:px-20 py-16 lg:py-20 flex flex-col justify-center lg:h-full lg:overflow-y-auto">
             {/* Year watermark */}
@@ -123,7 +123,7 @@ const Timeline = () => {
           </div>
 
           {/* Right column — image */}
-          <div key={`img-${currentIndex}`} className="animate-fade-in h-[400px] lg:h-full overflow-hidden">
+          <div key={`img-${currentIndex}`} className="animate-fade-in h-[400px] lg:h-full overflow-hidden bg-limestone">
             <img
               src={entry.image}
               alt={entry.heading}
