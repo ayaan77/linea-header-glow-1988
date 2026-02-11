@@ -1,27 +1,35 @@
 
 
-## Fix Black Line and Image Fitting in Timeline Section
+## Fix the Black Line Between Text and Image Columns
 
-### Problem
-When switching dates, a black line/flash appears between the text column and image column. This happens because:
-1. The `animate-fade-in` on the image div starts at `opacity: 0`, briefly revealing the dark background behind it
-2. The grid container or section may have a default dark background showing through during the transition
+### Root Cause
+
+The page wrapper is `<div className="min-h-screen bg-ink">` -- a dark background. The image column uses `key={img-${currentIndex}}` which causes React to **unmount** the old div and **mount** a new one. During that brief unmount moment (and the start of `animate-fade-in` at `opacity: 0`), the dark `bg-ink` page background shows through as a black vertical line/flash.
+
+Adding `bg-limestone` to the container helps but doesn't fully solve it because the unmount creates a frame where no child element exists in that grid cell at all.
+
+### Solution
+
+Remove the `key` and `animate-fade-in` from the image wrapper div entirely. The image will swap instantly (which actually looks cleaner for a side panel). Only the text content keeps its fade animation.
 
 ### Changes in `src/pages/about/Timeline.tsx`
 
-**1. Add background color to the image container (line 126)**
-- Add `bg-limestone` to the image wrapper div so that when the fade-in animation starts (opacity 0), the limestone background shows instead of a black gap
+**Line 126 -- Remove key and animate-fade-in from image wrapper:**
 
-**2. Add background to the grid container (line 84)**
-- Add `bg-limestone` to the grid div itself as a safety net, ensuring no dark color bleeds through between columns
+Change:
+```
+<div key={`img-${currentIndex}`} className="animate-fade-in h-[400px] lg:h-full overflow-hidden bg-limestone">
+```
 
-**3. Ensure image fills container properly on desktop**
-- The current `w-full h-full object-cover` on the img tag is correct
-- The container with `lg:h-full overflow-hidden` is correct
-- No structural changes needed for image fitting -- the background color fix eliminates the visual gap
+To:
+```
+<div className="h-[400px] lg:h-full overflow-hidden bg-limestone">
+```
+
+This eliminates the unmount/remount cycle that causes the black flash. The image swaps instantly while the text side still fades in smoothly. No structural or layout changes needed.
 
 ### What stays the same
-- All layout, structure, content, and animations unchanged
+- Text column fade animation preserved (line 93 keeps `key={currentIndex}` and `animate-fade-in`)
+- All layout, content, images unchanged
 - Mobile layout unchanged
-- Only adding background colors to prevent the black flash during transitions
 
