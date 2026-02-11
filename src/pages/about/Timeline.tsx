@@ -134,13 +134,19 @@ const Timeline = () => {
       </section>
 
       {/* ── Full-width Landscape Divider ── */}
-      <section className="relative w-full overflow-hidden">
+      <section className="relative w-full overflow-hidden px-6 md:px-12 lg:px-16">
         <img
           src={scarfOrangePortrait}
           alt="Heritage landscape"
-          className="w-full aspect-[21/9] object-cover" />
+          className="w-full aspect-[4/3] md:aspect-[16/9] lg:aspect-[21/9] object-cover" />
 
-        <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+          <img
+            src="/LINEA.svg"
+            alt="LINEA"
+            className="w-32 md:w-40 lg:w-48 opacity-90"
+          />
+        </div>
       </section>
 
       {/* ── Alternating Image-Text Blocks ── */}
