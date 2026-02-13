@@ -1,22 +1,26 @@
 
 
-## Make Size Chart White with Side Padding
+## Add Full-Look Image to "You Might Also Like" Section
+
+### Overview
+Show a full-body product image on mobile in the "You Might Also Like" section (Section 3). Currently, the editorial image on the left is hidden on mobile (`hidden lg:block`). The change will make it visible on mobile and swap the image to match the product's full-look styling.
 
 ### Changes
 
 **File: `src/pages/ProductDetail.tsx`**
 
-Update the Size Chart section (Section 5) styling:
+1. **Import the full-look image**: Add `import scarfFull from "@/assets/scarf-full.png"` (the full-body product shot from the hero gallery)
 
-1. **Add white background** -- Add `bg-white` to the section element
-2. **Increase horizontal padding** -- The section already has `px-6 lg:px-16 xl:px-20`. Add inner padding or increase existing padding with `mx-6 lg:mx-16 xl:mx-20` on a wrapper, or simply add a white inner container with padding inside the section so the white box has inset from the page edges.
+2. **Make the left image visible on mobile**: Change `hidden lg:block` to just `block` on the image container (line 152), so it shows on all screen sizes
 
-Specifically:
-- Wrap the section content in a `div` with `bg-white p-6 lg:p-10 xl:p-12` to create a white card with generous inner padding
-- Keep the outer section's existing padding so the white card is inset from page edges
+3. **Swap the image source**: Replace `lintelImage` with `scarfFull` to show the actual product being viewed, giving a "complete the look" feel matching the reference
+
+4. **Set proper mobile height**: Add a fixed height on mobile (`h-[500px] lg:h-auto`) so the image doesn't take up excessive space, with `object-cover` to crop nicely
+
+5. **No text or labels** will be added -- just the clean image, as requested
 
 ### What Stays the Same
-- All table content and styling unchanged
-- Desktop/tablet layouts unchanged
-- Other sections unchanged
+- Desktop layout unchanged (still shows full-height image on left, 2x2 grid on right)
+- Product grid on the right unchanged
+- All other sections unchanged
 
