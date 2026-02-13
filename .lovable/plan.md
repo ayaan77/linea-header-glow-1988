@@ -1,43 +1,28 @@
 
 
-## Redesign Mobile Product Showcase to Match Reference
+## Fit Mobile Images Inside Container
 
 ### Problem
-The current mobile layout uses a full-width single-card carousel with `aspect-[3/1]`, which is still too large. The reference image shows a **2-column grid** of small, compact product cards.
+The mobile carousel images use `object-cover` which crops/zooms the image to fill the `aspect-[3/1]` container. Since the source images are portrait-oriented, most of the image gets cropped, making it look oversized.
 
-### Changes
+### Change
 
-**File: `src/components/content/ProductShowcase.tsx`**
+**File: `src/components/content/ProductShowcase.tsx` (line 75)**
 
-Replace the mobile single-card carousel with a 2-column grid layout:
+Change the mobile image styling from `object-cover` to `object-contain`, and remove the `scale-[1.02]` which makes it slightly larger than needed. This will fit the entire image within the container without cropping.
 
-- Change mobile container from horizontal scroll carousel to a `grid grid-cols-2 gap-3` layout
-- Use a much smaller aspect ratio: `aspect-square` for each card
-- Remove the carousel scroll behavior and progress bar for mobile (no longer needed with a grid)
-- Show all 5 products at once in the grid (3 on first row spanning as needed, 2 on second row -- or a simple 2-col grid where the 5th item sits alone)
-
-### Technical Details
-
-**Mobile layout (line 59-95):** Replace the carousel `div` with:
 ```
-<div className="md:hidden grid grid-cols-2 gap-2">
-  {products.map((product) => (
-    <Link key={product.id} to={`/product/${product.id}`}>
-      <div className="bg-limestone aspect-square overflow-hidden">
-        <img src={product.image} alt={product.name}
-             className="w-full h-full object-cover" />
-      </div>
-    </Link>
-  ))}
-</div>
+// From:
+className="w-full h-full object-cover scale-[1.02]"
+
+// To:
+className="w-full h-full object-contain"
 ```
 
-- Removes the `scrollRef`, scroll handler, and progress bar (only used for mobile carousel)
-- The `useRef`, `useState`, `useEffect`, `useCallback` hooks and scroll logic can be fully removed since they were only for the mobile carousel
-- Desktop 5-column flex layout stays exactly the same
+This ensures the full image is visible inside the container, scaled down to fit, rather than being cropped to fill.
 
 ### What stays the same
-- Desktop/tablet 5-column grid -- unchanged
-- Product data, names, IDs, links -- unchanged
-- Section padding and background -- unchanged
+- Desktop/tablet layout and styling -- completely unchanged
+- Container aspect ratio (`aspect-[3/1]`) -- unchanged
+- Carousel behavior, progress bar -- unchanged
 
