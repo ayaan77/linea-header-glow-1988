@@ -1,14 +1,14 @@
-import ringsCollection from "@/assets/rings-collection.png";
-import earringsCollection from "@/assets/earrings-collection.png";
-import linkBracelet from "@/assets/link-bracelet.png";
-import circularCollection from "@/assets/circular-collection.png";
+import giftIdea1 from "@/assets/gift-idea-1.jpg";
+import giftIdea2 from "@/assets/gift-idea-2.jpg";
+import giftIdea3 from "@/assets/gift-idea-3.jpg";
+import giftIdea4 from "@/assets/gift-idea-4.jpg";
 import { Link } from "react-router-dom";
 
 const categories = [
-  { name: "Rings", image: ringsCollection, href: "/category/rings" },
-  { name: "Earrings", image: earringsCollection, href: "/category/earrings" },
-  { name: "Bracelets", image: linkBracelet, href: "/category/bracelets" },
-  { name: "Necklaces", image: circularCollection, href: "/category/necklaces" },
+  { name: "Rings", image: giftIdea1, href: "/category/rings" },
+  { name: "Earrings", image: giftIdea2, href: "/category/earrings" },
+  { name: "Bracelets", image: giftIdea3, href: "/category/bracelets" },
+  { name: "Necklaces", image: giftIdea4, href: "/category/necklaces" },
 ];
 
 const GiftIdeasSection = () => {
