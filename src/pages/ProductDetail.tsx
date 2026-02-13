@@ -186,13 +186,13 @@ const ProductDetail = () => {
               </div>
             </div>
             {/* Portrait image: second on mobile, stays right on desktop */}
-            <div className="order-2 lg:order-2 lg:pr-14">
+            <div className="order-2 lg:order-2 px-6 py-4 lg:px-0 lg:py-0 lg:pr-14">
               <div className="overflow-hidden h-full">
                 <img src={editorialThreeQuarter} alt="Collection editorial" className="w-full h-full min-h-[500px] lg:min-h-[700px] scale-[1.08] object-cover" />
               </div>
             </div>
             {/* Stacked images on mobile only */}
-            <div className="order-3 lg:hidden grid grid-cols-1 gap-0">
+            <div className="order-3 lg:hidden grid grid-cols-1 gap-0 px-6 py-4">
               <div className="aspect-[3/4] overflow-hidden">
                 <img src={editorialFace} alt="Editorial detail" className="w-full h-full scale-[1.08] object-cover" />
               </div>
