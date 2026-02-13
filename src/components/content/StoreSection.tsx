@@ -1,4 +1,4 @@
-import organicEarring from "@/assets/organic-earring.png";
+import kashmirBloomStore from "@/assets/kashmir-bloom-store.webp";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
@@ -9,8 +9,8 @@ const StoreSection = () => {
         {/* Image block */}
         <div className="w-full aspect-[3/4] overflow-hidden px-5 md:p-8">
           <img
-            src={organicEarring}
-            alt="London store interior"
+            src={kashmirBloomStore}
+            alt="Kashmir Bloom Store Birmingham"
             className="w-full h-full object-cover scale-[1.02]"
           />
         </div>
