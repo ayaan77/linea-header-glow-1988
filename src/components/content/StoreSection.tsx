@@ -11,16 +11,16 @@ const StoreSection = () => {
           <img
             src={kashmirBloomStore}
             alt="Kashmir Bloom Store Birmingham"
-            className="w-full h-full object-cover scale-[1.02]"
-          />
+            className="w-full h-full object-cover scale-[1.02]" />
+
         </div>
 
         {/* Text block */}
         <div className="flex flex-col items-start justify-center md:justify-start border-t border-foreground/10 md:border-0 px-5 pt-6 pb-10 md:pt-10 md:pb-20 md:px-10 text-left">
           <Link
             to="/about/store-locator"
-            className="flex items-center justify-between w-full mb-6 md:mb-10"
-          >
+            className="flex items-center justify-between w-full mb-6 md:mb-10">
+
             <span className="type-nav text-foreground">
               Visit our London stores
             </span>
@@ -31,13 +31,13 @@ const StoreSection = () => {
             Visit any of our three London stores situated in Redchurch, Soho or Marylebone for expert advice on fabrications, modular wardrobe styling and gift wrapping.
           </p>
 
-          <p className="type-spec">
-            Evoking the sensibility of Studio Nicholson clothing.
+          <p className="type-spec">Evoking the sensibility of Kashmir Bloom clothing.
+
           </p>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default StoreSection;
