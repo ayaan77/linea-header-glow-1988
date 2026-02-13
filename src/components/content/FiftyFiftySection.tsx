@@ -1,5 +1,5 @@
 import cashmereClothing1 from "@/assets/cashmere-clothing-1.webp";
-import cashmereClothing from "@/assets/cashmere-clothing.jpg";
+import cashmereClothing from "@/assets/cashmere-clothing.webp";
 import { Link } from "react-router-dom";
 
 const FiftyFiftySection = () => {
