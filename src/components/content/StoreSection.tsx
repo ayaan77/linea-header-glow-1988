@@ -21,17 +21,17 @@ const StoreSection = () => {
             to="/about/store-locator"
             className="flex items-center justify-between w-full mb-6 md:mb-10"
           >
-            <span className="text-[12px] tracking-[0.2em] uppercase font-medium text-foreground">
+            <span className="type-nav text-foreground">
               Visit our London stores
             </span>
             <ArrowRight className="w-4 h-4 text-foreground flex-shrink-0 ml-4" />
           </Link>
 
-          <p className="text-[17px] leading-[1.8] md:text-[15px] font-light text-foreground/80 md:text-foreground/70 md:leading-[1.7] mb-4 md:mb-6 md:max-w-md">
+          <p className="type-body font-light text-foreground/80 md:text-foreground/70 leading-relaxed mb-4 md:mb-6 md:max-w-md">
             Visit any of our three London stores situated in Redchurch, Soho or Marylebone for expert advice on fabrications, modular wardrobe styling and gift wrapping.
           </p>
 
-          <p className="text-[13px] text-foreground/50 font-light">
+          <p className="type-spec">
             Evoking the sensibility of Studio Nicholson clothing.
           </p>
         </div>

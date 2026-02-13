@@ -14,7 +14,7 @@ const categories = [
 const GiftIdeasSection = () => {
   return (
     <section className="w-full mb-8 md:mb-16 px-4 md:px-6">
-      <h2 className="text-center text-2xl md:text-3xl font-serif font-semibold text-foreground mb-8">Gift Ideas</h2>
+      <h2 className="text-center type-section text-foreground mb-8">Gift Ideas</h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {categories.map((cat) => (
           <Link key={cat.name} to={cat.href} className="group text-center">
@@ -25,7 +25,7 @@ const GiftIdeasSection = () => {
                 className="w-full h-full object-cover scale-[1.02] group-hover:scale-[1.07] transition-transform duration-300"
               />
             </div>
-            <p className="text-sm font-serif font-medium text-foreground">{cat.name}</p>
+            <p className="type-product-name text-foreground">{cat.name}</p>
           </Link>
         ))}
       </div>

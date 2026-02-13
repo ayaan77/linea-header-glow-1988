@@ -13,7 +13,7 @@ const FiftyFiftySection = () => {
             className="w-full h-full object-cover scale-[1.02]"
           />
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2">
-            <span className="bg-background text-foreground text-[10px] md:text-xs tracking-[0.2em] uppercase font-medium px-5 py-2.5 whitespace-nowrap">
+            <span className="bg-background text-foreground type-label px-5 py-2.5 whitespace-nowrap">
               Men's Spring '26
             </span>
           </div>
@@ -26,7 +26,7 @@ const FiftyFiftySection = () => {
             className="w-full h-full object-cover scale-[1.02]"
           />
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2">
-            <span className="bg-background text-foreground text-[10px] md:text-xs tracking-[0.2em] uppercase font-medium px-5 py-2.5 whitespace-nowrap">
+            <span className="bg-background text-foreground type-label px-5 py-2.5 whitespace-nowrap">
               Women's Spring '26
             </span>
           </div>

@@ -131,27 +131,27 @@
   /* Playfair Display roles */
   .type-hero {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(36px, 5vw, 48px);
+    font-size: 28px;
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
   .type-section {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(24px, 3vw, 32px);
+    font-size: 20px;
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
   .type-quote {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(14px, 1.5vw, 18px);
+    font-size: 13px;
     font-weight: 400;
     font-style: italic;
   }
   .type-product-name {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(13px, 1.2vw, 14px);
+    font-size: 12px;
     font-weight: 500;
     letter-spacing: 0.02em;
   }
@@ -159,14 +159,14 @@
   /* Inter roles */
   .type-nav {
     font-family: 'Inter', sans-serif;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 500;
     letter-spacing: 0.12em;
     text-transform: uppercase;
   }
   .type-body {
     font-family: 'Inter', sans-serif;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 400;
   }
   .type-button {
@@ -178,7 +178,7 @@
   }
   .type-label {
     font-family: 'Inter', sans-serif;
-    font-size: 9px;
+    font-size: 8px;
     font-weight: 500;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -187,16 +187,35 @@
   /* Space Mono roles */
   .type-price {
     font-family: 'Space Mono', monospace;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 400;
     color: hsl(var(--accent));
   }
   .type-spec {
     font-family: 'Space Mono', monospace;
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 400;
     color: hsl(var(--muted-foreground));
   }
+}
+
+/* ── Responsive Typography Breakpoints ── */
+@media (min-width: 768px) {
+  .type-hero { font-size: 36px; }
+  .type-section { font-size: 26px; }
+  .type-quote { font-size: 15px; }
+  .type-product-name { font-size: 13px; }
+  .type-nav { font-size: 11px; }
+  .type-body { font-size: 11px; }
+  .type-label { font-size: 9px; }
+  .type-price { font-size: 13px; }
+  .type-spec { font-size: 10px; }
+}
+@media (min-width: 1024px) {
+  .type-hero { font-size: 48px; }
+  .type-section { font-size: 32px; }
+  .type-quote { font-size: 18px; }
+  .type-product-name { font-size: 14px; }
 }
 
 /* Force Embla carousel containers to fill height */

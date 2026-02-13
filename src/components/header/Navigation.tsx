@@ -324,12 +324,12 @@ const Navigation = ({ isTransparent = false }: NavigationProps) => {
             <div className="space-y-6">
               {navItems.map((item) => (
                 <div key={item.name}>
-                  <Link to={item.href} className="text-nav-foreground hover:text-nav-hover transition-colors duration-200 text-lg font-light block py-2" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Link to={item.href} className="text-nav-foreground hover:text-nav-hover transition-colors duration-200 type-nav text-[14px] block py-2" onClick={() => setIsMobileMenuOpen(false)}>
                     {item.name}
                   </Link>
                   {item.byCollection && <div className="mt-3 pl-4 space-y-2">
                     {item.byCollection.map((subItem, subIndex) => (
-                      <Link key={subIndex} to={subItem === "View All" ? item.href : `/category/${subItem.toLowerCase()}`} className="text-nav-foreground/70 hover:text-nav-hover text-sm font-light block py-1" onClick={() => setIsMobileMenuOpen(false)}>
+                      <Link key={subIndex} to={subItem === "View All" ? item.href : `/category/${subItem.toLowerCase()}`} className="text-nav-foreground/70 hover:text-nav-hover type-body block py-1" onClick={() => setIsMobileMenuOpen(false)}>
                         {subItem}
                       </Link>
                     ))}
