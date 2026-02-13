@@ -1,74 +1,110 @@
 
 
-## Align Theme with "Modern Archive" Brand Style Guide
+## Update Typography for Tablet and Mobile Responsiveness
 
-### Current State
-The project already uses the correct color palette (Limestone #F2F0E9, Ink #181818, Saffron #B64522, Concrete #888888) and font families (Playfair Display, Inter, Space Mono). What needs updating is the precise **typography sizing, weights, and font-role assignments** specified in the guide.
+### Problem
+Many components use hardcoded font sizes (e.g., `text-2xl`, `text-sm`, `text-[17px]`) instead of the brand typography utility classes (`type-hero`, `type-section`, `type-product-name`, etc.). The utility classes already use `clamp()` for fluid scaling, but they need media-query refinements for tablet (768px) and mobile (< 768px) breakpoints. Additionally, several components have inconsistent mobile typography that doesn't follow the brand guide's size ranges.
 
 ### What Changes
 
-#### 1. Global CSS Typography Utilities (src/index.css)
-Add reusable utility classes that encode the brand guide's typography rules, making it easier to apply consistently:
+#### 1. CSS Utility Classes -- Add Responsive Breakpoints (src/index.css)
 
-| Class | Font | Size | Weight | Purpose |
-|-------|------|------|--------|---------|
-| `.type-hero` | Playfair Display | 36-48px | 600-700 | Hero headlines |
-| `.type-section` | Playfair Display | 24-32px | 600 | Section headings |
-| `.type-quote` | Playfair Display | 14-18px | 400 italic | Pull quotes |
-| `.type-product-name` | Playfair Display | 18-24px | 500-600 | Product titles |
-| `.type-nav` | Inter | 11-12px | 500-600 | Navigation items |
-| `.type-body` | Inter | 10-11px | 400 | Body text |
-| `.type-button` | Inter | 10-11px | 500-600 | CTAs |
-| `.type-label` | Inter | 8-9px | 500 | Tags, metadata |
-| `.type-price` | Space Mono | 12-14px | 400-700 | Prices (Burnt Saffron) |
-| `.type-spec` | Space Mono | 9-10px | 400 | Specs (Concrete) |
+Update the brand typography utilities with explicit mobile/tablet overrides:
 
-#### 2. Component Typography Updates
+| Class | Mobile (< 768px) | Tablet (768-1024px) | Desktop (1024px+) |
+|-------|-------------------|---------------------|---------------------|
+| `.type-hero` | 28px, weight 600 | 36px | 48px |
+| `.type-section` | 20px, weight 600 | 26px | 32px |
+| `.type-quote` | 13px | 15px | 18px |
+| `.type-product-name` | 12px | 13px | 14px |
+| `.type-nav` | 10px | 11px | 11px |
+| `.type-body` | 12px | 11px | 11px |
+| `.type-button` | 11px | 11px | 11px |
+| `.type-label` | 8px | 9px | 9px |
+| `.type-price` | 12px | 13px | 13px |
+| `.type-spec` | 9px | 10px | 10px |
 
-**ProductCard.tsx** -- Align product name and price typography:
-- Product name: Use `font-serif` (Playfair), bump to ~13-14px, weight 500-600
-- Price: Ensure `font-mono` + `text-accent` (Saffron) at 12-14px
+Body text gets slightly larger on mobile (12px) for touch readability per accessibility best practices, while decorative elements (labels, nav) stay small.
 
-**ProductInfo.tsx** -- Product detail page:
-- Product title: Already serif, ensure weight 600 and size 28-32px (currently correct)
-- Price: Ensure `font-mono text-accent` (already correct)
-- Labels ("New In", "Size & Fit"): Ensure Inter at 8-9px, weight 500
+#### 2. Component Updates -- Replace Hardcoded Sizes with Brand Utilities
 
-**Navigation.tsx** -- Nav items:
-- Already using `text-xs font-medium tracking-wider` -- adjust to 11px, weight 500-600 (close to current)
+**VoyageSection.tsx**
+- Heading: Replace `text-lg md:text-base font-serif` with `type-section`
+- Body text: Replace `text-sm font-light` with proper body sizing
+- Product names: Use `type-product-name`
+- Prices: Use `type-price`
 
-**StatusBar.tsx** -- Already correct pattern
+**GiftIdeasSection.tsx**
+- Heading: Replace `text-2xl md:text-3xl font-serif` with `type-section`
+- Category names: Use `type-product-name`
 
-**Footer.tsx** -- Update footer text to match label specs (8-9px Inter, weight 500)
+**ArtisticSignatureSection.tsx**
+- Label: Replace `text-xs tracking-[0.2em] uppercase` with `type-label`
+- Heading: Replace `text-2xl font-serif` with `type-section`
+- Body: Replace `text-[17px] md:text-sm` with consistent responsive body text
+- Button text: Use `type-button`
 
-**People.tsx, Heritage.tsx, and other about pages** -- Hero headings:
-- Ensure `font-serif text-5xl md:text-7xl font-semibold` (already close, verify weight 600-700)
-- Section headings: `font-serif text-2xl md:text-4xl font-semibold` (already correct)
-- Body text: Ensure `text-sm font-normal` maps to ~14px/400 (already close)
+**StoreSection.tsx**
+- Heading link: Replace `text-[12px] tracking-[0.2em] uppercase` with `type-nav`
+- Body: Replace `text-[17px] md:text-[15px]` with consistent body sizing
+- Caption: Replace `text-[13px]` with `type-spec`
 
-**ProductShowcase.tsx** -- No text changes needed
+**FiftyFiftySection.tsx**
+- Labels: Replace `text-[10px] md:text-xs` with `type-label`
 
-#### 3. Tailwind Config (tailwind.config.ts)
-- Add `fontSize` entries for brand-specific sizes if needed for reuse
-- Verify font weight mappings are complete (300=light, 400=regular, 500=medium, 600=semibold, 700=bold)
+**EditorialSection.tsx**
+- Heading: Replace `text-2xl md:text-xl font-serif` with `type-section`
+- Body/link: Align to brand body text sizing
 
-#### 4. Button Component (button.tsx)
-- Default/primary CTA: Ensure uses Burnt Saffron bg where appropriate (currently handled per-instance)
-- Text: 10-11px, Inter, weight 500-600, uppercase tracking
+**Login.tsx**
+- Title: Replace `font-serif text-2xl` with `type-section`
+- Labels: Replace `text-[11px] uppercase tracking-wider` with `type-label`
+- Button text: Align with `type-button` specs
+
+**People.tsx**
+- Hero heading: Replace `text-5xl md:text-7xl` with `type-hero`
+- Section headings: Replace `text-2xl md:text-4xl` with `type-section`
+- Labels: Replace `text-[10px] tracking-[0.3em]` with `type-label`
+- Body text: Standardize to brand body sizing
+
+**Navigation.tsx (Mobile menu)**
+- Mobile nav links: Replace `text-lg font-light` with `type-nav` at a slightly larger mobile size
+- Sub-items: Replace `text-sm font-light` with `type-body`
+
+### Technical Details
+
+The `clamp()` approach in CSS utilities will be replaced with explicit `@media` breakpoints for more precise control:
+
+```css
+.type-hero {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+@media (min-width: 768px) {
+  .type-hero { font-size: 36px; }
+}
+@media (min-width: 1024px) {
+  .type-hero { font-size: 48px; }
+}
+```
 
 ### Files to Edit
-- `src/index.css` -- Add typography utility classes
-- `src/components/category/ProductCard.tsx` -- Product name serif + price mono/saffron
-- `src/components/product/ProductInfo.tsx` -- Fine-tune label sizes
-- `src/components/footer/Footer.tsx` -- Align label/heading sizes
-- `src/pages/about/People.tsx` -- Verify hero/section heading weights
-- `src/components/header/Navigation.tsx` -- Minor nav size tweaks
-- `tailwind.config.ts` -- Optional fontSize additions
+- `src/index.css` -- Responsive breakpoints for all type utilities
+- `src/components/content/VoyageSection.tsx`
+- `src/components/content/GiftIdeasSection.tsx`
+- `src/components/content/ArtisticSignatureSection.tsx`
+- `src/components/content/StoreSection.tsx`
+- `src/components/content/FiftyFiftySection.tsx`
+- `src/components/content/EditorialSection.tsx`
+- `src/pages/Login.tsx`
+- `src/pages/about/People.tsx`
+- `src/components/header/Navigation.tsx` (mobile menu only)
 
 ### What Stays the Same
-- All colors (already matching the guide exactly)
-- Font family definitions (already correct)
-- Google Fonts import in index.html (already loads correct weights)
-- Border styling (already `border-foreground/15` per the guide's "1px Wet Ink at 15% opacity")
-- Overall layout and spacing patterns
-
+- Color palette, font families, Tailwind config
+- Components already using brand utilities correctly (ProductCard, ProductInfo, Footer, PageHeader, ContentSection)
+- Layout, spacing, and image handling
+- Desktop appearance remains identical
