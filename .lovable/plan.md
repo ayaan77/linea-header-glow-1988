@@ -1,26 +1,28 @@
 
 
-## Add Full-Look Image to "You Might Also Like" Section
+## Restructure Editorial Story Block for Mobile
 
 ### Overview
-Show a full-body product image on mobile in the "You Might Also Like" section (Section 3). Currently, the editorial image on the left is hidden on mobile (`hidden lg:block`). The change will make it visible on mobile and swap the image to match the product's full-look styling.
+Rearrange Section 4 (Editorial Story Block) on mobile to match the reference: text content appears first, followed by two full-width stacked images. Desktop layout remains completely unchanged.
 
-### Changes
+### Reference Layout (Mobile Only)
+1. Title ("Women's Spring '26") + paragraph text + "Discover the Collection" button
+2. First full-width image (editorial lifestyle)
+3. Second full-width image (editorial portrait)
 
-**File: `src/pages/ProductDetail.tsx`**
+### Technical Changes
 
-1. **Import the full-look image**: Add `import scarfFull from "@/assets/scarf-full.png"` (the full-body product shot from the hero gallery)
+**File: `src/pages/ProductDetail.tsx` (Section 4, lines 164-198)**
 
-2. **Make the left image visible on mobile**: Change `hidden lg:block` to just `block` on the image container (line 152), so it shows on all screen sizes
-
-3. **Swap the image source**: Replace `lintelImage` with `scarfFull` to show the actual product being viewed, giving a "complete the look" feel matching the reference
-
-4. **Set proper mobile height**: Add a fixed height on mobile (`h-[500px] lg:h-auto`) so the image doesn't take up excessive space, with `object-cover` to crop nicely
-
-5. **No text or labels** will be added -- just the clean image, as requested
+- **Reorder mobile**: Move the text block to `order-1` on mobile (currently it's `order-2`), and push images to `order-2` and `order-3` on mobile
+- **Remove the 2-column image grid on mobile**: Currently the two smaller images sit side-by-side in a `grid-cols-2` on mobile. Change to `grid-cols-1` on mobile so they stack full-width vertically
+- **Make the large portrait image appear after the text on mobile**: Change from `order-1` to `order-2 lg:order-2` on mobile
+- **Make the smaller images section `order-3` on mobile**: So it appears last
+- **Show both smaller images full-width on mobile**: Change the grid from `grid-cols-2 lg:grid-cols-1` to `grid-cols-1` on mobile, remove the `lg:hidden` from the second image (it's already visible on mobile), and make both images full-width
+- **Keep all `lg:` classes unchanged** so desktop is unaffected
 
 ### What Stays the Same
-- Desktop layout unchanged (still shows full-height image on left, 2x2 grid on right)
-- Product grid on the right unchanged
-- All other sections unchanged
+- All desktop and tablet layouts
+- Text content, images, and styling
+- All other sections
 
