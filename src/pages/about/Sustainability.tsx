@@ -69,7 +69,7 @@ const Sustainability = () => {
       </section>
 
       {/* ── Full-bleed Nature Image ── */}
-      <section className="relative w-full overflow-hidden">
+      <section className="relative w-full overflow-hidden px-4 md:px-8 lg:px-12 pt-10 md:pt-16 lg:pt-20">
         <img
           src={scarfFront}
           alt="Sustainable craftsmanship"
