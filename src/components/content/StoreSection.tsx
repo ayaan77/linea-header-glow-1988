@@ -16,7 +16,7 @@ const StoreSection = () => {
         </div>
 
         {/* Text block */}
-        <div className="flex flex-col items-start justify-center border-t border-foreground/10 md:border-0 px-5 pt-6 pb-10 md:py-20 md:px-10 text-left">
+        <div className="flex flex-col items-start justify-center md:justify-start border-t border-foreground/10 md:border-0 px-5 pt-6 pb-10 md:pt-10 md:pb-20 md:px-10 text-left">
           <Link
             to="/about/store-locator"
             className="flex items-center justify-between w-full mb-6"
