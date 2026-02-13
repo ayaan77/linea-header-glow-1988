@@ -72,7 +72,7 @@ const ProductShowcase = () => {
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-full h-full object-cover scale-[1.02]"
+                  className="w-full h-full object-contain"
                 />
               </div>
             </Link>
