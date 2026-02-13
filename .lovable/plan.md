@@ -1,21 +1,16 @@
 
 
-## Elevate Product from Progress Bars on Mobile
-
-### What will change
-The mobile ProductShowcase carousel will be updated so the product image has breathing room and the progress bars sit **below** the image instead of overlapping it -- matching the reference screenshot style.
+## Fill Image Container and Keep Progress Bar Spacing
 
 ### Changes
 
-**File: `src/components/content/ProductShowcase.tsx`**
+**File: `src/components/content/ProductShowcase.tsx`** (line 57)
 
-1. **Add padding inside each carousel slide** -- wrap the image in a container with horizontal and vertical padding so the product floats with space around it (like the reference)
-2. **Use `object-contain`** instead of `object-cover` so the full product is visible without cropping
-3. **Move progress bar outside the image** -- change from `absolute bottom-3` (overlaid) to a normal-flow `div` with top margin, sitting below the carousel
-4. **Add bottom padding to the section** to give the progress bars room beneath the images
-5. Desktop view remains unchanged
+1. Change `object-contain` back to `object-cover` so the image fills the entire container without white space
+2. Remove the inner `p-6` padding on the image wrapper so the image goes edge-to-edge within the card
+3. Keep the existing `px-8` slide padding and `mt-4` progress bar spacing as-is for breathing room
 
 ### Result
-- Product images will be centered with padding, elevated away from edges
-- Progress bars will appear below the image with clear spacing, not overlapping the product
+- Images fill their cards completely (no empty space inside the card)
+- Progress bars remain clearly separated below with proper spacing
 
