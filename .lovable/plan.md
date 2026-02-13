@@ -1,42 +1,35 @@
 
 
-## Update Product Detail Mobile Layout to Match Reference
+## Add Size Chart Section After Editorial Story Block
 
 ### Overview
-Adjust the mobile-only layout of the Product Detail page to match the reference screenshot. All changes are scoped to mobile breakpoint only (below `lg:`). Tablet and desktop layouts remain untouched.
+Add a new section between the Editorial Story Block (Section 4) and Other Items (Section 5) containing two tables: **Size Conversion** and **Garment Measurements**, matching the reference image's clean, minimal table design.
 
-### Changes
+### What It Looks Like
+Based on the reference, the section will have:
+- A "Size Conversion" table with brand sizes (XS-XL) mapped to EU sizes
+- A "Garment Measurements" table with body measurements (Chest, Waist, Back Length, Sleeve Length) per size
+- A footnote: "All measurements are taken with the garment laying flat"
+- Clean, minimal styling with light borders and uppercase headers
 
-**File: `src/pages/ProductDetail.tsx`**
-
-#### 1. Section 4 (Editorial Story Block) - Mobile Layout Update (lines 163-192)
-
-The reference shows a different mobile layout for this section:
-
-- **Large portrait image** at top (full width, no padding) -- already correct
-- **Two smaller images side by side** in a 2-column grid below the portrait -- currently only one image (`editorialSide`) is shown. Need to add a second image (e.g., `editorialFace` or another editorial asset) and display them in a `grid grid-cols-2` on mobile
-- **Text block** below images with quote and CTA button -- already correct, just needs spacing adjustments
-
-Specific changes:
-- Replace the single `editorialSide` image container with a 2-column grid on mobile containing two images side by side
-- On desktop (`lg:`), revert to the current single image at 75% width layout
-- Adjust spacing/padding to match the reference's tighter layout
-
-#### 2. Section 2 (Details + Editorial Carousel) - Order Verification
-
-The current order (carousel first on mobile, description below) matches the reference. No changes needed here.
-
-#### 3. Section 3 (Related Products Grid) - No Changes
-
-The 2x2 grid layout on mobile already matches the reference.
-
-#### 4. Section 5 (Other Items) - No Changes
-
-The 2-column grid on mobile already matches the reference.
+Since this is a jewelry brand (not garments), the data will be adapted for jewelry sizing (e.g., ring circumference, bracelet length, chain length) while keeping the same table structure and visual style.
 
 ### Technical Details
 
-- All changes use Tailwind responsive prefixes (`lg:`) to ensure only mobile is affected
-- The second editorial image will use an existing asset already imported (e.g., `editorialFace`)
-- The 2-column grid for the two smaller images will use `grid grid-cols-2 lg:grid-cols-1` with the second image hidden on desktop (`lg:hidden`) to preserve the current desktop layout
+**File: `src/pages/ProductDetail.tsx`**
+
+Insert a new section at line 198 (after Section 4, before Section 5):
+
+- Add a `<section>` with horizontal padding matching the page (`px-6 lg:px-16 xl:px-20`) and vertical padding (`py-10 lg:py-16`)
+- **Size Conversion Table**: A simple HTML table with columns for sizes XS through XL, mapping to EU numeric sizes. Styled with `text-[11px]` mono font, light border separators, matching the site's design language
+- **Garment Measurements Table**: A second table below with rows for key measurements (in CM), with the same minimal styling
+- **Footnote**: Small muted text below the tables
+- Uses existing Tailwind classes and design tokens (e.g., `text-concrete`, `font-mono`, `border-border`) to stay consistent with the site
+
+**No new components or files needed** -- the tables will be inline JSX using standard HTML table elements styled with Tailwind, keeping it simple and consistent with the rest of the page.
+
+### What Stays the Same
+- All existing sections unchanged
+- Desktop and tablet layouts unaffected
+- No new dependencies
 
