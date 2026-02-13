@@ -47,14 +47,14 @@ const ProductShowcase = () => {
       </div>
 
       {/* Mobile: Embla carousel */}
-      <div className="md:hidden relative">
+      <div className="md:hidden">
         <div ref={emblaRef} className="overflow-hidden">
           <div className="flex">
             {mobileProducts.map((product) => (
-              <div key={product.id} className="min-w-0 shrink-0 grow-0 basis-full">
+              <div key={product.id} className="min-w-0 shrink-0 grow-0 basis-full px-8">
                 <Link to={`/product/${product.id}`}>
-                  <div className="bg-limestone aspect-[3/4] overflow-hidden flex items-center justify-center">
-                    <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+                  <div className="bg-limestone aspect-[3/4] overflow-hidden flex items-center justify-center p-6">
+                    <img src={product.image} alt={product.name} className="w-full h-full object-contain" />
                   </div>
                 </Link>
               </div>
@@ -63,7 +63,7 @@ const ProductShowcase = () => {
         </div>
 
         {/* Segmented progress bar */}
-        <div className="absolute bottom-3 left-0 right-0 px-16">
+        <div className="mt-4 px-16 pb-2">
           <div className="flex gap-1.5">
             {mobileProducts.map((_, i) => (
               <div
