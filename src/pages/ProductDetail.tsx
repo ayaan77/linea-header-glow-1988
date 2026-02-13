@@ -198,6 +198,7 @@ const ProductDetail = () => {
 
         {/* Section 5: Size Chart */}
         <section className="w-full px-6 lg:px-16 xl:px-20 py-10 lg:py-16">
+          <div className="bg-white p-6 lg:p-10 xl:p-12">
           <h2 className="text-xs tracking-[0.15em] uppercase text-foreground mb-8">Size Guide</h2>
 
           {/* Size Conversion Table */}
@@ -299,6 +300,7 @@ const ProductDetail = () => {
           </div>
 
           <p className="text-[10px] font-mono text-concrete tracking-[0.08em]">All measurements are taken with the garment laying flat</p>
+          </div>
         </section>
 
         {/* Section 6: Other Items - 4-column Grid */}
