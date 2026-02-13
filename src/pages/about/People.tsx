@@ -35,17 +35,6 @@ const People = () => {
         </div>
       </section>
 
-      {/* ── Intro Text Block ── */}
-      <section className="py-20 md:py-28 px-6">
-        <div className="max-w-3xl mx-auto text-center space-y-8">
-          <h2 className="font-serif text-xl md:text-3xl leading-relaxed tracking-[0.05em] uppercase font-semibold">
-            Behind every piece is a person — a story of dedication, artistry, and shared purpose
-          </h2>
-          <p className="text-sm font-normal leading-relaxed text-muted-foreground max-w-2xl mx-auto">
-            At LINEA, our strength lies in the hands and hearts of the people who bring each design to life. From our master artisans to our creative directors, every individual contributes a unique thread to the tapestry of our craft.
-          </p>
-        </div>
-      </section>
 
       {/* ── Full-Width Feature Image ── */}
       <section className="relative w-full overflow-hidden px-4 md:px-8 lg:px-12">
