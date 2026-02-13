@@ -1,28 +1,21 @@
 
 
-## Fix Mobile Swipe in ProductShowcase
+## Elevate Product from Progress Bars on Mobile
 
-### Problem
-The mobile carousel uses CSS `snap-x snap-mandatory` with `overflow-x-auto`, but the `Link` wrapper intercepts touch events, causing swipe gestures to trigger navigation instead of scrolling. The `aspect-[3/1]` ratio also makes cards too short, making vertical touch movement easily override horizontal scrolling.
-
-### Solution
-Replace the native CSS scroll-snap carousel with **Embla Carousel** (already installed) for reliable, smooth touch swiping. Show only 4 products on mobile (matching desktop intent). Use a taller aspect ratio for better touch targets.
+### What will change
+The mobile ProductShowcase carousel will be updated so the product image has breathing room and the progress bars sit **below** the image instead of overlapping it -- matching the reference screenshot style.
 
 ### Changes
 
 **File: `src/components/content/ProductShowcase.tsx`**
 
-1. Import and use Embla Carousel (`useEmblaCarousel`) for the mobile view -- this gives proper touch handling that doesn't conflict with `Link` elements
-2. Limit mobile to first 4 products: `products.slice(0, 4)`
-3. Change aspect ratio from `aspect-[3/1]` to `aspect-[3/4]` for taller, more tappable cards
-4. Use `object-cover` instead of `object-contain` for consistent image fills
-5. Update the progress bar to sync with Embla's `onSelect` callback instead of manual scroll math
-6. Remove the manual `scrollRef`, `handleScroll`, and `useEffect` scroll listener -- Embla handles all of it
-7. Keep desktop view unchanged (5-column grid)
+1. **Add padding inside each carousel slide** -- wrap the image in a container with horizontal and vertical padding so the product floats with space around it (like the reference)
+2. **Use `object-contain`** instead of `object-cover` so the full product is visible without cropping
+3. **Move progress bar outside the image** -- change from `absolute bottom-3` (overlaid) to a normal-flow `div` with top margin, sitting below the carousel
+4. **Add bottom padding to the section** to give the progress bars room beneath the images
+5. Desktop view remains unchanged
 
-### Technical details
-- Embla Carousel (`embla-carousel-react`) is already a project dependency
-- Embla properly separates swipe gestures from link taps, so navigation only happens on deliberate taps
-- The `onSelect` event from Embla API updates the active dot indicator smoothly
-- No additional dependencies needed
+### Result
+- Product images will be centered with padding, elevated away from edges
+- Progress bars will appear below the image with clear spacing, not overlapping the product
 
