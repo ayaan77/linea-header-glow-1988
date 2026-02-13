@@ -5,7 +5,7 @@ import showcase1 from "@/assets/showcase-1-new.jpg";
 import showcase2 from "@/assets/showcase-2-new.jpg";
 import showcase3 from "@/assets/showcase-3-new.jpg";
 import showcase4 from "@/assets/showcase-4-new.png";
-import showcase5 from "@/assets/showcase-5.jpeg";
+import showcase5 from "@/assets/showcase-5-new.jpeg";
 
 const products = [
   { id: 1, name: "Pantheon", image: showcase1 },
