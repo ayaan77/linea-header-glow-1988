@@ -53,8 +53,8 @@ const ProductShowcase = () => {
             {mobileProducts.map((product) => (
               <div key={product.id} className="min-w-0 shrink-0 grow-0 basis-full px-8">
                 <Link to={`/product/${product.id}`}>
-                  <div className="bg-limestone aspect-[3/4] overflow-hidden flex items-center justify-center p-6">
-                    <img src={product.image} alt={product.name} className="w-full h-full object-contain" />
+                  <div className="bg-limestone aspect-[3/4] overflow-hidden flex items-center justify-center">
+                    <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
                   </div>
                 </Link>
               </div>
