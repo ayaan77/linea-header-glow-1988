@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Play } from "lucide-react";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 
@@ -47,12 +48,17 @@ const People = () => {
       </section>
 
       {/* ── Full-Width Feature Image ── */}
-      <section className="w-full overflow-hidden px-4 md:px-8 lg:px-12">
+      <section className="relative w-full overflow-hidden px-4 md:px-8 lg:px-12">
         <img
           src={founders}
           alt="The LINEA family"
           className="w-full aspect-[4/3] md:aspect-[16/9] lg:aspect-[21/9] object-cover scale-[1.02]"
         />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border border-background/60 flex items-center justify-center bg-background/10 backdrop-blur-sm cursor-pointer hover:bg-background/20 transition-colors">
+            <Play className="w-6 h-6 md:w-7 md:h-7 text-background fill-background/80 ml-1" />
+          </div>
+        </div>
       </section>
 
       {/* ── Family Values: Image left, Text right ── */}
