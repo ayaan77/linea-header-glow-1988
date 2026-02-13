@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import showcase1 from "@/assets/showcase-1-new.jpg";
-import showcase2 from "@/assets/showcase-2.png";
+import showcase2 from "@/assets/showcase-2-new.jpg";
 import showcase3 from "@/assets/showcase-3.png";
 import showcase4 from "@/assets/showcase-4.jpeg";
 import showcase5 from "@/assets/showcase-5.jpeg";
