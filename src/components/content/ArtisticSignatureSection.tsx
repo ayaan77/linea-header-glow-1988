@@ -1,4 +1,4 @@
-import kashmirBloomFashion from "@/assets/kashmir-bloom-fashion.webp";
+import kashmirBloomFashion from "@/assets/kashmir-artisan.jpg";
 import { Link } from "react-router-dom";
 
 const ArtisticSignatureSection = () => {
