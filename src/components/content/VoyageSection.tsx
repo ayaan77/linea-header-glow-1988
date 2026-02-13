@@ -1,4 +1,4 @@
-import heroImage from "@/assets/hero-image.png";
+import heroImage from "@/assets/hero-image.webp";
 import pantheonImage from "@/assets/pantheon.jpg";
 import eclipseImage from "@/assets/eclipse.jpg";
 import haloImage from "@/assets/halo.jpg";
