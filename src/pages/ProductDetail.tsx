@@ -163,9 +163,20 @@ const ProductDetail = () => {
         {/* Section 4: Editorial Story Block */}
         <section className="w-full py-8 lg:py-12">
           <div className="grid grid-cols-1 lg:grid-cols-[4fr_6fr] lg:gap-4 gap-0">
-            {/* Left: Text + smaller image below */}
-            <div className="flex flex-col">
-              <div className="px-6 lg:px-10 xl:px-14 pt-12 lg:pt-16 pb-6">
+            {/* Right on desktop, first on mobile: Full-height portrait image */}
+            <div className="order-1 lg:order-2 lg:pr-14">
+              <div className="overflow-hidden h-full">
+                <img src={editorialThreeQuarter} alt="Collection editorial" className="w-full h-full min-h-[500px] lg:min-h-[700px] scale-[1.08] object-cover" />
+              </div>
+            </div>
+            {/* Left on desktop, second on mobile: Text + smaller image */}
+            <div className="flex flex-col order-2 lg:order-1">
+              <div className="pb-0 px-6 lg:px-10">
+                <div className="w-full lg:w-[75%] aspect-[3/4] overflow-hidden">
+                  <img src={editorialSide} alt="Editorial lifestyle" className="w-full h-full scale-[1.08] object-cover" />
+                </div>
+              </div>
+              <div className="px-6 lg:px-10 xl:px-14 pt-8 lg:pt-16 pb-6">
                 <p className="text-xs tracking-[0.15em] uppercase text-muted-foreground mb-6 lg:mb-8">Women's Spring '26</p>
                 <p className="text-sm font-serif italic text-foreground/80 leading-[1.8] mb-8 max-w-sm">
                   Each piece in this collection is drawn from the interplay of shadow and structure. "It is about how it feels, not how it looks," says our creative director on the jumping off point for the season. The idea of ease — and the idea of jewelry that works effortlessly on the body — coupled with the feeling of metal against skin, continue to be central to the design process. "We are always building on and reiterating the Linea silhouettes and shapes, which of course are also ultimately about creating feelings, particularly when you wear them."
@@ -175,17 +186,6 @@ const ProductDetail = () => {
                     <Link to="/category/earrings">Discover the Collection</Link>
                   </Button>
                 </div>
-              </div>
-              <div className="pb-0 px-6 lg:px-10">
-                <div className="w-[75%] aspect-[3/4] overflow-hidden">
-                  <img src={editorialSide} alt="Editorial lifestyle" className="w-full h-full scale-[1.08] object-cover" />
-                </div>
-              </div>
-            </div>
-            {/* Right: Full-height portrait image */}
-            <div className="pr-8 lg:pr-14">
-              <div className="overflow-hidden h-full">
-                <img src={editorialThreeQuarter} alt="Collection editorial" className="w-full h-full min-h-[500px] lg:min-h-[700px] scale-[1.08] object-cover" />
               </div>
             </div>
           </div>
