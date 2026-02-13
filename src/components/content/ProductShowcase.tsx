@@ -35,7 +35,7 @@ const ProductShowcase = () => {
   }, [handleScroll]);
 
   return (
-    <section className="w-full py-6 px-4 md:px-8 bg-secondary/50">
+    <section className="w-full py-3 px-3 md:py-6 md:px-8 bg-secondary/50">
       {/* Desktop/Tablet: 5-column grid */}
       <div className="hidden md:flex gap-4">
         {products.map((product) => (
@@ -68,7 +68,7 @@ const ProductShowcase = () => {
               to={`/product/${product.id}`}
               className="min-w-full snap-center shrink-0"
             >
-              <div className="bg-limestone aspect-[8/7] overflow-hidden flex items-center justify-center">
+              <div className="bg-limestone aspect-[5/4] overflow-hidden flex items-center justify-center">
                 <img
                   src={product.image}
                   alt={product.name}
@@ -80,7 +80,7 @@ const ProductShowcase = () => {
         </div>
 
         {/* Segmented progress bar */}
-        <div className="absolute bottom-6 left-0 right-0 px-16">
+        <div className="absolute bottom-3 left-0 right-0 px-16">
           <div className="flex gap-1.5">
             {products.map((_, i) => (
               <div
