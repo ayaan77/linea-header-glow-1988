@@ -19,7 +19,7 @@ const StoreSection = () => {
         <div className="flex flex-col items-start justify-center md:justify-start border-t border-foreground/10 md:border-0 px-5 pt-6 pb-10 md:pt-10 md:pb-20 md:px-10 text-left">
           <Link
             to="/about/store-locator"
-            className="flex items-center justify-between w-full mb-6"
+            className="flex items-center justify-between w-full mb-6 md:mb-10"
           >
             <span className="text-[12px] tracking-[0.2em] uppercase font-medium text-foreground">
               Visit our London stores
@@ -27,7 +27,7 @@ const StoreSection = () => {
             <ArrowRight className="w-4 h-4 text-foreground flex-shrink-0 ml-4" />
           </Link>
 
-          <p className="text-[17px] leading-[1.8] md:text-sm font-light text-foreground/80 md:text-foreground/70 md:leading-relaxed mb-8 md:max-w-xs">
+          <p className="text-[17px] leading-[1.8] md:text-[15px] font-light text-foreground/80 md:text-foreground/70 md:leading-[1.7] mb-4 md:mb-6 md:max-w-md">
             Visit any of our three London stores situated in Redchurch, Soho or Marylebone for expert advice on fabrications, modular wardrobe styling and gift wrapping.
           </p>
 
