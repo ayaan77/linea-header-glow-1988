@@ -1,37 +1,42 @@
 
 
-## Fix Editorial Story Section Layout to Match Reference (Mobile)
+## Update Product Detail Mobile Layout to Match Reference
 
-### What Changes
+### Overview
+Adjust the mobile-only layout of the Product Detail page to match the reference screenshot. All changes are scoped to mobile breakpoint only (below `lg:`). Tablet and desktop layouts remain untouched.
 
-Based on the reference screenshot, the mobile layout for Section 4 (Editorial Story Block) needs to be restructured so that:
-
-1. **Images come first on mobile** -- the large portrait image appears at the top, followed by the smaller image, then the text content below
-2. **Both images are full-width on mobile** -- currently the smaller image is only 75% width
-3. **Text section sits below the images on mobile** -- currently text appears first due to source order
-4. **Right (large) image has no right padding on mobile** -- the `pr-8` padding should only apply on desktop
-
-### Technical Changes
+### Changes
 
 **File: `src/pages/ProductDetail.tsx`**
 
-**1. Reorder Section 4 for mobile (lines 164-191)**
-- Move the right portrait image (`editorialThreeQuarter`) to appear first in source order, using CSS `order` classes to maintain the desktop layout
-- Move the text + small image block to appear second on mobile
-- Use `order-1`/`order-2` classes with `lg:order-` overrides
+#### 1. Section 4 (Editorial Story Block) - Mobile Layout Update (lines 163-192)
 
-**2. Fix image container padding (line 186)**
-- Change `pr-8 lg:pr-14` to `px-0 lg:pr-14` so mobile has no side padding on the large image
+The reference shows a different mobile layout for this section:
 
-**3. Fix smaller image width on mobile (line 180)**
-- Change `w-[75%]` to `w-full lg:w-[75%]` so the smaller image is full-width on mobile
+- **Large portrait image** at top (full width, no padding) -- already correct
+- **Two smaller images side by side** in a 2-column grid below the portrait -- currently only one image (`editorialSide`) is shown. Need to add a second image (e.g., `editorialFace` or another editorial asset) and display them in a `grid grid-cols-2` on mobile
+- **Text block** below images with quote and CTA button -- already correct, just needs spacing adjustments
 
-**4. Remove top padding on mobile for text block (line 168)**
-- Adjust padding so the text section has appropriate spacing when it follows images on mobile
+Specific changes:
+- Replace the single `editorialSide` image container with a 2-column grid on mobile containing two images side by side
+- On desktop (`lg:`), revert to the current single image at 75% width layout
+- Adjust spacing/padding to match the reference's tighter layout
 
-### What Stays the Same
-- Desktop two-column layout unchanged
-- All text content, button, and links unchanged
-- Section 3 (product grid) and Section 5 (Other Items) unchanged
-- All image sources unchanged
+#### 2. Section 2 (Details + Editorial Carousel) - Order Verification
+
+The current order (carousel first on mobile, description below) matches the reference. No changes needed here.
+
+#### 3. Section 3 (Related Products Grid) - No Changes
+
+The 2x2 grid layout on mobile already matches the reference.
+
+#### 4. Section 5 (Other Items) - No Changes
+
+The 2-column grid on mobile already matches the reference.
+
+### Technical Details
+
+- All changes use Tailwind responsive prefixes (`lg:`) to ensure only mobile is affected
+- The second editorial image will use an existing asset already imported (e.g., `editorialFace`)
+- The 2-column grid for the two smaller images will use `grid grid-cols-2 lg:grid-cols-1` with the second image hidden on desktop (`lg:hidden`) to preserve the current desktop layout
 
