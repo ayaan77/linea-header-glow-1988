@@ -1,35 +1,22 @@
 
 
-## Add Size Chart Section After Editorial Story Block
+## Make Size Chart White with Side Padding
 
-### Overview
-Add a new section between the Editorial Story Block (Section 4) and Other Items (Section 5) containing two tables: **Size Conversion** and **Garment Measurements**, matching the reference image's clean, minimal table design.
-
-### What It Looks Like
-Based on the reference, the section will have:
-- A "Size Conversion" table with brand sizes (XS-XL) mapped to EU sizes
-- A "Garment Measurements" table with body measurements (Chest, Waist, Back Length, Sleeve Length) per size
-- A footnote: "All measurements are taken with the garment laying flat"
-- Clean, minimal styling with light borders and uppercase headers
-
-Since this is a jewelry brand (not garments), the data will be adapted for jewelry sizing (e.g., ring circumference, bracelet length, chain length) while keeping the same table structure and visual style.
-
-### Technical Details
+### Changes
 
 **File: `src/pages/ProductDetail.tsx`**
 
-Insert a new section at line 198 (after Section 4, before Section 5):
+Update the Size Chart section (Section 5) styling:
 
-- Add a `<section>` with horizontal padding matching the page (`px-6 lg:px-16 xl:px-20`) and vertical padding (`py-10 lg:py-16`)
-- **Size Conversion Table**: A simple HTML table with columns for sizes XS through XL, mapping to EU numeric sizes. Styled with `text-[11px]` mono font, light border separators, matching the site's design language
-- **Garment Measurements Table**: A second table below with rows for key measurements (in CM), with the same minimal styling
-- **Footnote**: Small muted text below the tables
-- Uses existing Tailwind classes and design tokens (e.g., `text-concrete`, `font-mono`, `border-border`) to stay consistent with the site
+1. **Add white background** -- Add `bg-white` to the section element
+2. **Increase horizontal padding** -- The section already has `px-6 lg:px-16 xl:px-20`. Add inner padding or increase existing padding with `mx-6 lg:mx-16 xl:mx-20` on a wrapper, or simply add a white inner container with padding inside the section so the white box has inset from the page edges.
 
-**No new components or files needed** -- the tables will be inline JSX using standard HTML table elements styled with Tailwind, keeping it simple and consistent with the rest of the page.
+Specifically:
+- Wrap the section content in a `div` with `bg-white p-6 lg:p-10 xl:p-12` to create a white card with generous inner padding
+- Keep the outer section's existing padding so the white card is inset from page edges
 
 ### What Stays the Same
-- All existing sections unchanged
-- Desktop and tablet layouts unaffected
-- No new dependencies
+- All table content and styling unchanged
+- Desktop/tablet layouts unchanged
+- Other sections unchanged
 
