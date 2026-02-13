@@ -1,26 +1,26 @@
 
 
-## Reduce Mobile Product Showcase Height
+## Match Mobile Product Showcase to Reference Image
 
 ### Problem
-The mobile carousel cards use an `aspect-[4/3]` ratio (line 71), making them very tall on small screens. Desktop/tablet grid is fine with `aspect-[3/4]`.
+The current mobile cards use `aspect-[16/9]` (landscape), but the reference image shows a tall, portrait-oriented product card -- approximately a 4:5 ratio.
 
 ### Change
 
 **File: `src/components/content/ProductShowcase.tsx` (line 71)**
 
-Update the mobile card aspect ratio from `4/3` to `16/9` -- this reduces the card height by roughly 44%, bringing it closer to the 50-60% reduction requested:
+Update the mobile card aspect ratio from `16/9` to `4/5` to match the reference:
 
 ```jsx
 // From:
-<div className="bg-limestone aspect-[4/3] overflow-hidden flex items-center justify-center">
+<div className="bg-limestone aspect-[16/9] overflow-hidden flex items-center justify-center">
 
 // To:
-<div className="bg-limestone aspect-[16/9] overflow-hidden flex items-center justify-center">
+<div className="bg-limestone aspect-[4/5] overflow-hidden flex items-center justify-center">
 ```
 
-### What stays the same
-- Desktop/tablet 5-column grid and its `aspect-[3/4]` cards unchanged
-- Scroll carousel behavior, snap, and progress bar unchanged
-- Section padding and spacing unchanged
+### Why 4:5
+- Matches the tall, portrait layout shown in the reference screenshot
+- Standard mobile product card ratio used across luxury e-commerce
+- Desktop/tablet 5-column grid with `aspect-[3/4]` stays completely unchanged
 
