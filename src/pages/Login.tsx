@@ -19,10 +19,10 @@ const Login = () => {
       <Header />
       <main className="flex-1 flex items-center justify-center px-6 py-20">
         <div className="w-full max-w-sm">
-          <h1 className="font-serif text-2xl tracking-wide text-center mb-8">Sign In</h1>
+          <h1 className="type-section text-center mb-8">Sign In</h1>
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label className="text-[11px] uppercase tracking-wider text-foreground/70 mb-1.5 block">Email</label>
+              <label className="type-label text-foreground/70 mb-1.5 block">Email</label>
               <Input
                 type="email"
                 value={email}
@@ -32,7 +32,7 @@ const Login = () => {
               />
             </div>
             <div>
-              <label className="text-[11px] uppercase tracking-wider text-foreground/70 mb-1.5 block">Password</label>
+              <label className="type-label text-foreground/70 mb-1.5 block">Password</label>
               <Input
                 type="password"
                 value={password}
@@ -41,9 +41,9 @@ const Login = () => {
                 required
               />
             </div>
-            <Button
+             <Button
               type="submit"
-              className="w-full rounded-none h-11 bg-foreground text-background hover:bg-foreground/90 text-xs uppercase tracking-widest"
+              className="w-full rounded-none h-11 bg-foreground text-background hover:bg-foreground/90 type-button"
             >
               Sign In
             </Button>

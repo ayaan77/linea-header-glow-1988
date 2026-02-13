@@ -18,15 +18,15 @@ const VoyageSection = () => {
       <div className="px-6">
         {/* Header text block - hidden on mobile */}
         <div className="text-center mb-10 md:mb-12">
-          <h2 className="text-lg md:text-base font-serif font-semibold tracking-[0.3em] uppercase text-foreground mb-3">
+          <h2 className="type-section text-foreground mb-3 tracking-[0.3em]">
             Voyage for Two
           </h2>
-          <p className="text-sm md:text-sm font-light text-muted-foreground max-w-sm mx-auto leading-relaxed mb-6">
+          <p className="type-body font-light text-muted-foreground max-w-sm mx-auto leading-relaxed mb-6">
             A style partner can be recognized by the way they walk right beside you.
           </p>
           <Link
             to="/category/voyage"
-            className="text-xs md:text-xs tracking-[0.2em] uppercase text-foreground font-medium underline underline-offset-4 hover:text-accent transition-colors"
+            className="type-nav text-foreground underline underline-offset-4 hover:text-accent transition-colors"
           >
             Explore the Collection
           </Link>
@@ -52,8 +52,8 @@ const VoyageSection = () => {
                   className="w-full h-full object-cover scale-[1.02] group-hover:scale-[1.07] transition-transform duration-300"
                 />
               </div>
-              <p className="text-sm font-serif font-medium text-foreground">{item.name}</p>
-              <p className="text-xs font-mono text-accent">{item.price}</p>
+              <p className="type-product-name text-foreground">{item.name}</p>
+              <p className="type-price">{item.price}</p>
             </Link>
           ))}
         </div>

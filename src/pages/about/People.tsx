@@ -26,10 +26,10 @@ const People = () => {
         />
         <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center space-y-3">
-          <span className="text-[10px] tracking-[0.3em] uppercase font-sans font-medium text-concrete">
+          <span className="type-label text-concrete">
             Discover
           </span>
-          <h1 className="font-serif text-5xl md:text-7xl tracking-[0.1em] uppercase font-semibold">
+          <h1 className="type-hero text-white">
             Our People
           </h1>
         </div>
@@ -47,16 +47,16 @@ const People = () => {
             />
           </div>
           <div className="flex-1 space-y-6 md:pl-8">
-            <span className="text-[10px] tracking-[0.3em] uppercase font-sans font-medium text-muted-foreground block">
+            <span className="type-label text-muted-foreground block">
               Our Culture
             </span>
-            <h3 className="font-serif text-2xl md:text-4xl tracking-[0.08em] uppercase font-semibold">
+            <h3 className="type-section text-foreground">
               Family Values
             </h3>
-            <p className="text-sm font-normal leading-relaxed text-muted-foreground max-w-md">
+            <p className="type-body leading-relaxed text-muted-foreground max-w-md">
               LINEA was founded on the belief that great work is born from genuine connection. Our atelier operates as an extended family — where knowledge is passed generously between generations, and every voice is valued in the creative process.
             </p>
-            <p className="text-sm font-normal leading-relaxed text-muted-foreground max-w-md">
+            <p className="type-body leading-relaxed text-muted-foreground max-w-md">
               We nurture an environment where tradition and innovation coexist, where a young apprentice's fresh perspective is as treasured as a master craftsman's decades of wisdom.
             </p>
           </div>
@@ -66,13 +66,13 @@ const People = () => {
       {/* ── Stories from Our Artisans ── */}
       <section className="px-4 md:px-8 lg:px-12 py-10 md:py-16 lg:py-20">
         <div className="max-w-3xl mx-auto text-center space-y-6 mb-10 md:mb-16">
-          <span className="text-[10px] tracking-[0.3em] uppercase font-sans font-medium text-muted-foreground block">
+          <span className="type-label text-muted-foreground block">
             Their Stories
           </span>
-          <h2 className="font-serif text-2xl md:text-4xl tracking-[0.08em] uppercase font-semibold">
+          <h2 className="type-section text-foreground">
             Stories from Our Artisans
           </h2>
-          <p className="text-sm font-normal leading-relaxed text-muted-foreground max-w-2xl mx-auto">
+          <p className="type-body leading-relaxed text-muted-foreground max-w-2xl mx-auto">
             Each artisan brings a lifetime of skill and passion. Their hands shape not just metal and stone, but the very identity of LINEA.
           </p>
         </div>
@@ -108,16 +108,16 @@ const People = () => {
             </div>
           </div>
           <div className="flex-1 space-y-6 md:pr-8">
-            <span className="text-[10px] tracking-[0.3em] uppercase font-sans font-medium text-muted-foreground block">
+            <span className="type-label text-muted-foreground block">
               Beyond the Atelier
             </span>
-            <h3 className="font-serif text-2xl md:text-4xl tracking-[0.08em] uppercase font-semibold">
+            <h3 className="type-section text-foreground">
               Our Communities
             </h3>
-            <p className="text-sm font-normal leading-relaxed text-muted-foreground max-w-md">
+            <p className="type-body leading-relaxed text-muted-foreground max-w-md">
               We believe luxury carries responsibility. LINEA partners with local communities to support education in traditional craftsmanship, ensuring these vital skills endure for generations to come.
             </p>
-            <p className="text-sm font-normal leading-relaxed text-muted-foreground max-w-md">
+            <p className="type-body leading-relaxed text-muted-foreground max-w-md">
               From sourcing materials ethically to investing in the regions where our artisans live and work, our commitment extends far beyond the workshop walls.
             </p>
           </div>
@@ -127,7 +127,7 @@ const People = () => {
       {/* ── Benefits / Ethos Section ── */}
       <section className="py-20 md:py-28 px-6 border-t border-foreground/10">
         <div className="max-w-3xl mx-auto text-center space-y-10">
-          <h2 className="font-serif text-2xl md:text-4xl tracking-[0.08em] uppercase font-semibold">
+          <h2 className="type-section text-foreground">
             What Defines Us
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left max-w-2xl mx-auto">
@@ -138,10 +138,10 @@ const People = () => {
               { title: "Collective Spirit", desc: "A culture of mentorship, respect, and shared ambition." },
             ].map((item, i) => (
               <div key={i} className="space-y-2">
-                <h4 className="text-[11px] tracking-[0.2em] uppercase font-sans font-medium text-foreground">
+                <h4 className="type-nav text-foreground">
                   {item.title}
                 </h4>
-                <p className="text-sm font-normal leading-relaxed text-muted-foreground">
+                <p className="type-body leading-relaxed text-muted-foreground">
                   {item.desc}
                 </p>
               </div>
@@ -153,15 +153,15 @@ const People = () => {
       {/* ── Bottom CTA ── */}
       <section className="py-20 md:py-28 px-6 border-t border-foreground/10">
         <div className="max-w-2xl mx-auto text-center space-y-6">
-          <h2 className="font-serif text-2xl md:text-4xl tracking-[0.08em] uppercase font-semibold">
+          <h2 className="type-section text-foreground">
             Crafted with Purpose
           </h2>
-          <p className="text-sm font-normal leading-relaxed text-muted-foreground max-w-lg mx-auto">
+          <p className="type-body leading-relaxed text-muted-foreground max-w-lg mx-auto">
             Every LINEA piece carries the spirit of the people who made it. Discover collections shaped by passion, precision, and a deep respect for the art of making.
           </p>
           <Link
             to="/category/voyage"
-            className="inline-block mt-4 text-[11px] tracking-[0.25em] uppercase font-sans font-medium text-saffron border-b border-saffron/40 pb-1 hover:border-saffron transition-colors"
+            className="inline-block mt-4 type-nav text-saffron border-b border-saffron/40 pb-1 hover:border-saffron transition-colors"
           >
             Explore the Collection
           </Link>
