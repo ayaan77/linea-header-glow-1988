@@ -175,7 +175,7 @@ const ProductDetail = () => {
               </div>
               <div className="px-6 lg:px-10 xl:px-14 pt-8 lg:pt-16 pb-6">
                 <p className="text-xs tracking-[0.15em] uppercase text-muted-foreground mb-6 lg:mb-8">Women's Spring '26</p>
-                <p className="text-sm font-serif italic text-foreground/80 leading-[1.8] mb-8 max-w-sm">
+                <p className="text-sm font-sans text-foreground/80 leading-[1.8] mb-8 max-w-sm">
                   Each piece in this collection is drawn from the interplay of shadow and structure. "It is about how it feels, not how it looks," says our creative director on the jumping off point for the season. The idea of ease — and the idea of jewelry that works effortlessly on the body — coupled with the feeling of metal against skin, continue to be central to the design process. "We are always building on and reiterating the Linea silhouettes and shapes, which of course are also ultimately about creating feelings, particularly when you wear them."
                 </p>
                 <div>
