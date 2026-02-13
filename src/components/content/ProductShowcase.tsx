@@ -35,7 +35,7 @@ const ProductShowcase = () => {
   }, [handleScroll]);
 
   return (
-    <section className="w-full py-3 px-3 md:py-6 md:px-8 bg-secondary/50">
+    <section className="w-full pt-8 pb-3 px-3 md:pt-12 md:py-6 md:px-8 bg-secondary/50">
       {/* Desktop/Tablet: 5-column grid */}
       <div className="hidden md:flex gap-4">
         {products.map((product) => (
