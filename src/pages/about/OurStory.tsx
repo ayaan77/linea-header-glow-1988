@@ -20,7 +20,7 @@ const gridTiles = [
   { image: scarfPortrait, label: "discover our", title: "Sustainability", colSpan: "md:col-span-8", rowSpan: "", aspect: "aspect-[16/9]" },
   // Row 2 (right side fills under Sustainability)
   { image: editorialFace, label: "discover our", title: "Heritage", colSpan: "md:col-span-4", rowSpan: "", aspect: "aspect-square", link: "/about/heritage" },
-  { image: editorialCloseup, label: "discover our", title: "People", colSpan: "md:col-span-4", rowSpan: "", aspect: "aspect-square" },
+  { image: editorialCloseup, label: "discover our", title: "People", colSpan: "md:col-span-4", rowSpan: "", aspect: "aspect-square", link: "/about/people" },
   // Row 3
   { image: editorialFront, label: "discover our", title: "Innovation", colSpan: "md:col-span-4", rowSpan: "", aspect: "aspect-square", link: "/about/innovation" },
   { image: scarfFull, label: "discover our", title: "Design", colSpan: "md:col-span-8", rowSpan: "", aspect: "aspect-[16/9]" },
