@@ -1,28 +1,28 @@
 
 
-## Fit Mobile Images Inside Container
+## Fix Mobile Product Images to Fit Properly in Container
 
 ### Problem
-The mobile carousel images use `object-cover` which crops/zooms the image to fill the `aspect-[3/1]` container. Since the source images are portrait-oriented, most of the image gets cropped, making it look oversized.
+The current mobile container uses `aspect-[3/1]` (very wide and short). Since the product images are portrait-oriented, `object-contain` shrinks them to fit the short height, making them appear tiny. The reference image (image 2) shows a taller container where the product is fully visible, centered, with some white space around it.
 
 ### Change
 
-**File: `src/components/content/ProductShowcase.tsx` (line 75)**
+**File: `src/components/content/ProductShowcase.tsx` (line 71)**
 
-Change the mobile image styling from `object-cover` to `object-contain`, and remove the `scale-[1.02]` which makes it slightly larger than needed. This will fit the entire image within the container without cropping.
+Change the mobile card aspect ratio from `aspect-[3/1]` to `aspect-[4/5]` (portrait, taller container). This gives the portrait images enough vertical space to display fully without cropping. Keep `object-contain` so the entire image fits inside with padding around it.
 
 ```
 // From:
-className="w-full h-full object-cover scale-[1.02]"
+<div className="bg-limestone aspect-[3/1] overflow-hidden flex items-center justify-center">
 
 // To:
-className="w-full h-full object-contain"
+<div className="bg-limestone aspect-[4/5] overflow-hidden flex items-center justify-center p-4">
 ```
 
-This ensures the full image is visible inside the container, scaled down to fit, rather than being cropped to fill.
+Also add `p-4` padding so the image has breathing room inside the container, matching the reference where the product doesn't touch the edges.
 
 ### What stays the same
-- Desktop/tablet layout and styling -- completely unchanged
-- Container aspect ratio (`aspect-[3/1]`) -- unchanged
-- Carousel behavior, progress bar -- unchanged
+- Desktop/tablet 5-column layout -- completely unchanged
+- Carousel behavior, progress bar, scroll logic -- unchanged
+- `object-contain` on the image -- kept so nothing gets cropped
 
