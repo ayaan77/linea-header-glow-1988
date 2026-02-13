@@ -1,4 +1,4 @@
-import kashmirBloomStore from "@/assets/kashmir-bloom-store.webp";
+import kashmirBloomStore from "@/assets/kashmir-bloom-store-new.jpg";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
