@@ -171,9 +171,14 @@ const ProductDetail = () => {
             </div>
             {/* Left on desktop, second on mobile: Text + smaller image */}
             <div className="flex flex-col order-2 lg:order-1">
-              <div className="pb-0 px-6 lg:px-10">
-                <div className="w-full lg:w-[75%] aspect-[3/4] overflow-hidden">
-                  <img src={editorialSide} alt="Editorial lifestyle" className="w-full h-full scale-[1.08] object-cover" />
+              <div className="pb-0 px-0 lg:px-10">
+                <div className="grid grid-cols-2 lg:grid-cols-1 gap-0">
+                  <div className="aspect-[3/4] overflow-hidden lg:w-[75%]">
+                    <img src={editorialSide} alt="Editorial lifestyle" className="w-full h-full scale-[1.08] object-cover" />
+                  </div>
+                  <div className="aspect-[3/4] overflow-hidden lg:hidden">
+                    <img src={editorialFace} alt="Editorial detail" className="w-full h-full scale-[1.08] object-cover" />
+                  </div>
                 </div>
               </div>
               <div className="px-6 lg:px-10 xl:px-14 pt-8 lg:pt-16 pb-6">
