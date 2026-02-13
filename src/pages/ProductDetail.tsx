@@ -194,9 +194,6 @@ const ProductDetail = () => {
             {/* Stacked images on mobile only */}
             <div className="order-3 lg:hidden grid grid-cols-1 gap-0">
               <div className="aspect-[3/4] overflow-hidden">
-                <img src={editorialSide} alt="Editorial lifestyle" className="w-full h-full scale-[1.08] object-cover" />
-              </div>
-              <div className="aspect-[3/4] overflow-hidden">
                 <img src={editorialFace} alt="Editorial detail" className="w-full h-full scale-[1.08] object-cover" />
               </div>
             </div>
