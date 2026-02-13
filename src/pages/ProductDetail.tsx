@@ -21,6 +21,7 @@ import editorialThreeQuarter from "@/assets/editorial-three-quarter.png";
 import editorialFace from "@/assets/editorial-face.png";
 import editorialShoulder from "@/assets/editorial-shoulder.png";
 import editorialSide from "@/assets/editorial-side.png";
+import scarfFull from "@/assets/scarf-full.png";
 const relatedProducts = [{
   name: "Eclipse Earrings",
   price: "€2,450",
@@ -149,8 +150,8 @@ const ProductDetail = () => {
         {/* Section 3: You Might Also Like - Editorial + 2x2 Grid */}
         <section className="w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-            <div className="hidden lg:block">
-              <img src={lintelImage} alt="Editorial lifestyle" className="w-full h-full object-cover scale-[1.02]" />
+            <div className="block">
+              <img src={scarfFull} alt="Full look" className="w-full h-[500px] lg:h-full object-cover scale-[1.02]" />
             </div>
             <div className="bg-limestone px-6 lg:px-10 py-8 lg:py-10 flex items-center">
               <div className="grid grid-cols-2 gap-4 lg:gap-5 w-full">
