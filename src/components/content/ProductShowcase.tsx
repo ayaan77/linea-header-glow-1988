@@ -59,7 +59,7 @@ const ProductShowcase = () => {
       <div className="md:hidden relative">
         <div
           ref={scrollRef}
-          className="flex gap-3 overflow-x-auto snap-x snap-mandatory [&::-webkit-scrollbar]:hidden"
+          className="flex overflow-x-auto snap-x snap-mandatory [&::-webkit-scrollbar]:hidden"
           style={{ scrollbarWidth: "none", WebkitOverflowScrolling: "touch" }}
         >
           {products.map((product) => (
