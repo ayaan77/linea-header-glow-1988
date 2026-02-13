@@ -1,21 +1,28 @@
 
 
-## Replace Gift Ideas Section Images
+## Fix Mobile Swipe in ProductShowcase
 
-### What will change
-The four category images in the "Gift Ideas" section will be replaced with the four uploaded Kashmir Bloom gift box photos.
+### Problem
+The mobile carousel uses CSS `snap-x snap-mandatory` with `overflow-x-auto`, but the `Link` wrapper intercepts touch events, causing swipe gestures to trigger navigation instead of scrolling. The `aspect-[3/1]` ratio also makes cards too short, making vertical touch movement easily override horizontal scrolling.
 
-### Files to create
-- `src/assets/gift-idea-1.jpg` -- from `4.jpg` (yellow plaid scarf box)
-- `src/assets/gift-idea-2.jpg` -- from `5.jpg` (pink scarf box)
-- `src/assets/gift-idea-3.jpg` -- from `6.jpg` (coral plaid scarf box)
-- `src/assets/gift-idea-4.jpg` -- from `Instagram_Post_Design_1.jpg` (pink rolled scarf box)
+### Solution
+Replace the native CSS scroll-snap carousel with **Embla Carousel** (already installed) for reliable, smooth touch swiping. Show only 4 products on mobile (matching desktop intent). Use a taller aspect ratio for better touch targets.
 
-### Files to edit
-- **`src/components/content/GiftIdeasSection.tsx`** -- Update imports to use the new gift box images instead of the old jewelry collection images. The existing responsive grid layout and `object-cover` styling will handle mobile, tablet, and desktop compatibility. Category names (Rings, Earrings, Bracelets, Necklaces) and links will remain unchanged.
+### Changes
+
+**File: `src/components/content/ProductShowcase.tsx`**
+
+1. Import and use Embla Carousel (`useEmblaCarousel`) for the mobile view -- this gives proper touch handling that doesn't conflict with `Link` elements
+2. Limit mobile to first 4 products: `products.slice(0, 4)`
+3. Change aspect ratio from `aspect-[3/1]` to `aspect-[3/4]` for taller, more tappable cards
+4. Use `object-cover` instead of `object-contain` for consistent image fills
+5. Update the progress bar to sync with Embla's `onSelect` callback instead of manual scroll math
+6. Remove the manual `scrollRef`, `handleScroll`, and `useEffect` scroll listener -- Embla handles all of it
+7. Keep desktop view unchanged (5-column grid)
 
 ### Technical details
-- Images will be placed in `src/assets/` and imported as ES6 modules for proper bundling
-- The existing `aspect-square` container with `object-cover` ensures consistent display across all viewports
-- No layout or structural changes needed -- only the image sources change
+- Embla Carousel (`embla-carousel-react`) is already a project dependency
+- Embla properly separates swipe gestures from link taps, so navigation only happens on deliberate taps
+- The `onSelect` event from Embla API updates the active dot indicator smoothly
+- No additional dependencies needed
 
