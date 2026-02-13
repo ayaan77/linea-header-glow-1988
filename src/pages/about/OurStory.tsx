@@ -17,7 +17,7 @@ import earringsCollection from "@/assets/earrings-collection.png";
 const gridTiles = [
   // Row 1
   { image: editorialShoulder, label: "discover our", title: "Craftsmanship", colSpan: "md:col-span-4", rowSpan: "md:row-span-2", aspect: "aspect-square md:aspect-auto md:h-full" },
-  { image: scarfPortrait, label: "discover our", title: "Sustainability", colSpan: "md:col-span-8", rowSpan: "", aspect: "aspect-[16/9]" },
+  { image: scarfPortrait, label: "discover our", title: "Sustainability", colSpan: "md:col-span-8", rowSpan: "", aspect: "aspect-[16/9]", link: "/about/sustainability" },
   // Row 2 (right side fills under Sustainability)
   { image: editorialFace, label: "discover our", title: "Heritage", colSpan: "md:col-span-4", rowSpan: "", aspect: "aspect-square", link: "/about/heritage" },
   { image: editorialCloseup, label: "discover our", title: "People", colSpan: "md:col-span-4", rowSpan: "", aspect: "aspect-square", link: "/about/people" },
