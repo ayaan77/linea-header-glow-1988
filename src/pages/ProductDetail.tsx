@@ -164,21 +164,12 @@ const ProductDetail = () => {
         {/* Section 4: Editorial Story Block */}
         <section className="w-full py-8 lg:py-12">
           <div className="grid grid-cols-1 lg:grid-cols-[4fr_6fr] lg:gap-4 gap-0">
-            {/* Right on desktop, first on mobile: Full-height portrait image */}
-            <div className="order-1 lg:order-2 lg:pr-14">
-              <div className="overflow-hidden h-full">
-                <img src={editorialThreeQuarter} alt="Collection editorial" className="w-full h-full min-h-[500px] lg:min-h-[700px] scale-[1.08] object-cover" />
-              </div>
-            </div>
-            {/* Left on desktop, second on mobile: Text + smaller image */}
-            <div className="flex flex-col order-2 lg:order-1">
-              <div className="pb-0 px-0 lg:px-10">
-                <div className="grid grid-cols-2 lg:grid-cols-1 gap-0">
+            {/* Text block: first on mobile, second on desktop */}
+            <div className="flex flex-col order-1 lg:order-1">
+              <div className="hidden lg:block pb-0 px-0 lg:px-10">
+                <div className="grid grid-cols-1 gap-0">
                   <div className="aspect-[3/4] overflow-hidden lg:w-[75%]">
                     <img src={editorialSide} alt="Editorial lifestyle" className="w-full h-full scale-[1.08] object-cover" />
-                  </div>
-                  <div className="aspect-[3/4] overflow-hidden lg:hidden">
-                    <img src={editorialFace} alt="Editorial detail" className="w-full h-full scale-[1.08] object-cover" />
                   </div>
                 </div>
               </div>
@@ -192,6 +183,21 @@ const ProductDetail = () => {
                     <Link to="/category/earrings">Discover the Collection</Link>
                   </Button>
                 </div>
+              </div>
+            </div>
+            {/* Portrait image: second on mobile, stays right on desktop */}
+            <div className="order-2 lg:order-2 lg:pr-14">
+              <div className="overflow-hidden h-full">
+                <img src={editorialThreeQuarter} alt="Collection editorial" className="w-full h-full min-h-[500px] lg:min-h-[700px] scale-[1.08] object-cover" />
+              </div>
+            </div>
+            {/* Stacked images on mobile only */}
+            <div className="order-3 lg:hidden grid grid-cols-1 gap-0">
+              <div className="aspect-[3/4] overflow-hidden">
+                <img src={editorialSide} alt="Editorial lifestyle" className="w-full h-full scale-[1.08] object-cover" />
+              </div>
+              <div className="aspect-[3/4] overflow-hidden">
+                <img src={editorialFace} alt="Editorial detail" className="w-full h-full scale-[1.08] object-cover" />
               </div>
             </div>
           </div>
