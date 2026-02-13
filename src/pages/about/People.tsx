@@ -76,11 +76,18 @@ const People = () => {
             Each artisan brings a lifetime of skill and passion. Their hands shape not just metal and stone, but the very identity of LINEA.
           </p>
         </div>
-        <img
-          src={scarfFront}
-          alt="Artisan stories"
-          className="w-full aspect-[4/3] md:aspect-[16/9] lg:aspect-[21/9] object-cover scale-[1.02]"
-        />
+        <div className="relative w-full">
+          <img
+            src={scarfFront}
+            alt="Artisan stories"
+            className="w-full aspect-[4/3] md:aspect-[16/9] lg:aspect-[21/9] object-cover scale-[1.02]"
+          />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border border-background/60 flex items-center justify-center bg-background/10 backdrop-blur-sm cursor-pointer hover:bg-background/20 transition-colors">
+              <Play className="w-6 h-6 md:w-7 md:h-7 text-background fill-background/80 ml-1" />
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* ── Community Section: Text left, Images right ── */}
