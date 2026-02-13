@@ -1,4 +1,3 @@
-import kashmirBloomFashion from "@/assets/kashmir-artisan.jpg";
 import { Link } from "react-router-dom";
 
 const ArtisticSignatureSection = () => {
@@ -27,11 +26,15 @@ const ArtisticSignatureSection = () => {
 
         {/* Image block */}
         <div className="order-first md:order-last w-full aspect-[3/4] overflow-hidden px-5 md:p-8">
-          <img
-            src={kashmirBloomFashion}
-            alt="Kashmir Bloom handcrafted fashion"
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
             className="w-full h-full object-cover scale-[1.02]"
-          />
+          >
+            <source src="/artistic-signature-video.mp4" type="video/mp4" />
+          </video>
         </div>
       </div>
     </section>
