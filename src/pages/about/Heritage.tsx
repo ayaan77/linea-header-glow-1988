@@ -42,7 +42,7 @@ const Heritage = () => {
           className="w-full aspect-video object-cover scale-[1.02]"
         />
         <div className="absolute inset-0 bg-black/30" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center space-y-6">
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center space-y-6 px-4 md:px-8 lg:px-12 py-10 md:py-16 lg:py-20">
           <span className="text-[10px] tracking-[0.3em] uppercase font-sans font-medium text-concrete">
             A Legacy of
           </span>
