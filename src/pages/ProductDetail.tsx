@@ -196,7 +196,112 @@ const ProductDetail = () => {
           </div>
         </section>
 
-        {/* Section 5: Other Items - 4-column Grid */}
+        {/* Section 5: Size Chart */}
+        <section className="w-full px-6 lg:px-16 xl:px-20 py-10 lg:py-16">
+          <h2 className="text-xs tracking-[0.15em] uppercase text-foreground mb-8">Size Guide</h2>
+
+          {/* Size Conversion Table */}
+          <div className="mb-10">
+            <p className="text-[11px] font-mono tracking-[0.12em] uppercase text-concrete mb-4">Size Conversion</p>
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left text-[11px] font-mono font-normal tracking-[0.1em] uppercase text-concrete py-3 pr-6">Size</th>
+                    <th className="text-center text-[11px] font-mono font-normal tracking-[0.1em] uppercase text-concrete py-3 px-4">XS</th>
+                    <th className="text-center text-[11px] font-mono font-normal tracking-[0.1em] uppercase text-concrete py-3 px-4">S</th>
+                    <th className="text-center text-[11px] font-mono font-normal tracking-[0.1em] uppercase text-concrete py-3 px-4">M</th>
+                    <th className="text-center text-[11px] font-mono font-normal tracking-[0.1em] uppercase text-concrete py-3 px-4">L</th>
+                    <th className="text-center text-[11px] font-mono font-normal tracking-[0.1em] uppercase text-concrete py-3 px-4">XL</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-border/50">
+                    <td className="text-[11px] font-mono tracking-[0.1em] uppercase text-concrete py-3 pr-6">EU</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">44</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">46</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">48</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">50</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">52</td>
+                  </tr>
+                  <tr className="border-b border-border/50">
+                    <td className="text-[11px] font-mono tracking-[0.1em] uppercase text-concrete py-3 pr-6">UK</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">34</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">36</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">38</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">40</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">42</td>
+                  </tr>
+                  <tr className="border-b border-border/50">
+                    <td className="text-[11px] font-mono tracking-[0.1em] uppercase text-concrete py-3 pr-6">US</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">34</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">36</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">38</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">40</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">42</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* Garment Measurements Table */}
+          <div className="mb-6">
+            <p className="text-[11px] font-mono tracking-[0.12em] uppercase text-concrete mb-4">Garment Measurements (CM)</p>
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left text-[11px] font-mono font-normal tracking-[0.1em] uppercase text-concrete py-3 pr-6">Measure</th>
+                    <th className="text-center text-[11px] font-mono font-normal tracking-[0.1em] uppercase text-concrete py-3 px-4">XS</th>
+                    <th className="text-center text-[11px] font-mono font-normal tracking-[0.1em] uppercase text-concrete py-3 px-4">S</th>
+                    <th className="text-center text-[11px] font-mono font-normal tracking-[0.1em] uppercase text-concrete py-3 px-4">M</th>
+                    <th className="text-center text-[11px] font-mono font-normal tracking-[0.1em] uppercase text-concrete py-3 px-4">L</th>
+                    <th className="text-center text-[11px] font-mono font-normal tracking-[0.1em] uppercase text-concrete py-3 px-4">XL</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-border/50">
+                    <td className="text-[11px] font-mono tracking-[0.1em] uppercase text-concrete py-3 pr-6">Chest</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">86</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">92</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">98</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">104</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">110</td>
+                  </tr>
+                  <tr className="border-b border-border/50">
+                    <td className="text-[11px] font-mono tracking-[0.1em] uppercase text-concrete py-3 pr-6">Waist</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">72</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">78</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">84</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">90</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">96</td>
+                  </tr>
+                  <tr className="border-b border-border/50">
+                    <td className="text-[11px] font-mono tracking-[0.1em] uppercase text-concrete py-3 pr-6">Back Length</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">65</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">67</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">69</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">71</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">73</td>
+                  </tr>
+                  <tr className="border-b border-border/50">
+                    <td className="text-[11px] font-mono tracking-[0.1em] uppercase text-concrete py-3 pr-6">Sleeve Length</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">59</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">61</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">63</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">65</td>
+                    <td className="text-center text-[11px] font-mono text-foreground py-3 px-4">67</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <p className="text-[10px] font-mono text-concrete tracking-[0.08em]">All measurements are taken with the garment laying flat</p>
+        </section>
+
+        {/* Section 6: Other Items - 4-column Grid */}
         <section className="w-full border-t border-border px-6 lg:px-16 xl:px-20 py-10 lg:py-20">
           <h2 className="text-xs tracking-[0.15em] uppercase text-foreground mb-6 lg:mb-8">Other Items</h2>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
