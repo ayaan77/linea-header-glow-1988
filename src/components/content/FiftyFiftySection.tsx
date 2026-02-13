@@ -1,5 +1,5 @@
 import earringsCollection from "@/assets/earrings-collection.png";
-import linkBracelet from "@/assets/link-bracelet.png";
+import cashmereClothing from "@/assets/cashmere-clothing.webp";
 import { Link } from "react-router-dom";
 
 const FiftyFiftySection = () => {
@@ -21,8 +21,8 @@ const FiftyFiftySection = () => {
 
         <Link to="/category/bracelets" className="relative block overflow-hidden">
           <img
-            src={linkBracelet}
-            alt="Women's collection"
+            src={cashmereClothing}
+            alt="Cashmere clothing collection"
             className="w-full h-full object-cover scale-[1.02]"
           />
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2">
