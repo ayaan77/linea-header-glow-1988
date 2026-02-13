@@ -52,10 +52,10 @@ const ProductCard = ({ product, hideInfo = false }: ProductCardProps) => {
       {!hideInfo && (
         <div className="mt-2 md:mt-3">
           <div className="flex flex-col md:flex-row md:justify-between md:items-baseline">
-            <span className="text-[10px] md:text-[11px] font-light text-foreground tracking-wide">
+            <span className="type-product-name text-foreground">
               {product.name} {product.description}
             </span>
-            <span className="text-[10px] md:text-[11px] font-mono text-accent tracking-wide mt-0.5 md:mt-0 md:ml-4 shrink-0">
+            <span className="type-price mt-0.5 md:mt-0 md:ml-4 shrink-0">
               {product.price}
             </span>
           </div>

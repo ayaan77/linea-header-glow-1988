@@ -127,7 +127,7 @@ const Navigation = ({ isTransparent = false }: NavigationProps) => {
         <div className="hidden lg:flex space-x-8">
           {navItems.map((item) => (
             <div key={item.name} className="relative" onMouseEnter={() => (item.byCollection || item.name === "LOOKS") ? setActiveDropdown(item.name) : undefined} onMouseLeave={() => setActiveDropdown(null)}>
-              <Link to={item.href} className={`${textColor} hover:opacity-70 transition-all duration-200 text-xs font-medium tracking-wider uppercase py-6 block`}>
+              <Link to={item.href} className={`${textColor} hover:opacity-70 transition-all duration-200 type-nav py-6 block`}>
                 {item.name}
               </Link>
             </div>

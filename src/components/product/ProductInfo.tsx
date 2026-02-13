@@ -17,12 +17,12 @@ const ProductInfo = () => {
   return (
     <div className="space-y-10">
       {/* NEW IN label */}
-      <p className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground">New In</p>
+      <p className="type-label text-muted-foreground">New In</p>
 
       {/* Product title + Price */}
       <div className="space-y-1">
         <h1 className="text-[28px] md:text-[32px] font-serif font-semibold text-foreground leading-tight">Pantheon Earrings</h1>
-        <p className="text-sm font-mono text-accent">€2,850</p>
+        <p className="type-price">€2,850</p>
       </div>
 
       {/* Description */}
@@ -32,7 +32,7 @@ const ProductInfo = () => {
 
       {/* Color selector */}
       <div className="space-y-3">
-        <p className="text-[10px] tracking-[0.15em] uppercase text-foreground">{selectedColor}</p>
+        <p className="type-label text-foreground">{selectedColor}</p>
         <div className="flex items-center gap-3">
           {colors.map((color) => (
             <button
@@ -52,7 +52,7 @@ const ProductInfo = () => {
 
       {/* Size selector */}
       <div className="space-y-3">
-        <p className="text-[10px] tracking-[0.15em] uppercase text-foreground">Size & Fit</p>
+        <p className="type-label text-foreground">Size & Fit</p>
         <div className="flex flex-wrap gap-2">
           {sizes.map((size) => (
             <button

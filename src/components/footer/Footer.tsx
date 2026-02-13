@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
-const linkClass = "text-[10px] font-light uppercase tracking-[0.2em] text-foreground/70 hover:text-foreground transition-colors";
-const headingClass = "text-[10px] font-medium uppercase tracking-[0.2em] text-foreground mb-5";
+const linkClass = "type-label text-foreground/70 hover:text-foreground transition-colors";
+const headingClass = "type-label font-medium text-foreground mb-5";
 
 const Footer = () => {
   return (
