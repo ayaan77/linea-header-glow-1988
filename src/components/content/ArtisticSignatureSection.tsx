@@ -1,4 +1,4 @@
-import organicEarring from "@/assets/organic-earring.png";
+import kashmirBloomFashion from "@/assets/kashmir-bloom-fashion.webp";
 import { Link } from "react-router-dom";
 
 const ArtisticSignatureSection = () => {
@@ -28,8 +28,8 @@ const ArtisticSignatureSection = () => {
         {/* Image block */}
         <div className="order-first md:order-last w-full aspect-[3/4] overflow-hidden px-5 md:p-8">
           <img
-            src={organicEarring}
-            alt="Artistic jewelry piece"
+            src={kashmirBloomFashion}
+            alt="Kashmir Bloom handcrafted fashion"
             className="w-full h-full object-cover scale-[1.02]"
           />
         </div>
