@@ -68,7 +68,7 @@ const ProductShowcase = () => {
               to={`/product/${product.id}`}
               className="min-w-full snap-center shrink-0"
             >
-              <div className="bg-limestone aspect-[2/1] overflow-hidden flex items-center justify-center">
+              <div className="bg-limestone aspect-[3/1] overflow-hidden flex items-center justify-center">
                 <img
                   src={product.image}
                   alt={product.name}
