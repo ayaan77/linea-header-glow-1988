@@ -1,4 +1,4 @@
-import earringsCollection from "@/assets/earrings-collection.png";
+import cashmereClothing1 from "@/assets/cashmere-clothing-1.webp";
 import cashmereClothing from "@/assets/cashmere-clothing.webp";
 import { Link } from "react-router-dom";
 
@@ -8,8 +8,8 @@ const FiftyFiftySection = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-2 h-[100vh] md:h-[85vh]">
         <Link to="/category/earrings" className="relative block overflow-hidden">
           <img
-            src={earringsCollection}
-            alt="Men's collection"
+            src={cashmereClothing1}
+            alt="Men's cashmere clothing collection"
             className="w-full h-full object-cover scale-[1.02]"
           />
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2">
