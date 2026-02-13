@@ -1,37 +1,26 @@
 
 
-## Update Landscape Divider Section
+## Reduce Mobile Product Showcase Height
 
-### Target
-The overlay and padding area of the Full-width Landscape Divider section (lines 137-150 in `src/pages/about/Timeline.tsx`).
+### Problem
+The mobile carousel cards use an `aspect-[4/3]` ratio (line 71), making them very tall on small screens. Desktop/tablet grid is fine with `aspect-[3/4]`.
 
-### Changes
+### Change
 
-**1. Remove the LINEA logo and black overlay (lines 143-149)**
+**File: `src/components/content/ProductShowcase.tsx` (line 71)**
 
-Delete the entire overlay div containing the logo and dark tint:
-
-```jsx
-// Remove this entirely:
-<div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-  <img src="/LINEA.svg" alt="LINEA" className="w-32 md:w-40 lg:w-48 opacity-90" />
-</div>
-```
-
-**2. Add limestone background to the section wrapper (line 137)**
-
-Add `bg-limestone` so the horizontal padding areas show the site's signature background color instead of being transparent:
+Update the mobile card aspect ratio from `4/3` to `16/9` -- this reduces the card height by roughly 44%, bringing it closer to the 50-60% reduction requested:
 
 ```jsx
 // From:
-<section className="relative w-full overflow-hidden px-6 md:px-12 lg:px-16">
+<div className="bg-limestone aspect-[4/3] overflow-hidden flex items-center justify-center">
 
 // To:
-<section className="relative w-full overflow-hidden px-6 md:px-12 lg:px-16 bg-limestone">
+<div className="bg-limestone aspect-[16/9] overflow-hidden flex items-center justify-center">
 ```
 
-### Result
-- The image displays without any dark tint or logo on top
-- The left and right padding strips match the limestone background used across the site
-- Image itself and its responsive aspect ratios remain unchanged
+### What stays the same
+- Desktop/tablet 5-column grid and its `aspect-[3/4]` cards unchanged
+- Scroll carousel behavior, snap, and progress bar unchanged
+- Section padding and spacing unchanged
 
