@@ -1,16 +1,15 @@
 
 
-## Fill Image Container and Keep Progress Bar Spacing
+## Replace Artistic Signature Video
 
-### Changes
+Replace the current video in the Artistic Signature section with the new uploaded video file.
 
-**File: `src/components/content/ProductShowcase.tsx`** (line 57)
+### Steps
 
-1. Change `object-contain` back to `object-cover` so the image fills the entire container without white space
-2. Remove the inner `p-6` padding on the image wrapper so the image goes edge-to-edge within the card
-3. Keep the existing `px-8` slide padding and `mt-4` progress bar spacing as-is for breathing room
+1. Copy `user-uploads://Instagram_Post_Untitled_Design_1-3.mp4` to `public/artistic-signature-video.mp4`, overwriting the existing file.
+2. No code changes needed -- the component already references `/artistic-signature-video.mp4`.
 
-### Result
-- Images fill their cards completely (no empty space inside the card)
-- Progress bars remain clearly separated below with proper spacing
+### Technical Details
+
+The video element in `ArtisticSignatureSection.tsx` (line 29) already points to `/artistic-signature-video.mp4` with `autoPlay`, `muted`, `loop`, and `playsInline` attributes, ensuring compatibility across mobile, tablet, and desktop. Only the video file itself needs to be swapped.
 
