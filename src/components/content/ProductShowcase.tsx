@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
 import { useRef, useState, useEffect, useCallback } from "react";
-import pantheonImage from "@/assets/pantheon.jpg";
-import eclipseImage from "@/assets/eclipse.jpg";
-import haloImage from "@/assets/halo.jpg";
-import obliqueImage from "@/assets/oblique.jpg";
-import lintelImage from "@/assets/lintel.jpg";
+import showcase1 from "@/assets/showcase-1.png";
+import showcase2 from "@/assets/showcase-2.png";
+import showcase3 from "@/assets/showcase-3.png";
+import showcase4 from "@/assets/showcase-4.jpeg";
+import showcase5 from "@/assets/showcase-5.jpeg";
 
 const products = [
-  { id: 1, name: "Pantheon", image: pantheonImage },
-  { id: 2, name: "Eclipse", image: eclipseImage },
-  { id: 3, name: "Halo", image: haloImage },
-  { id: 4, name: "Oblique", image: obliqueImage },
-  { id: 5, name: "Lintel", image: lintelImage },
+  { id: 1, name: "Pantheon", image: showcase1 },
+  { id: 2, name: "Eclipse", image: showcase2 },
+  { id: 3, name: "Halo", image: showcase3 },
+  { id: 4, name: "Oblique", image: showcase4 },
+  { id: 5, name: "Lintel", image: showcase5 },
 ];
 
 const ProductShowcase = () => {
