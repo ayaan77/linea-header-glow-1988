@@ -1,23 +1,37 @@
 
 
-## Add Padding to the Heritage Video Section
+## Create a "People" Page for LINEA
 
 ### What Changes
-Add responsive padding to the parent `<section>` container (line 38) that wraps the "Our Rich Heritage" video/image block, so the entire section — including the image — is inset from the screen edges on all sides and all screen sizes.
+1. **New page:** Create `src/pages/about/People.tsx` -- a full editorial page inspired by the reference image, adapted to LINEA's Zen aesthetic.
+2. **Add route:** Register `/about/people` in `src/App.tsx`.
+3. **Add link:** Update the "People" tile in `src/pages/about/OurStory.tsx` (line 23) to include `link: "/about/people"`.
 
-### Details
+### Page Structure (based on reference image)
 
-**File:** `src/pages/about/Heritage.tsx` (line 38)
+The page will follow the same immersive editorial pattern used on Heritage and Sustainability pages:
 
-Update the section's className from:
-`relative w-full overflow-hidden`
+1. **Hero Section** -- Full-width image with overlay text: "Our People" title and subtitle.
+2. **Intro Text Block** -- Centered text about the people behind LINEA, their passion and craft.
+3. **Full-Width Feature Image** -- A wide editorial image (founders or team-style).
+4. **"Family Values" Section** -- Image-left, text-right block about the team culture and values.
+5. **Team Stories Section** -- A heading ("Stories from Our Artisans") with a full-width image below.
+6. **Community Section** -- Text-left, image-right block about the communities LINEA works with, plus a second image alongside.
+7. **Benefits/Ethos Section** -- Centered text listing what makes working at LINEA special (sustainability focus, artisan heritage, creative freedom, etc.).
+8. **Bottom CTA** -- Centered call-to-action linking back to the collection or story.
 
-To:
-`relative w-full overflow-hidden px-4 md:px-8 lg:px-12 pt-10 md:pt-16 lg:pt-20 pb-10 md:pb-16 lg:pb-20`
+All sections will use responsive padding (`px-4 md:px-8 lg:px-12`, `py-10 md:py-16 lg:py-20`) and the established serif/sans-serif typography pattern.
 
-This adds:
-- Horizontal padding: `px-4` (mobile) / `md:px-8` (tablet) / `lg:px-12` (desktop)
-- Top padding: `pt-10` / `md:pt-16` / `lg:pt-20`
-- Bottom padding: `pb-10` / `md:pb-16` / `lg:pb-20`
+### Technical Details
 
-The overlay text already has its own internal padding from the previous edit, so the combined effect gives comfortable breathing space on every device.
+**Files to create:**
+- `src/pages/about/People.tsx`
+
+**Files to edit:**
+- `src/App.tsx` -- Add import and route for People page
+- `src/pages/about/OurStory.tsx` -- Add `link: "/about/people"` to the People tile (line 23)
+
+**Assets:** Will reuse existing editorial images from `src/assets/` (editorial-closeup, editorial-shoulder, founders, editorial-face, editorial-side, etc.) -- no new images needed.
+
+**Responsive:** All sections use Tailwind responsive breakpoints for mobile, tablet, and desktop compatibility.
+
