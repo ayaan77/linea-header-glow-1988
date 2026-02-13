@@ -87,7 +87,7 @@ const OurStory = () => {
       </section>
 
       {/* ── Full-Width Feature Image ── */}
-      <section className="w-full overflow-hidden">
+      <section className="w-full overflow-hidden px-4 md:px-8">
         <img
           src={founders}
           alt="LINEA editorial"
