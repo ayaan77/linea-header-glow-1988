@@ -54,7 +54,7 @@ const People = () => {
               Family Values
             </h3>
             <p className="type-body leading-relaxed text-muted-foreground max-w-md">
-              LINEA was founded on the belief that great work is born from genuine connection. Our atelier operates as an extended family — where knowledge is passed generously between generations, and every voice is valued in the creative process.
+              SIFAR was founded on the belief that great work is born from genuine connection. Our atelier operates as an extended family — where knowledge is passed generously between generations, and every voice is valued in the creative process.
             </p>
             <p className="type-body leading-relaxed text-muted-foreground max-w-md">
               We nurture an environment where tradition and innovation coexist, where a young apprentice's fresh perspective is as treasured as a master craftsman's decades of wisdom.
@@ -73,7 +73,7 @@ const People = () => {
             Stories from Our Artisans
           </h2>
           <p className="type-body leading-relaxed text-muted-foreground max-w-2xl mx-auto">
-            Each artisan brings a lifetime of skill and passion. Their hands shape not just metal and stone, but the very identity of LINEA.
+            Each artisan brings a lifetime of skill and passion. Their hands shape not just metal and stone, but the very identity of SIFAR.
           </p>
         </div>
         <div className="relative w-full">
@@ -115,7 +115,7 @@ const People = () => {
               Our Communities
             </h3>
             <p className="type-body leading-relaxed text-muted-foreground max-w-md">
-              We believe luxury carries responsibility. LINEA partners with local communities to support education in traditional craftsmanship, ensuring these vital skills endure for generations to come.
+              We believe luxury carries responsibility. SIFAR partners with local communities to support education in traditional craftsmanship, ensuring these vital skills endure for generations to come.
             </p>
             <p className="type-body leading-relaxed text-muted-foreground max-w-md">
               From sourcing materials ethically to investing in the regions where our artisans live and work, our commitment extends far beyond the workshop walls.
@@ -157,7 +157,7 @@ const People = () => {
             Crafted with Purpose
           </h2>
           <p className="type-body leading-relaxed text-muted-foreground max-w-lg mx-auto">
-            Every LINEA piece carries the spirit of the people who made it. Discover collections shaped by passion, precision, and a deep respect for the art of making.
+            Every SIFAR piece carries the spirit of the people who made it. Discover collections shaped by passion, precision, and a deep respect for the art of making.
           </p>
           <Link
             to="/category/voyage"

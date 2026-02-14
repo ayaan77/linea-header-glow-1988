@@ -77,7 +77,7 @@ const Innovation = () => {
               Our Commitment to Moving Forward
             </h3>
             <p className="font-sans font-normal text-sm leading-relaxed text-ink/80">
-              At LINEA, innovation is not a destination but a continuous journey. We challenge established conventions in jewelry design, exploring new materials, techniques, and forms that push beyond the expected.
+              At SIFAR, innovation is not a destination but a continuous journey. We challenge established conventions in jewelry design, exploring new materials, techniques, and forms that push beyond the expected.
             </p>
             <p className="font-sans font-normal text-sm leading-relaxed text-ink/80">
               Our artisans combine centuries-old craftsmanship with cutting-edge technology, creating pieces that honour tradition while embracing the future. Each collection represents a step forward in our quest for perfection.

@@ -21,7 +21,7 @@ const Footer = () => {
           <h4 className={headingClass}>Customer Service</h4>
           <ul className="space-y-2.5">
             <li><Link to="/about/customer-care" className={linkClass}>Care &amp; Repair</Link></li>
-            <li><a href="mailto:contact@linea.com" className={linkClass}>Contact</a></li>
+            <li><a href="mailto:contact@sifar.com" className={linkClass}>Contact</a></li>
           </ul>
         </div>
 

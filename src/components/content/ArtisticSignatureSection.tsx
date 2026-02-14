@@ -6,7 +6,7 @@ const ArtisticSignatureSection = () => {
       <div className="grid grid-cols-1 md:grid-cols-2">
         {/* Text block */}
         <div className="order-last md:order-first flex flex-col items-start justify-center px-5 pt-6 pb-10 md:py-20 md:px-10 text-left">
-          <p className="type-label text-foreground/60 mb-3">The Art of Linea</p>
+          <p className="type-label text-foreground/60 mb-3">The Art of Sifar</p>
 
           <h2 className="type-section text-foreground mb-4 leading-relaxed max-w-sm">
             An artistic signature rooted in architecture

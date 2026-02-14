@@ -26,7 +26,7 @@ const timelineEntries = [
   chapter: "Chapter 2",
   heading: "A New Era",
   paragraphs: [
-  "By the mid-nineteenth century, LINEA had earned a reputation that extended far beyond its origins. The atelier expanded, welcoming a new generation of artisans who honoured tradition while embracing the possibilities of a changing world.",
+  "By the mid-nineteenth century, SIFAR had earned a reputation that extended far beyond its origins. The atelier expanded, welcoming a new generation of artisans who honoured tradition while embracing the possibilities of a changing world.",
   "It was during this period that the house introduced its signature aesthetic — clean, architectural lines softened by organic curves — a philosophy that remains at the core of every collection today."],
 
   image: editorialFront
@@ -36,8 +36,8 @@ const timelineEntries = [
   chapter: "Chapter 3",
   heading: "The Modern Age",
   paragraphs: [
-  "The early twentieth century brought both challenge and reinvention. LINEA responded with a bold reinterpretation of its founding principles, marrying the precision of Art Deco with the warmth of hand-crafted detail.",
-  "New workshops were established, and the house began its first international exhibitions — introducing the LINEA name to collectors and connoisseurs across continents."],
+  "The early twentieth century brought both challenge and reinvention. SIFAR responded with a bold reinterpretation of its founding principles, marrying the precision of Art Deco with the warmth of hand-crafted detail.",
+  "New workshops were established, and the house began its first international exhibitions — introducing the SIFAR name to collectors and connoisseurs across continents."],
 
   image: scarfFront
 },
@@ -46,7 +46,7 @@ const timelineEntries = [
   chapter: "Chapter 4",
   heading: "Global Recognition",
   paragraphs: [
-  "As the century drew to a close, LINEA cemented its place among the world's most respected jewellery houses. A series of landmark collections — each more ambitious than the last — captured the imagination of a new, global audience.",
+  "As the century drew to a close, SIFAR cemented its place among the world's most respected jewellery houses. A series of landmark collections — each more ambitious than the last — captured the imagination of a new, global audience.",
   "The house opened ateliers in Paris, London, and Tokyo, yet every piece continued to be finished by hand in the original European workshop — a commitment to craft that remains unbroken."],
 
   image: editorialFace
@@ -160,10 +160,10 @@ const Timeline = () => {
               A Tradition of Excellence
             </h3>
             <p className="font-sans font-normal text-sm leading-relaxed text-ink/80 max-w-md">
-              Every generation of LINEA artisans has inherited not only the tools of the trade but a philosophy — that beauty is found in the discipline of the line, the patience of the hand, and the integrity of material chosen with care.
+              Every generation of SIFAR artisans has inherited not only the tools of the trade but a philosophy — that beauty is found in the discipline of the line, the patience of the hand, and the integrity of material chosen with care.
             </p>
             <p className="font-sans font-normal text-sm leading-relaxed text-ink/80 max-w-md">
-              This continuity of purpose is what distinguishes a LINEA piece from all others: it carries within it the accumulated knowledge of centuries.
+              This continuity of purpose is what distinguishes a SIFAR piece from all others: it carries within it the accumulated knowledge of centuries.
             </p>
           </div>
         </div>
@@ -185,7 +185,7 @@ const Timeline = () => {
               Looking Forward
             </h3>
             <p className="font-sans font-normal text-sm leading-relaxed text-ink/80 max-w-md">
-              Today, LINEA continues to evolve — drawing inspiration from contemporary art, architecture, and the natural world while remaining anchored in the traditions that gave the house its voice.
+              Today, SIFAR continues to evolve — drawing inspiration from contemporary art, architecture, and the natural world while remaining anchored in the traditions that gave the house its voice.
             </p>
             <p className="font-sans font-normal text-sm leading-relaxed text-ink/80 max-w-md">
               Each new collection is a conversation between past and future, a bridge built from the enduring values of craftsmanship, restraint, and the belief that true luxury speaks softly.
