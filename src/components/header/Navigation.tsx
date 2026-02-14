@@ -137,11 +137,9 @@ const Navigation = ({ isTransparent = false }: NavigationProps) => {
         {/* Center logo */}
         <div className="absolute left-1/2 transform -translate-x-1/2">
           <Link to="/" className="block">
-            <img 
-              src="/LINEA-1.svg" 
-              alt="LINEA" 
-              className={`h-5 lg:h-6 w-auto transition-all duration-300 ${isTransparent && !activeDropdown && !isSearchOpen ? 'brightness-0 invert' : ''}`}
-            />
+            <span className={`text-xl lg:text-2xl font-serif font-semibold tracking-[0.15em] uppercase transition-all duration-300 ${textColor}`}>
+              SIFAR
+            </span>
           </Link>
         </div>
 

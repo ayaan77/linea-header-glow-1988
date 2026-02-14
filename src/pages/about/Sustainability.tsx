@@ -130,7 +130,7 @@ const Sustainability = () => {
               We believe in the power of circular design — creating jewelry that can be treasured, repaired, and eventually recycled into new pieces. Every piece comes with our lifetime care promise.
             </p>
             <p className="text-sm font-normal leading-relaxed text-muted-foreground max-w-md">
-              When you're ready for something new, our take-back program ensures your LINEA jewelry is recycled into future creations — closing the loop on luxury.
+              When you're ready for something new, our take-back program ensures your SIFAR jewelry is recycled into future creations — closing the loop on luxury.
             </p>
           </div>
         </div>
@@ -188,7 +188,7 @@ const Sustainability = () => {
             Beauty With Purpose
           </h2>
           <p className="text-sm font-normal leading-relaxed text-muted-foreground max-w-lg mx-auto">
-            Every LINEA piece carries our promise — that luxury and responsibility are not opposites, but partners in creating something truly meaningful.
+            Every SIFAR piece carries our promise — that luxury and responsibility are not opposites, but partners in creating something truly meaningful.
           </p>
           <Link
             to="/category/voyage"

@@ -8,7 +8,7 @@ const EditorialSection = () => {
           <h2 className="type-section text-foreground leading-tight">
             Jewelry Drawn From Shadows and Lines
           </h2>
-          <p className="type-body font-light text-foreground leading-relaxed">Linea was born from the meeting of two minds who saw beauty not just in ornament, but in structure. With backgrounds spanning architecture and fine arts, the founders believed that jewelry could be more than decoration — it could be an extension of space, light, and line.
+          <p className="type-body font-light text-foreground leading-relaxed">Sifar was born from the meeting of two minds who saw beauty not just in ornament, but in structure. With backgrounds spanning architecture and fine arts, the founders believed that jewelry could be more than decoration — it could be an extension of space, light, and line.
 
         </p>
           <Link to="/about/our-story" className="inline-flex items-center gap-1 type-body font-light text-foreground hover:text-foreground/80 transition-colors duration-200">
@@ -19,7 +19,7 @@ const EditorialSection = () => {
         
         <div className="order-first md:order-last">
           <div className="w-full aspect-square overflow-hidden">
-            <img src={founders} alt="Linea founders - two women in minimalist jewelry" className="w-full h-full object-cover" />
+            <img src={founders} alt="Sifar founders - two women in minimalist jewelry" className="w-full h-full object-cover" />
           </div>
         </div>
       </div>

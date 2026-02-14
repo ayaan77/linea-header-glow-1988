@@ -90,7 +90,7 @@ const Heritage = () => {
               Made by Hand
             </h3>
             <p className="text-sm font-normal leading-relaxed text-muted-foreground max-w-md">
-              Every LINEA piece is shaped by the hands of master artisans who have dedicated their lives to the craft. Using time-honoured techniques passed down through generations, each creation is a testament to the beauty of human touch — where precision meets soul.
+              Every SIFAR piece is shaped by the hands of master artisans who have dedicated their lives to the craft. Using time-honoured techniques passed down through generations, each creation is a testament to the beauty of human touch — where precision meets soul.
             </p>
             <p className="text-sm font-normal leading-relaxed text-muted-foreground max-w-md">
               From the initial sketch to the final polish, over 40 hours of meticulous work ensure that no two pieces are ever truly alike.
@@ -133,10 +133,10 @@ const Heritage = () => {
               Decades of Mastery
             </h3>
             <p className="text-sm font-normal leading-relaxed text-muted-foreground max-w-md">
-              What began as a small atelier in the heart of Europe has grown into a global symbol of refined craftsmanship. Through decades of evolution, LINEA has remained steadfast in its founding principles — that beauty lies in restraint, and luxury in the quality of each line drawn.
+              What began as a small atelier in the heart of Europe has grown into a global symbol of refined craftsmanship. Through decades of evolution, SIFAR has remained steadfast in its founding principles — that beauty lies in restraint, and luxury in the quality of each line drawn.
             </p>
             <p className="text-sm font-normal leading-relaxed text-muted-foreground max-w-md">
-              Our archive spans hundreds of designs, each reflecting the aesthetic sensibility of its era while carrying the unmistakable thread of LINEA's identity.
+              Our archive spans hundreds of designs, each reflecting the aesthetic sensibility of its era while carrying the unmistakable thread of SIFAR's identity.
             </p>
           </div>
         </div>
