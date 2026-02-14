@@ -1,15 +1,11 @@
-import heroImage from "@/assets/hero-image.png";
-
 const LargeHero = () => {
   return (
-    <section className="w-full h-[75vh] md:h-screen relative overflow-hidden -mt-16">
-      {/* Replace the src below with your actual video URL */}
+    <section className="w-full h-[75vh] md:h-screen relative overflow-hidden -mt-16 bg-black">
       <video
         autoPlay
         muted
         loop
         playsInline
-        poster={heroImage}
         className="w-full h-full object-cover"
       >
         <source src="/kashmir-bloom-video.mp4" type="video/mp4" />
