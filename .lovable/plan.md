@@ -1,15 +1,21 @@
 
 
-## Replace Artistic Signature Video
+## Fix Video Flash on Reload in LargeHero
 
-Replace the current video in the Artistic Signature section with the new uploaded video file.
+**Problem:** When the page reloads, the old poster image briefly flashes before the video starts playing.
 
-### Steps
+**Root Cause:** The `<video>` element has a `poster={heroImage}` attribute pointing to a static image. Before the video loads and plays, the browser displays this poster image, causing a visible flash.
 
-1. Copy `user-uploads://Instagram_Post_Untitled_Design_1-3.mp4` to `public/artistic-signature-video.mp4`, overwriting the existing file.
-2. No code changes needed -- the component already references `/artistic-signature-video.mp4`.
+**Fix:**
+
+1. **Remove the poster image** from the `<video>` element in `src/components/content/LargeHero.tsx` so no old image is shown during load.
+2. **Set a matching background color** on the video container (e.g., black) so the area appears as a solid color while the video loads, instead of flashing an outdated image.
+3. **Remove the unused `heroImage` import** to keep the code clean.
 
 ### Technical Details
 
-The video element in `ArtisticSignatureSection.tsx` (line 29) already points to `/artistic-signature-video.mp4` with `autoPlay`, `muted`, `loop`, and `playsInline` attributes, ensuring compatibility across mobile, tablet, and desktop. Only the video file itself needs to be swapped.
+In `src/components/content/LargeHero.tsx`:
+- Remove `import heroImage from "@/assets/hero-image.png"`
+- Remove `poster={heroImage}` from the `<video>` tag
+- Add `bg-black` class to the section container so the background is neutral while the video loads
 
