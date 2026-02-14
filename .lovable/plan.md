@@ -1,16 +1,28 @@
 
 
-## Replace Voyage Section Hero Image
+## Change Brand Name from LINEA to SIFAR
 
-Replace the hero image in the Voyage section with the new uploaded image and ensure responsive compatibility.
+Update the logo and all brand references throughout the application from "LINEA" to "SIFAR".
 
 ### Steps
 
-1. Copy `user-uploads://Instagram_Post_Design_7.jpg` to `src/assets/hero-image.webp`, overwriting the existing file.
-2. No code changes needed -- the `VoyageSection.tsx` component already imports from `@/assets/hero-image.webp` and uses responsive aspect ratios (`aspect-[3/4]` on mobile, `aspect-[16/9]` on desktop) with `object-cover`, ensuring proper display across all devices.
+1. **Replace the logo in the Navigation header** (`src/components/header/Navigation.tsx`, line 140) -- swap the `<img>` tag for a styled text element displaying "SIFAR", maintaining the same sizing, color inversion logic for transparent nav, and responsive behavior.
+
+2. **Replace the logo in the Checkout header** (`src/components/header/CheckoutHeader.tsx`, line 20-24) -- same approach, swap `<img>` for styled "SIFAR" text.
+
+3. **Update brand references in content pages** -- replace "LINEA" / "Linea" text mentions in:
+   - `src/pages/about/Sustainability.tsx` (lines 133, 191)
+   - `src/pages/ProductDetail.tsx` (line 179)
+   - `src/components/content/EditorialSection.tsx` (lines 11, 22)
+   - `src/components/content/ArtisticSignatureSection.tsx` (line 9)
+   - `src/pages/about/Timeline.tsx`
+   - Other about pages and content referencing the brand
+
+4. **Update HTML title and meta** in `index.html` if it references LINEA.
 
 ### Technical Details
 
-- The image at line 49 in `VoyageSection.tsx` is sourced from `import heroImage from "@/assets/hero-image.webp"` (line 1).
-- The container already has responsive classes: `aspect-[3/4] md:aspect-[16/9]` with `object-cover`, which will crop/fit the new image appropriately on mobile, tablet, and desktop.
+- The logo currently uses an SVG image (`/LINEA-1.svg`). Instead of creating a new SVG, the logo will be rendered as a styled `<span>` with appropriate font styling (tracking, weight) to match the luxury brand aesthetic.
+- The transparent nav color inversion logic (`brightness-0 invert`) will be replaced with conditional `text-white` / `text-foreground` classes already available via the `textColor` variable.
+- The alt text and aria-labels will be updated to "SIFAR".
 
