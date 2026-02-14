@@ -1,21 +1,16 @@
 
 
-## Fix Video Flash on Reload in LargeHero
+## Replace Voyage Section Hero Image
 
-**Problem:** When the page reloads, the old poster image briefly flashes before the video starts playing.
+Replace the hero image in the Voyage section with the new uploaded image and ensure responsive compatibility.
 
-**Root Cause:** The `<video>` element has a `poster={heroImage}` attribute pointing to a static image. Before the video loads and plays, the browser displays this poster image, causing a visible flash.
+### Steps
 
-**Fix:**
-
-1. **Remove the poster image** from the `<video>` element in `src/components/content/LargeHero.tsx` so no old image is shown during load.
-2. **Set a matching background color** on the video container (e.g., black) so the area appears as a solid color while the video loads, instead of flashing an outdated image.
-3. **Remove the unused `heroImage` import** to keep the code clean.
+1. Copy `user-uploads://Instagram_Post_Design_7.jpg` to `src/assets/hero-image.webp`, overwriting the existing file.
+2. No code changes needed -- the `VoyageSection.tsx` component already imports from `@/assets/hero-image.webp` and uses responsive aspect ratios (`aspect-[3/4]` on mobile, `aspect-[16/9]` on desktop) with `object-cover`, ensuring proper display across all devices.
 
 ### Technical Details
 
-In `src/components/content/LargeHero.tsx`:
-- Remove `import heroImage from "@/assets/hero-image.png"`
-- Remove `poster={heroImage}` from the `<video>` tag
-- Add `bg-black` class to the section container so the background is neutral while the video loads
+- The image at line 49 in `VoyageSection.tsx` is sourced from `import heroImage from "@/assets/hero-image.webp"` (line 1).
+- The container already has responsive classes: `aspect-[3/4] md:aspect-[16/9]` with `object-cover`, which will crop/fit the new image appropriately on mobile, tablet, and desktop.
 
