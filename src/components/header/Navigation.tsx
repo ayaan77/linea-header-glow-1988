@@ -176,11 +176,6 @@ const Navigation = ({ isTransparent = false }: NavigationProps) => {
             <Bookmark className="w-4 h-4 lg:w-5 lg:h-5" strokeWidth={1.5} />
           </button>
 
-          {/* User / Login */}
-          <Link to="/login" className={`p-1.5 lg:p-2 ${textColor} hover:opacity-70 transition-all duration-200`} aria-label="Login">
-            <User className="w-4 h-4 lg:w-5 lg:h-5" strokeWidth={1.5} />
-          </Link>
-
           {/* Shopping bag */}
           <button 
             className={`p-1.5 lg:p-2 ${textColor} hover:opacity-70 transition-all duration-200 relative`}
@@ -194,6 +189,11 @@ const Navigation = ({ isTransparent = false }: NavigationProps) => {
               </span>
             )}
           </button>
+
+          {/* User / Login */}
+          <Link to="/login" className={`p-1.5 lg:p-2 ${textColor} hover:opacity-70 transition-all duration-200`} aria-label="Login">
+            <User className="w-4 h-4 lg:w-5 lg:h-5" strokeWidth={1.5} />
+          </Link>
         </div>
       </div>
 
