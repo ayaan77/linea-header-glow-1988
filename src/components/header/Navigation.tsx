@@ -185,9 +185,10 @@ const Navigation = ({ isTransparent = false }: NavigationProps) => {
             <Bookmark className="w-5 h-5" strokeWidth={1.5} />
           </button>
 
-          {/* User / Login */}
-          <Link to="/login" className={`p-1.5 lg:p-2 ${textColor} hover:opacity-70 transition-all duration-200`} aria-label="Login">
-            <User className="w-4 h-4 lg:w-5 lg:h-5" strokeWidth={1.5} />
+          {/* Bookmark/Wishlist on mobile, User/Login on desktop */}
+          <Link to="/login" className={`p-1.5 lg:p-2 ${textColor} hover:opacity-70 transition-all duration-200`} aria-label="Wishlist">
+            <Bookmark className="w-4 h-4 lg:hidden" strokeWidth={1.5} />
+            <User className="hidden lg:block w-5 h-5" strokeWidth={1.5} />
           </Link>
 
           {/* Shopping bag */}
