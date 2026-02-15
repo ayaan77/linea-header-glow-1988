@@ -2,7 +2,7 @@ import heroImage from "@/assets/hero-image.webp";
 import eleganceScarf from "@/assets/elegance-scarf.webp";
 import equateurTwilly from "@/assets/equateur-twilly.webp";
 import voyageBracelet from "@/assets/voyage-bracelet.jpg";
-import obliqueImage from "@/assets/oblique.jpg";
+import obliqueImage from "@/assets/oblique-new.jpg";
 import { Link } from "react-router-dom";
 
 const thumbnails = [
