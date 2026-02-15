@@ -189,7 +189,7 @@ const Navigation = ({ isTransparent = false }: NavigationProps) => {
           >
             <ShoppingBagIcon className="w-4 h-4 lg:w-5 lg:h-5" strokeWidth={1.5} />
             {totalItems > 0 && (
-              <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[30%] text-[0.4rem] lg:text-[0.5rem] font-semibold pointer-events-none">
+              <span className="absolute -top-0.5 -right-0.5 lg:top-0 lg:right-0 min-w-[14px] h-[14px] lg:min-w-[16px] lg:h-[16px] flex items-center justify-center rounded-full bg-foreground text-background text-[0.5rem] lg:text-[0.55rem] font-semibold pointer-events-none leading-none">
                 {totalItems}
               </span>
             )}
