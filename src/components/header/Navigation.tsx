@@ -337,33 +337,33 @@ const Navigation = ({ isTransparent = false }: NavigationProps) => {
 
       {/* Mobile navigation drawer - always rendered for exit animation */}
       <div
-        className={`fixed inset-0 z-[60] bg-black/40 transition-opacity duration-500 lg:hidden ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        className={`fixed inset-0 z-[60] bg-black/20 backdrop-blur-sm transition-opacity duration-700 lg:hidden ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
         onClick={() => setIsMobileMenuOpen(false)}
       />
       <div
-        className={`fixed inset-y-0 left-0 z-[60] w-full max-w-md bg-limestone transition-transform duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] lg:hidden flex flex-col ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}
+        className={`fixed inset-y-0 left-0 z-[60] w-full bg-limestone/85 backdrop-blur-xl transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] lg:hidden flex flex-col ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}
       >
         {/* Drawer header */}
-        <div className="flex items-center justify-between h-16 px-4 border-b border-foreground/10">
+        <div className="flex items-center justify-between h-20 px-5 border-b border-foreground/5">
           <button
-            className="p-2 text-foreground hover:opacity-70 transition-opacity"
+            className="p-2 text-foreground/70 hover:text-foreground transition-colors duration-300"
             onClick={() => setIsMobileMenuOpen(false)}
             aria-label="Close menu"
           >
-            <X className="w-5 h-5" strokeWidth={1.5} />
+            <X className="w-5 h-5" strokeWidth={1} />
           </button>
-          <span className="text-xl font-serif font-semibold tracking-[0.15em] uppercase text-foreground">
+          <span className="text-xl font-serif font-semibold tracking-[0.25em] uppercase text-foreground">
             SIFAR
           </span>
-          <div className="flex items-center">
-            <Link to="/login" className="p-2 text-foreground hover:opacity-70 transition-opacity" onClick={() => setIsMobileMenuOpen(false)}>
-              <User className="w-4 h-4" strokeWidth={1.5} />
+          <div className="flex items-center gap-1">
+            <Link to="/login" className="p-2 text-foreground/70 hover:text-foreground transition-colors duration-300" onClick={() => setIsMobileMenuOpen(false)}>
+              <User className="w-4 h-4" strokeWidth={1} />
             </Link>
             <button
-              className="p-2 text-foreground hover:opacity-70 transition-opacity relative"
+              className="p-2 text-foreground/70 hover:text-foreground transition-colors duration-300 relative"
               onClick={() => { setIsMobileMenuOpen(false); setIsShoppingBagOpen(true); }}
             >
-              <ShoppingBagIcon className="w-4 h-4" strokeWidth={1.5} />
+              <ShoppingBagIcon className="w-4 h-4" strokeWidth={1} />
               {totalItems > 0 && (
                 <span className="absolute -top-0.5 -right-0.5 min-w-[14px] h-[14px] flex items-center justify-center rounded-full bg-foreground text-background text-[0.55rem] font-semibold leading-none pointer-events-none">
                   {totalItems}
@@ -373,69 +373,70 @@ const Navigation = ({ isTransparent = false }: NavigationProps) => {
           </div>
         </div>
 
-        {/* Search bar */}
-        <div className="px-4 py-4">
-          <div className="flex items-center border border-foreground/20 rounded-full px-4 py-2.5">
-            <Search className="w-4 h-4 text-foreground/50 mr-3 flex-shrink-0" strokeWidth={1.5} />
+        {/* Search bar — minimal underline style */}
+        <div className="px-6 py-6">
+          <div className="flex items-center border-b border-foreground/10 pb-3">
+            <Search className="w-4 h-4 text-foreground/30 mr-3 flex-shrink-0" strokeWidth={1} />
             <input
               type="text"
-              placeholder="Search for jewelry..."
-              className="flex-1 bg-transparent text-sm text-foreground placeholder:text-foreground/40 outline-none"
+              placeholder="Search..."
+              className="flex-1 bg-transparent text-sm font-light tracking-[0.1em] text-foreground placeholder:text-foreground/30 outline-none"
             />
           </div>
         </div>
 
-        {/* Primary nav links */}
-        <div className="border-t border-foreground/10">
-          {navItems.map((item) => (
+        {/* Primary nav links — Zen spacing & typography */}
+        <div className="px-2">
+          {navItems.map((item, index) => (
             <Link
               key={item.name}
               to={item.href}
-              className="flex items-center justify-between px-6 py-4 text-foreground hover:bg-foreground/5 transition-colors border-b border-foreground/10"
+              className="flex items-center justify-between px-6 py-5 text-foreground/80 hover:text-foreground transition-colors duration-300 border-b border-foreground/5"
               onClick={() => setIsMobileMenuOpen(false)}
+              style={{ animationDelay: `${index * 80}ms` }}
             >
-              <span className="text-sm tracking-wide">{item.name.charAt(0) + item.name.slice(1).toLowerCase()}</span>
-              <ChevronRight className="w-4 h-4 text-foreground/40" strokeWidth={1.5} />
+              <span className="text-sm font-light tracking-[0.2em]">{item.name.charAt(0) + item.name.slice(1).toLowerCase()}</span>
+              <span className="text-foreground/25 text-xs">—</span>
             </Link>
           ))}
         </div>
 
-        {/* Secondary section */}
-        <div className="border-t border-foreground/10 mt-1">
+        {/* Secondary section — About Sifar */}
+        <div className="px-2 mt-6">
           <Link
             to="/about/our-story"
-            className="flex items-center justify-between px-6 py-4 text-foreground hover:bg-foreground/5 transition-colors"
+            className="flex items-center justify-between px-6 py-5 text-foreground/60 hover:text-foreground transition-colors duration-300"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            <span className="text-sm tracking-wide">About Sifar</span>
-            <ChevronRight className="w-4 h-4 text-foreground/40" strokeWidth={1.5} />
+            <span className="text-xs font-light tracking-[0.2em]">About Sifar</span>
+            <span className="text-foreground/20 text-xs">—</span>
           </Link>
         </div>
 
         {/* Spacer */}
         <div className="flex-1" />
 
-        {/* Footer utility links */}
-        <div className="border-t border-foreground/10 px-6 py-3">
+        {/* Footer utility links — ethereal & delicate */}
+        <div className="border-t border-foreground/5 px-6 py-5 space-y-1">
           <Link
             to="/about/customer-care"
-            className="flex items-center gap-3 py-3 text-foreground/70 hover:text-foreground transition-colors"
+            className="flex items-center gap-3 py-3 text-foreground/50 hover:text-foreground/70 transition-colors duration-300"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            <HelpCircle className="w-4 h-4" strokeWidth={1.5} />
-            <span className="text-xs tracking-wide">Help Center</span>
+            <HelpCircle className="w-3.5 h-3.5" strokeWidth={1} />
+            <span className="text-[11px] font-light tracking-[0.15em]">Help Center</span>
           </Link>
           <Link
             to="/about/store-locator"
-            className="flex items-center gap-3 py-3 text-foreground/70 hover:text-foreground transition-colors"
+            className="flex items-center gap-3 py-3 text-foreground/50 hover:text-foreground/70 transition-colors duration-300"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            <MapPin className="w-4 h-4" strokeWidth={1.5} />
-            <span className="text-xs tracking-wide">Find a Boutique</span>
+            <MapPin className="w-3.5 h-3.5" strokeWidth={1} />
+            <span className="text-[11px] font-light tracking-[0.15em]">Find a Boutique</span>
           </Link>
-          <div className="flex items-center gap-3 py-3 text-foreground/70">
-            <Globe className="w-4 h-4" strokeWidth={1.5} />
-            <span className="text-xs tracking-wide">GB / English</span>
+          <div className="flex items-center gap-3 py-3 text-foreground/50">
+            <Globe className="w-3.5 h-3.5" strokeWidth={1} />
+            <span className="text-[11px] font-light tracking-[0.15em]">GB / English</span>
           </div>
         </div>
       </div>
