@@ -169,11 +169,11 @@ const Navigation = ({ isTransparent = false }: NavigationProps) => {
 
           {/* Bookmark / Wishlist - desktop only */}
           <button 
-            className={`hidden lg:block p-2 ${textColor} hover:opacity-70 transition-all duration-200`}
+            className={`p-1.5 lg:p-2 ${textColor} hover:opacity-70 transition-all duration-200`}
             aria-label="Wishlist"
             onClick={() => navigate("/login")}
           >
-            <Bookmark className="w-5 h-5" strokeWidth={1.5} />
+            <Bookmark className="w-4 h-4 lg:w-5 lg:h-5" strokeWidth={1.5} />
           </button>
 
           {/* User / Login */}
