@@ -8,14 +8,14 @@ import { Bookmark, ZoomIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import { useState, useEffect, useCallback } from "react";
-import pantheonImage from "@/assets/pantheon.jpg";
-import eclipseImage from "@/assets/eclipse.jpg";
-import haloImage from "@/assets/halo.jpg";
-import shadowlineImage from "@/assets/shadowline.jpg";
-import organicEarring from "@/assets/organic-earring.png";
-import linkBracelet from "@/assets/link-bracelet.png";
-import lintelImage from "@/assets/lintel.jpg";
-import obliqueImage from "@/assets/oblique.jpg";
+import editorialCloseupThumb from "@/assets/editorial-closeup.png";
+import editorialFaceThumb from "@/assets/editorial-face.png";
+import editorialShoulderThumb from "@/assets/editorial-shoulder.png";
+import editorialFrontThumb from "@/assets/editorial-front.png";
+import scarfPortrait from "@/assets/scarf-portrait.png";
+import scarfFrontThumb from "@/assets/scarf-front.png";
+import editorialSideThumb from "@/assets/editorial-side.png";
+import editorialThreeQuarterThumb from "@/assets/editorial-three-quarter.png";
 import editorialCloseup from "@/assets/editorial-closeup.png";
 import editorialThreeQuarter from "@/assets/editorial-three-quarter.png";
 import editorialFace from "@/assets/editorial-face.png";
@@ -25,36 +25,36 @@ import scarfFull from "@/assets/scarf-full.png";
 const relatedProducts = [{
   name: "Eclipse Earrings",
   price: "€2,450",
-  image: eclipseImage
+  image: editorialCloseupThumb
 }, {
   name: "Halo Ring",
   price: "€1,950",
-  image: haloImage
+  image: editorialFaceThumb
 }, {
   name: "Organic Earring",
   price: "€2,100",
-  image: organicEarring
+  image: editorialShoulderThumb
 }, {
   name: "Link Bracelet",
   price: "€3,200",
-  image: linkBracelet
+  image: editorialFrontThumb
 }];
 const otherItems = [{
   name: "Lintel Necklace",
   price: "€4,200",
-  image: lintelImage
+  image: scarfPortrait
 }, {
   name: "Oblique Ring",
   price: "€1,850",
-  image: obliqueImage
+  image: scarfFrontThumb
 }, {
   name: "Shadowline Bracelet",
   price: "€2,900",
-  image: shadowlineImage
+  image: editorialSideThumb
 }, {
   name: "Pantheon Pendant",
   price: "€2,650",
-  image: pantheonImage
+  image: editorialThreeQuarterThumb
 }];
 const ProductCard = ({
   product
