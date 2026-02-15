@@ -115,7 +115,7 @@ const Navigation = ({ isTransparent = false }: NavigationProps) => {
 
   const navBg = isTransparent && !activeDropdown && !isSearchOpen
     ? "bg-transparent"
-    : "bg-[#F2F0E9]/90 backdrop-blur-md";
+    : "bg-[#F2F0E9]";
 
   return (
     <nav className={`relative transition-colors duration-300 ${navBg}`}>
