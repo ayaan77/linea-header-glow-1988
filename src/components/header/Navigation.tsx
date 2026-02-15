@@ -28,6 +28,7 @@ const Navigation = ({ isTransparent = false }: NavigationProps) => {
   const [offCanvasType, setOffCanvasType] = useState<'favorites' | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isShoppingBagOpen, setIsShoppingBagOpen] = useState(false);
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   
   const [cartItems, setCartItems] = useState<CartItem[]>([
     { id: 1, name: "Pantheon", price: "£2,850", image: pantheonImage, quantity: 1, category: "Earrings" },
@@ -387,18 +388,88 @@ const Navigation = ({ isTransparent = false }: NavigationProps) => {
 
         {/* Primary nav links — Zen spacing & typography */}
         <div className="px-2">
-          {navItems.map((item, index) => (
-            <Link
-              key={item.name}
-              to={item.href}
-              className="flex items-center justify-between px-6 py-5 text-foreground/80 hover:text-foreground transition-colors duration-300 border-b border-foreground/5"
-              onClick={() => setIsMobileMenuOpen(false)}
-              style={{ animationDelay: `${index * 80}ms` }}
-            >
-              <span className="text-sm font-light tracking-[0.2em]">{item.name.charAt(0) + item.name.slice(1).toLowerCase()}</span>
-              <span className="text-foreground/25 text-xs">—</span>
-            </Link>
-          ))}
+          {navItems.map((item, index) => {
+            const hasSubContent = !!item.byCollection || item.name === "LOOKS";
+            const isExpanded = mobileExpanded === item.name;
+
+            if (!hasSubContent) {
+              return (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className="flex items-center justify-between px-6 py-5 text-foreground/80 hover:text-foreground transition-colors duration-300 border-b border-foreground/5"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <span className="text-sm font-light tracking-[0.2em]">{item.name.charAt(0) + item.name.slice(1).toLowerCase()}</span>
+                  <span className="text-foreground/25 text-xs">—</span>
+                </Link>
+              );
+            }
+
+            return (
+              <div key={item.name} className="border-b border-foreground/5">
+                <button
+                  className="flex items-center justify-between w-full px-6 py-5 text-foreground/80 hover:text-foreground transition-colors duration-300"
+                  onClick={() => setMobileExpanded(isExpanded ? null : item.name)}
+                >
+                  <span className="text-sm font-light tracking-[0.2em]">{item.name.charAt(0) + item.name.slice(1).toLowerCase()}</span>
+                  {isExpanded ? <Minus className="w-3.5 h-3.5 text-foreground/40" strokeWidth={1} /> : <Plus className="w-3.5 h-3.5 text-foreground/40" strokeWidth={1} />}
+                </button>
+
+                <div className={`overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${isExpanded ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                  <div className="px-6 pb-5 space-y-5">
+                    {item.name === "LOOKS" ? (
+                      <>
+                        <div>
+                          <h4 className="text-[10px] font-medium tracking-[0.2em] text-foreground/40 uppercase mb-3">Woman</h4>
+                          <div className="space-y-1">
+                            {looksMenu.woman.map((look) => (
+                              <Link key={look.slug} to={`/looks/${look.slug}`} className="block py-2 text-xs font-light tracking-[0.15em] text-foreground/60 hover:text-foreground transition-colors duration-300" onClick={() => { setIsMobileMenuOpen(false); setMobileExpanded(null); }}>
+                                {look.label}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                        <div>
+                          <h4 className="text-[10px] font-medium tracking-[0.2em] text-foreground/40 uppercase mb-3">Man</h4>
+                          <div className="space-y-1">
+                            {looksMenu.man.map((look) => (
+                              <Link key={look.slug} to={`/looks/${look.slug}`} className="block py-2 text-xs font-light tracking-[0.15em] text-foreground/60 hover:text-foreground transition-colors duration-300" onClick={() => { setIsMobileMenuOpen(false); setMobileExpanded(null); }}>
+                                {look.label}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div>
+                          <h4 className="text-[10px] font-medium tracking-[0.2em] text-foreground/40 uppercase mb-3">By Collection</h4>
+                          <div className="space-y-1">
+                            {item.byCollection?.map((col) => (
+                              <Link key={col} to={col === "View All" ? item.href : `/category/${col.toLowerCase()}`} className="block py-2 text-xs font-light tracking-[0.15em] text-foreground/60 hover:text-foreground transition-colors duration-300" onClick={() => { setIsMobileMenuOpen(false); setMobileExpanded(null); }}>
+                                {col}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                        <div>
+                          <h4 className="text-[10px] font-medium tracking-[0.2em] text-foreground/40 uppercase mb-3">Featured</h4>
+                          <div className="space-y-1">
+                            {item.featured?.map((feat) => (
+                              <Link key={feat} to={item.href} className="block py-2 text-xs font-light tracking-[0.15em] text-foreground/60 hover:text-foreground transition-colors duration-300" onClick={() => { setIsMobileMenuOpen(false); setMobileExpanded(null); }}>
+                                {feat}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
 
         {/* Secondary section — About Sifar */}
