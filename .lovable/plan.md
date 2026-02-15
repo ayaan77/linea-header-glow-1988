@@ -1,20 +1,42 @@
 
 
-## Change Mobile Drawer to Slide Down from Top ("Paper Fall" Animation)
+## Match Mobile Drawer to Reference Design
 
-Currently the mobile drawer slides in from the left (`-translate-x-full` to `translate-x-0`). The user wants it to slide down from the top slowly, like paper falling -- matching the Diptyque reference.
+### Animation Adjustment
+- Change duration from `800ms` to `650ms` -- a comfortable medium speed
+- Keep the same easing curve `cubic-bezier(0.22, 1, 0.36, 1)` for the paper-fall feel
 
-### What Changes
+### Typography and Layout Changes (mobile only)
 
-**File: `src/components/header/MobileDrawer.tsx`** (line 44-47)
+**File: `src/components/header/MobileDrawer.tsx`**
 
-- Change the drawer's closed state from `-translate-x-full` to `-translate-y-full` (hidden above the viewport)
-- Change the open state from `translate-x-0` to `translate-y-0` (slides down into view)
-- Slow down the animation duration from `600ms` to `800ms` for a more "paper falling" feel
-- Use a softer easing curve: `cubic-bezier(0.22, 1, 0.36, 1)` -- this starts slow, then settles gently, mimicking paper drifting down
+1. **Search bar** (lines 92-101)
+   - Change from `rounded-full` to `rounded-none` (rectangular border like reference)
+   - Change border from `border-foreground/20` to `border-foreground/30` (slightly darker)
+   - Increase search icon size and placeholder text size to `text-base`
 
-No changes to desktop or tablet (already scoped to `lg:hidden`).
+2. **Nav links** (lines 104-116)
+   - Increase font size from `text-[15px]` to `text-xl` (larger, bolder like reference)
+   - Change to `font-serif` for elegant serif typography matching reference
+   - Increase vertical padding from `py-4` to `py-5` for more breathing room
+   - Make chevron icon slightly larger and less transparent
 
-### Summary
+3. **About Sifar link** (lines 119-128)
+   - Add a visible separator/divider above this section (reference shows a clear line break)
+   - Match the same larger serif typography as the nav links
+   - Add more top padding (`pt-6`) to create visual separation
 
-One line change in the drawer panel's className to swap the X-axis slide for a Y-axis slide-down with adjusted timing.
+4. **Promotional image** (lines 131-145)
+   - Change aspect ratio from `16/9` to `4/5` (taller, like reference product images)
+   - Remove the "New Collection" overlay badge for a cleaner look matching reference
+   - Add a text link below the image like reference ("Valentine's Day by Diptyque" style)
+
+5. **Footer utility links** (lines 148-169)
+   - Keep as-is, they are secondary and the reference doesn't show equivalents prominently
+
+### What Does NOT Change
+- Desktop and tablet layouts (all changes scoped within `lg:hidden` drawer)
+- Drawer header (close button, logo, icons)
+- Navigation link destinations and content
+- Body scroll lock behavior
+
