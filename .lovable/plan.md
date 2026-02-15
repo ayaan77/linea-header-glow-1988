@@ -1,25 +1,33 @@
 
 
-## Fix: Navigation Bar Transparency When Scrolled
+## Replace Voyage Section Product Images (Not Hero)
 
-### Problem
-The navigation bar background on line 116-118 uses `bg-[#F2F0E9]/90 backdrop-blur-md` (90% opacity) in its non-transparent state. While the mobile drawer itself is solid, the nav bar container remains semi-transparent even after scrolling, causing visible bleed-through of page content.
+Replace only the 3 product thumbnail images in the VoyageSection grid with the 3 uploaded images. The large hero image at the top remains unchanged.
 
-### Solution
-Make the nav background fully opaque when not in transparent mode (scrolled state or non-homepage). Also ensure it accounts for the mobile menu being open.
+### Image Mapping
+
+| Product | Current Image | New Image |
+|---------|--------------|-----------|
+| Pantheon | pantheon.jpg | Elegance_Scarf_70.webp |
+| Eclipse | eclipse.jpg | Equateur_Twilly_worn.webp |
+| Halo | halo.jpg | 18.jpg |
+| Oblique | oblique.jpg | *(unchanged -- no 4th image provided)* |
+
+### Steps
+
+1. Save the 3 uploaded images to `src/assets/`:
+   - `elegance-scarf.webp`
+   - `equateur-twilly.webp`
+   - `voyage-bracelet.jpg`
+
+2. Update `src/components/content/VoyageSection.tsx`:
+   - Replace imports for `pantheonImage`, `eclipseImage`, `haloImage` with the new assets
+   - Keep `obliqueImage` import unchanged
+   - Update the `thumbnails` array entries accordingly
 
 ### Technical Details
 
-**File: `src/components/header/Navigation.tsx` (lines 116-118)**
+**File: `src/components/content/VoyageSection.tsx` (lines 1-13)**
 
-Change the `navBg` logic from:
-```
-bg-[#F2F0E9]/90 backdrop-blur-md
-```
-to:
-```
-bg-[#F2F0E9]
-```
-
-This removes the 90% opacity and backdrop-blur that were causing page content to show through the navigation bar when scrolled down. The transparent mode (homepage, not scrolled) remains unchanged.
+Replace first 3 image imports and update the thumbnails array to reference the new images while keeping the 4th product (Oblique) as-is. The hero image import (`heroImage`) is not touched.
 
