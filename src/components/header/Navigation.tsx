@@ -1,4 +1,4 @@
-import { ArrowRight, X, Minus, Plus, Search, Bookmark, User, ShoppingBag as ShoppingBagIcon } from "lucide-react";
+import { ArrowRight, X, Minus, Plus, Search, Bookmark, User, ShoppingBag as ShoppingBagIcon, ChevronRight, HelpCircle, MapPin, Globe } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
@@ -49,6 +49,16 @@ const Navigation = ({ isTransparent = false }: NavigationProps) => {
     const imagesToPreload = ["/rings-collection.png", "/earrings-collection.png", "/arcus-bracelet.png", "/span-bracelet.png", "/founders.png"];
     imagesToPreload.forEach(src => { const img = new Image(); img.src = src; });
   }, []);
+
+  // Lock body scroll when mobile drawer is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [isMobileMenuOpen]);
 
   const popularSearches = ["Gold Rings", "Silver Necklaces", "Pearl Earrings", "Designer Bracelets", "Wedding Rings", "Vintage Collection"];
   
@@ -110,18 +120,27 @@ const Navigation = ({ isTransparent = false }: NavigationProps) => {
   return (
     <nav className={`relative transition-colors duration-300 ${navBg}`}>
       <div className="flex items-center justify-between h-16 px-4 lg:px-6">
-        {/* Mobile hamburger button */}
-        <button
-          className={`lg:hidden p-2 mt-0.5 ${textColor} hover:opacity-70 transition-all duration-200`}
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          <div className="w-5 h-5 relative">
-            <span className={`absolute block w-5 h-px bg-current transform transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 top-2.5' : 'top-1.5'}`}></span>
-            <span className={`absolute block w-5 h-px bg-current transform transition-all duration-300 top-2.5 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-            <span className={`absolute block w-5 h-px bg-current transform transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 top-2.5' : 'top-3.5'}`}></span>
-          </div>
-        </button>
+        {/* Mobile left: Hamburger + Search */}
+        <div className="flex items-center lg:hidden">
+          <button
+            className={`p-2 ${textColor} hover:opacity-70 transition-all duration-200`}
+            onClick={() => setIsMobileMenuOpen(true)}
+            aria-label="Open menu"
+          >
+            <div className="w-5 h-5 relative">
+              <span className="absolute block w-5 h-px bg-current top-1.5"></span>
+              <span className="absolute block w-5 h-px bg-current top-2.5"></span>
+              <span className="absolute block w-5 h-px bg-current top-3.5"></span>
+            </div>
+          </button>
+          <button
+            className={`p-2 ${textColor} hover:opacity-70 transition-all duration-200`}
+            aria-label="Search"
+            onClick={() => setIsSearchOpen(!isSearchOpen)}
+          >
+            <Search className="w-4 h-4" strokeWidth={1.5} />
+          </button>
+        </div>
 
         {/* Left navigation - Desktop */}
         <div className="hidden lg:flex space-x-8">
@@ -148,22 +167,22 @@ const Navigation = ({ isTransparent = false }: NavigationProps) => {
           {/* GB / £ locale label - desktop only */}
           <span className={`hidden lg:block ${textColor} text-xs font-light tracking-wide mr-3`}>GB / £</span>
 
-          {/* Search */}
+          {/* Search - desktop only */}
           <button 
-            className={`p-1.5 lg:p-2 ${textColor} hover:opacity-70 transition-all duration-200`}
+            className={`hidden lg:block p-2 ${textColor} hover:opacity-70 transition-all duration-200`}
             aria-label="Search"
             onClick={() => setIsSearchOpen(!isSearchOpen)}
           >
-            <Search className="w-4 h-4 lg:w-5 lg:h-5" strokeWidth={1.5} />
+            <Search className="w-5 h-5" strokeWidth={1.5} />
           </button>
 
-          {/* Bookmark / Wishlist */}
+          {/* Bookmark / Wishlist - desktop only */}
           <button 
-            className={`p-1.5 lg:p-2 ${textColor} hover:opacity-70 transition-all duration-200`}
+            className={`hidden lg:block p-2 ${textColor} hover:opacity-70 transition-all duration-200`}
             aria-label="Wishlist"
             onClick={() => navigate("/login")}
           >
-            <Bookmark className="w-4 h-4 lg:w-5 lg:h-5" strokeWidth={1.5} />
+            <Bookmark className="w-5 h-5" strokeWidth={1.5} />
           </button>
 
           {/* User / Login */}
@@ -315,29 +334,110 @@ const Navigation = ({ isTransparent = false }: NavigationProps) => {
         </div>
       )}
 
-      {/* Mobile navigation menu */}
-      {isMobileMenuOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-limestone border-b border-border z-50">
-          <div className="px-6 py-8">
-            <div className="space-y-6">
-              {navItems.map((item) => (
-                <div key={item.name}>
-                  <Link to={item.href} className="text-nav-foreground hover:text-nav-hover transition-colors duration-200 type-nav text-[14px] block py-2" onClick={() => setIsMobileMenuOpen(false)}>
-                    {item.name}
-                  </Link>
-                  {item.byCollection && <div className="mt-3 pl-4 space-y-2">
-                    {item.byCollection.map((subItem, subIndex) => (
-                      <Link key={subIndex} to={subItem === "View All" ? item.href : `/category/${subItem.toLowerCase()}`} className="text-nav-foreground/70 hover:text-nav-hover type-body block py-1" onClick={() => setIsMobileMenuOpen(false)}>
-                        {subItem}
-                      </Link>
-                    ))}
-                  </div>}
-                </div>
-              ))}
-            </div>
+      {/* Mobile navigation drawer - always rendered for exit animation */}
+      <div
+        className={`fixed inset-0 z-[60] bg-black/40 transition-opacity duration-500 lg:hidden ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        onClick={() => setIsMobileMenuOpen(false)}
+      />
+      <div
+        className={`fixed inset-y-0 left-0 z-[60] w-full max-w-md bg-limestone transition-transform duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] lg:hidden flex flex-col ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}
+      >
+        {/* Drawer header */}
+        <div className="flex items-center justify-between h-16 px-4 border-b border-foreground/10">
+          <button
+            className="p-2 text-foreground hover:opacity-70 transition-opacity"
+            onClick={() => setIsMobileMenuOpen(false)}
+            aria-label="Close menu"
+          >
+            <X className="w-5 h-5" strokeWidth={1.5} />
+          </button>
+          <span className="text-xl font-serif font-semibold tracking-[0.15em] uppercase text-foreground">
+            SIFAR
+          </span>
+          <div className="flex items-center">
+            <Link to="/login" className="p-2 text-foreground hover:opacity-70 transition-opacity" onClick={() => setIsMobileMenuOpen(false)}>
+              <User className="w-4 h-4" strokeWidth={1.5} />
+            </Link>
+            <button
+              className="p-2 text-foreground hover:opacity-70 transition-opacity relative"
+              onClick={() => { setIsMobileMenuOpen(false); setIsShoppingBagOpen(true); }}
+            >
+              <ShoppingBagIcon className="w-4 h-4" strokeWidth={1.5} />
+              {totalItems > 0 && (
+                <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[30%] text-[0.4rem] font-semibold pointer-events-none">
+                  {totalItems}
+                </span>
+              )}
+            </button>
           </div>
         </div>
-      )}
+
+        {/* Search bar */}
+        <div className="px-4 py-4">
+          <div className="flex items-center border border-foreground/20 rounded-full px-4 py-2.5">
+            <Search className="w-4 h-4 text-foreground/50 mr-3 flex-shrink-0" strokeWidth={1.5} />
+            <input
+              type="text"
+              placeholder="Search for jewelry..."
+              className="flex-1 bg-transparent text-sm text-foreground placeholder:text-foreground/40 outline-none"
+            />
+          </div>
+        </div>
+
+        {/* Primary nav links */}
+        <div className="border-t border-foreground/10">
+          {navItems.map((item) => (
+            <Link
+              key={item.name}
+              to={item.href}
+              className="flex items-center justify-between px-6 py-4 text-foreground hover:bg-foreground/5 transition-colors border-b border-foreground/10"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span className="text-sm tracking-wide">{item.name.charAt(0) + item.name.slice(1).toLowerCase()}</span>
+              <ChevronRight className="w-4 h-4 text-foreground/40" strokeWidth={1.5} />
+            </Link>
+          ))}
+        </div>
+
+        {/* Secondary section */}
+        <div className="border-t border-foreground/10 mt-1">
+          <Link
+            to="/about/our-story"
+            className="flex items-center justify-between px-6 py-4 text-foreground hover:bg-foreground/5 transition-colors"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            <span className="text-sm tracking-wide">About Sifar</span>
+            <ChevronRight className="w-4 h-4 text-foreground/40" strokeWidth={1.5} />
+          </Link>
+        </div>
+
+        {/* Spacer */}
+        <div className="flex-1" />
+
+        {/* Footer utility links */}
+        <div className="border-t border-foreground/10 px-6 py-3">
+          <Link
+            to="/about/customer-care"
+            className="flex items-center gap-3 py-3 text-foreground/70 hover:text-foreground transition-colors"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            <HelpCircle className="w-4 h-4" strokeWidth={1.5} />
+            <span className="text-xs tracking-wide">Help Center</span>
+          </Link>
+          <Link
+            to="/about/store-locator"
+            className="flex items-center gap-3 py-3 text-foreground/70 hover:text-foreground transition-colors"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            <MapPin className="w-4 h-4" strokeWidth={1.5} />
+            <span className="text-xs tracking-wide">Find a Boutique</span>
+          </Link>
+          <div className="flex items-center gap-3 py-3 text-foreground/70">
+            <Globe className="w-4 h-4" strokeWidth={1.5} />
+            <span className="text-xs tracking-wide">GB / English</span>
+          </div>
+        </div>
+      </div>
       
       {/* Shopping Bag Component */}
       <ShoppingBag 
