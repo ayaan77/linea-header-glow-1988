@@ -341,7 +341,7 @@ const Navigation = ({ isTransparent = false }: NavigationProps) => {
         onClick={() => setIsMobileMenuOpen(false)}
       />
       <div
-        className={`fixed inset-y-0 left-0 z-[60] w-full bg-limestone/85 backdrop-blur-xl transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] lg:hidden flex flex-col ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}
+        className={`fixed inset-y-0 left-0 z-[60] w-full bg-limestone transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] lg:hidden flex flex-col ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}
       >
         {/* Drawer header */}
         <div className="flex items-center justify-between h-20 px-5 border-b border-foreground/5">
