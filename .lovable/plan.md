@@ -1,18 +1,25 @@
 
 
-## Fix: Mobile Drawer Transparency Issue
+## Fix: Navigation Bar Transparency When Scrolled
 
 ### Problem
-When scrolling down and opening the hamburger menu, the page content is visible behind the mobile navigation drawer. This happens because the drawer background uses `bg-limestone/85` (85% opacity) with `backdrop-blur-xl`, which creates a see-through effect showing the underlying page content behind the menu items.
+The navigation bar background on line 116-118 uses `bg-[#F2F0E9]/90 backdrop-blur-md` (90% opacity) in its non-transparent state. While the mobile drawer itself is solid, the nav bar container remains semi-transparent even after scrolling, causing visible bleed-through of page content.
 
 ### Solution
-Change the drawer background from semi-transparent to fully opaque while keeping the Zen aesthetic intact.
+Make the nav background fully opaque when not in transparent mode (scrolled state or non-homepage). Also ensure it accounts for the mobile menu being open.
 
 ### Technical Details
 
-**File: `src/components/header/Navigation.tsx` (line 344)**
+**File: `src/components/header/Navigation.tsx` (lines 116-118)**
 
-Change `bg-limestone/85 backdrop-blur-xl` to `bg-limestone` (fully opaque). This removes the transparency that causes page content to bleed through, while preserving the frosted-glass overlay backdrop and all other Zen styling (spacing, typography, transitions).
+Change the `navBg` logic from:
+```
+bg-[#F2F0E9]/90 backdrop-blur-md
+```
+to:
+```
+bg-[#F2F0E9]
+```
 
-The overlay (line 340) will keep its `bg-black/20 backdrop-blur-sm` since that correctly dims the background before the drawer slides in.
+This removes the 90% opacity and backdrop-blur that were causing page content to show through the navigation bar when scrolled down. The transparent mode (homepage, not scrolled) remains unchanged.
 
