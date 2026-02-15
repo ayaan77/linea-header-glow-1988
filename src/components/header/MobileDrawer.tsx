@@ -33,7 +33,7 @@ const MobileDrawer = ({ isOpen, onClose, onOpenBag, totalItems }: MobileDrawerPr
     <>
       {/* Dark overlay */}
       <div
-        className={`fixed inset-0 z-[60] bg-black/40 transition-opacity duration-500 lg:hidden ${
+        className={`fixed inset-0 z-[60] bg-black/40 transition-opacity duration-700 lg:hidden ${
           isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         onClick={onClose}
@@ -42,7 +42,7 @@ const MobileDrawer = ({ isOpen, onClose, onOpenBag, totalItems }: MobileDrawerPr
 
       {/* Drawer panel */}
       <div
-        className={`fixed inset-0 z-[70] bg-limestone lg:hidden flex flex-col transition-transform duration-[650ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        className={`fixed inset-0 z-[70] bg-limestone lg:hidden flex flex-col transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
           isOpen ? "translate-y-0" : "-translate-y-full"
         }`}
       >
