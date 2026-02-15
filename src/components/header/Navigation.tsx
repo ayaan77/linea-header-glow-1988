@@ -198,7 +198,7 @@ const Navigation = ({ isTransparent = false }: NavigationProps) => {
           >
             <ShoppingBagIcon className="w-4 h-4 lg:w-5 lg:h-5" strokeWidth={1.5} />
             {totalItems > 0 && (
-              <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[40%] text-[0.45rem] lg:text-[0.5rem] font-medium pointer-events-none leading-none min-w-[0.6rem] text-center">
+              <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[45%] text-[0.5rem] lg:text-[0.55rem] font-medium pointer-events-none leading-none">
                 {totalItems}
               </span>
             )}
@@ -364,7 +364,7 @@ const Navigation = ({ isTransparent = false }: NavigationProps) => {
             >
               <ShoppingBagIcon className="w-4 h-4" strokeWidth={1.5} />
               {totalItems > 0 && (
-                <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[30%] text-[0.4rem] font-semibold pointer-events-none">
+                <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[45%] text-[0.5rem] font-medium pointer-events-none leading-none">
                   {totalItems}
                 </span>
               )}
