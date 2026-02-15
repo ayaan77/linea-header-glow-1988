@@ -1,33 +1,24 @@
 
 
-## Replace Voyage Section Product Images (Not Hero)
+## Replace Oblique Product Image
 
-Replace only the 3 product thumbnail images in the VoyageSection grid with the 3 uploaded images. The large hero image at the top remains unchanged.
-
-### Image Mapping
-
-| Product | Current Image | New Image |
-|---------|--------------|-----------|
-| Pantheon | pantheon.jpg | Elegance_Scarf_70.webp |
-| Eclipse | eclipse.jpg | Equateur_Twilly_worn.webp |
-| Halo | halo.jpg | 18.jpg |
-| Oblique | oblique.jpg | *(unchanged -- no 4th image provided)* |
+Replace the 4th product thumbnail (Oblique) in the Voyage section with the uploaded image.
 
 ### Steps
 
-1. Save the 3 uploaded images to `src/assets/`:
-   - `elegance-scarf.webp`
-   - `equateur-twilly.webp`
-   - `voyage-bracelet.jpg`
-
-2. Update `src/components/content/VoyageSection.tsx`:
-   - Replace imports for `pantheonImage`, `eclipseImage`, `haloImage` with the new assets
-   - Keep `obliqueImage` import unchanged
-   - Update the `thumbnails` array entries accordingly
+1. Copy `user-uploads://Screenshot_2026-02-15_at_11.01.31 PM.png` to `src/assets/oblique.jpg` (overwriting the existing file)
+2. No code changes needed since the import already references `@/assets/oblique.jpg` -- but since the new file is a `.png`, save it as `src/assets/oblique-new.png` and update the import in `VoyageSection.tsx` line 4.
 
 ### Technical Details
 
-**File: `src/components/content/VoyageSection.tsx` (lines 1-13)**
+**File: `src/components/content/VoyageSection.tsx` (line 4)**
 
-Replace first 3 image imports and update the thumbnails array to reference the new images while keeping the 4th product (Oblique) as-is. The hero image import (`heroImage`) is not touched.
+Change:
+```tsx
+import obliqueImage from "@/assets/oblique.jpg";
+```
+To:
+```tsx
+import obliqueImage from "@/assets/oblique-new.png";
+```
 
