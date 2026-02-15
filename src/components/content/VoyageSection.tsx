@@ -1,14 +1,14 @@
 import heroImage from "@/assets/hero-image.webp";
-import pantheonImage from "@/assets/pantheon.jpg";
-import eclipseImage from "@/assets/eclipse.jpg";
-import haloImage from "@/assets/halo.jpg";
+import eleganceScarf from "@/assets/elegance-scarf.webp";
+import equateurTwilly from "@/assets/equateur-twilly.webp";
+import voyageBracelet from "@/assets/voyage-bracelet.jpg";
 import obliqueImage from "@/assets/oblique.jpg";
 import { Link } from "react-router-dom";
 
 const thumbnails = [
-  { id: 1, name: "Pantheon", price: "£2,850", image: pantheonImage },
-  { id: 2, name: "Eclipse", price: "£3,200", image: eclipseImage },
-  { id: 3, name: "Halo", price: "£1,950", image: haloImage },
+  { id: 1, name: "Pantheon", price: "£2,850", image: eleganceScarf },
+  { id: 2, name: "Eclipse", price: "£3,200", image: equateurTwilly },
+  { id: 3, name: "Halo", price: "£1,950", image: voyageBracelet },
   { id: 4, name: "Oblique", price: "£1,650", image: obliqueImage },
 ];
 
