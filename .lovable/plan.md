@@ -1,81 +1,25 @@
 
 
-## Redesign Mobile Header and Navigation Drawer (Diptyque-Inspired)
+## Fix Shopping Bag Icon Badge Overflow
 
-Redesign the mobile navigation in `src/components/header/Navigation.tsx` to match the Diptyque Paris reference. Desktop navigation stays unchanged.
+The item count number inside the shopping bag icon is overflowing/not displaying correctly. There are two instances to fix:
 
-### Changes
+### Problem
+The badge text is positioned at the center of the button but needs to sit inside the bag icon's "opening". The current absolute positioning with `top-1/2 left-1/2` combined with tiny font sizes makes the number either invisible or misaligned, especially at the mobile `w-4 h-4` icon size.
 
-**1. Mobile Header Bar (closed state)**
-
-Rearrange the mobile-only header icons to match the reference:
-- Left side: Hamburger menu + Search icon (search moves from right to left on mobile)
-- Center: "SIFAR" serif logo (unchanged)
-- Right side: User icon + Shopping Bag icon (hide Bookmark on mobile to reduce clutter)
-
-**2. Full-Screen Slide-In Drawer (replaces current dropdown menu)**
-
-Replace the current simple dropdown mobile menu (lines 318-340) with a full-screen drawer that slides in from the left:
-
-- **Top bar**: Close (X) icon on left, centered "SIFAR" logo, User + Bag icons on right
-- **Search bar**: Full-width input with search icon, rounded border, placeholder "Search for jewelry..."
-- **Primary nav links**: Vertical list -- Woman, Man, Looks, Journal -- each as a full-width row with a right ChevronRight icon and bottom border separator
-- **Secondary section**: Divider, then "About Sifar" link with chevron
-- **Footer utility links**: Help Center (HelpCircle icon), Find a Boutique (MapPin icon), GB / English (Globe icon) -- at bottom of drawer
-
-**3. Premium Animation**
-
-- Drawer slides from `translateX(-100%)` to `translateX(0)` with a 600ms cubic-bezier transition for a slow, elegant feel
-- Dark overlay (`bg-black/40`) fades in behind the drawer over 500ms
-- Body scroll is locked when drawer is open via `useEffect` toggling `document.body.style.overflow`
-- Use always-rendered markup with CSS transitions (not conditional rendering) so exit animations work
-
-**4. Tailwind Keyframes**
-
-Add a `slide-in-left` keyframe in `tailwind.config.ts` for the drawer entrance animation.
-
-### Technical Details
+### Fix
 
 **File: `src/components/header/Navigation.tsx`**
 
-- Add imports: `ChevronRight`, `HelpCircle`, `MapPin`, `Globe` from lucide-react
-- Wrap mobile hamburger + search in a left-side `div` visible only on `lg:hidden`
-- Hide Bookmark button on mobile (`hidden lg:block`)
-- Replace lines 318-340 (mobile menu dropdown) with a fixed full-screen drawer panel:
-  - Overlay div: `fixed inset-0 z-[60] bg-black/40 transition-opacity duration-500`
-  - Drawer div: `fixed inset-y-0 left-0 z-[60] w-full max-w-md bg-[#F2F0E9] transition-transform duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)]`
-  - Both rendered always, visibility toggled via state classes (`opacity-0 pointer-events-none` when closed, `opacity-100` when open; `translate-x-[-100%]` when closed, `translate-x-0` when open)
-- Add `useEffect` to toggle `document.body.style.overflow` based on `isMobileMenuOpen`
+1. **Main header bag icon (line 201)**: Adjust the badge to be smaller and better centered within the icon. Use `text-[0.5rem]` on mobile and `text-[0.55rem]` on desktop, with a slightly higher vertical offset (`-translate-y-[45%]`) to sit inside the bag opening.
 
-**File: `tailwind.config.ts`**
-- Add `slide-in-left` keyframe (`translateX(-100%)` to `translateX(0)`) -- optional, since inline Tailwind transition classes handle the animation directly.
+2. **Mobile drawer bag icon (line 367)**: Apply the same fix as the main header badge -- update from the old `text-[0.4rem] -translate-y-[30%]` to match the corrected styling with `text-[0.45rem] -translate-y-[40%] font-medium leading-none`.
 
-### Layout Reference
+### Technical Details
 
-```text
-CLOSED HEADER (mobile):
-[ = | Q ]          SIFAR          [ U | B ]
+Both badge `<span>` elements will use consistent styling:
+- `absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[45%]`
+- `text-[0.5rem]` (slightly larger for readability)
+- `font-medium leading-none pointer-events-none`
 
-OPEN DRAWER (full screen from left):
-+----------------------------------+
-| [X]          SIFAR      [U] [B]  |
-+----------------------------------+
-| [Q  Search for jewelry...     ]  |
-+----------------------------------+
-| Woman                        >   |
-| Man                          >   |
-| Looks                        >   |
-| Journal                      >   |
-+----------------------------------+
-| About Sifar                  >   |
-+----------------------------------+
-|                                  |
-| (spacer)                         |
-|                                  |
-+----------------------------------+
-| ? Help Center                    |
-| @ Find a Boutique                |
-| ~ GB / English                   |
-+----------------------------------+
-```
-
+This ensures the number sits visually centered in the bag icon's body at both mobile and desktop sizes.
