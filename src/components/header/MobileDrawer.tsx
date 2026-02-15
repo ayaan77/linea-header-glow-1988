@@ -42,7 +42,7 @@ const MobileDrawer = ({ isOpen, onClose, onOpenBag, totalItems }: MobileDrawerPr
 
       {/* Drawer panel */}
       <div
-        className={`fixed inset-0 z-[70] bg-limestone lg:hidden flex flex-col transition-transform duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        className={`fixed inset-0 z-[70] bg-limestone lg:hidden flex flex-col transition-transform duration-[650ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
           isOpen ? "translate-y-0" : "-translate-y-full"
         }`}
       >
@@ -90,12 +90,12 @@ const MobileDrawer = ({ isOpen, onClose, onOpenBag, totalItems }: MobileDrawerPr
         <div className="flex-1 overflow-y-auto">
           {/* Search bar */}
           <div className="px-5 pt-5 pb-3">
-            <div className="flex items-center border border-foreground/20 rounded-full px-4 py-2.5">
-              <Search className="w-4 h-4 text-foreground/50 mr-3 flex-shrink-0" strokeWidth={1.5} />
+            <div className="flex items-center border border-foreground/30 rounded-none px-4 py-3">
+              <Search className="w-5 h-5 text-foreground/50 mr-3 flex-shrink-0" strokeWidth={1.5} />
               <input
                 type="text"
                 placeholder="Search for jewelry..."
-                className="flex-1 bg-transparent text-sm text-foreground placeholder:text-foreground/40 outline-none"
+                className="flex-1 bg-transparent text-base text-foreground placeholder:text-foreground/40 outline-none"
               />
             </div>
           </div>
@@ -107,40 +107,41 @@ const MobileDrawer = ({ isOpen, onClose, onOpenBag, totalItems }: MobileDrawerPr
                 key={item.name}
                 to={item.href}
                 onClick={onClose}
-                className="flex items-center justify-between py-4 border-b border-foreground/10 text-foreground"
+                className="flex items-center justify-between py-5 border-b border-foreground/10 text-foreground"
               >
-                <span className="text-[15px] tracking-wide">{item.name}</span>
-                <ChevronRight className="w-4 h-4 text-foreground/40" strokeWidth={1.5} />
+                <span className="text-xl font-serif tracking-wide">{item.name}</span>
+                <ChevronRight className="w-5 h-5 text-foreground/30" strokeWidth={1.5} />
               </Link>
             ))}
           </nav>
 
           {/* About section */}
-          <div className="px-5 pt-4">
+          <div className="px-5 pt-6">
+            <div className="border-t border-foreground/15 mb-1" />
             <Link
               to="/about/our-story"
               onClick={onClose}
-              className="flex items-center justify-between py-4 border-b border-foreground/10 text-foreground"
+              className="flex items-center justify-between py-5 border-b border-foreground/10 text-foreground"
             >
-              <span className="text-[15px] tracking-wide">About Sifar</span>
-              <ChevronRight className="w-4 h-4 text-foreground/40" strokeWidth={1.5} />
+              <span className="text-xl font-serif tracking-wide">About Sifar</span>
+              <ChevronRight className="w-5 h-5 text-foreground/30" strokeWidth={1.5} />
             </Link>
           </div>
 
           {/* Promotional image area */}
           <div className="px-5 pt-6 pb-4">
-            <Link to="/category/woman" onClick={onClose} className="block relative overflow-hidden rounded-sm aspect-[16/9]">
-              <img
-                src="/rings-collection.png"
-                alt="New Collection"
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-              <div className="absolute bottom-3 left-3">
-                <span className="bg-white/90 backdrop-blur-sm text-foreground text-[10px] font-medium tracking-wider uppercase px-3 py-1 rounded-full">
-                  New Collection
-                </span>
+            <Link to="/category/woman" onClick={onClose} className="block">
+              <div className="relative overflow-hidden rounded-sm aspect-[4/5]">
+                <img
+                  src="/rings-collection.png"
+                  alt="New Collection"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
               </div>
+              <p className="mt-3 text-sm font-serif tracking-wide text-foreground/70">
+                Discover the New Collection
+              </p>
             </Link>
           </div>
 
