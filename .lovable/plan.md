@@ -1,42 +1,20 @@
 
 
-## Match Mobile Drawer to Reference Design
+## Slow Down Mobile Drawer Animation (Open and Close)
 
-### Animation Adjustment
-- Change duration from `800ms` to `650ms` -- a comfortable medium speed
-- Keep the same easing curve `cubic-bezier(0.22, 1, 0.36, 1)` for the paper-fall feel
+### Problem
+The mobile drawer currently opens and closes too quickly at `650ms`. It needs a slower, more elegant "paper-falling" feel for both opening and closing.
 
-### Typography and Layout Changes (mobile only)
+### Changes
 
 **File: `src/components/header/MobileDrawer.tsx`**
 
-1. **Search bar** (lines 92-101)
-   - Change from `rounded-full` to `rounded-none` (rectangular border like reference)
-   - Change border from `border-foreground/20` to `border-foreground/30` (slightly darker)
-   - Increase search icon size and placeholder text size to `text-base`
-
-2. **Nav links** (lines 104-116)
-   - Increase font size from `text-[15px]` to `text-xl` (larger, bolder like reference)
-   - Change to `font-serif` for elegant serif typography matching reference
-   - Increase vertical padding from `py-4` to `py-5` for more breathing room
-   - Make chevron icon slightly larger and less transparent
-
-3. **About Sifar link** (lines 119-128)
-   - Add a visible separator/divider above this section (reference shows a clear line break)
-   - Match the same larger serif typography as the nav links
-   - Add more top padding (`pt-6`) to create visual separation
-
-4. **Promotional image** (lines 131-145)
-   - Change aspect ratio from `16/9` to `4/5` (taller, like reference product images)
-   - Remove the "New Collection" overlay badge for a cleaner look matching reference
-   - Add a text link below the image like reference ("Valentine's Day by Diptyque" style)
-
-5. **Footer utility links** (lines 148-169)
-   - Keep as-is, they are secondary and the reference doesn't show equivalents prominently
+1. **Increase animation duration** from `650ms` to `900ms` for a noticeably slower, graceful motion
+2. **Refine the easing curve** to `cubic-bezier(0.16, 1, 0.3, 1)` -- this curve starts even more gently and settles smoothly, giving a beautiful paper-drift effect on both open and close
+3. **Slow down the overlay fade** by adding `duration-700` to the dark overlay (line ~37) so it fades in/out in sync with the drawer rather than snapping
 
 ### What Does NOT Change
-- Desktop and tablet layouts (all changes scoped within `lg:hidden` drawer)
-- Drawer header (close button, logo, icons)
-- Navigation link destinations and content
+- Desktop and tablet layouts (everything stays scoped to `lg:hidden`)
+- Drawer content, typography, or layout
 - Body scroll lock behavior
 
