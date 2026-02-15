@@ -192,18 +192,16 @@ const Navigation = ({ isTransparent = false }: NavigationProps) => {
 
           {/* Shopping bag */}
           <button 
-            className={`p-1.5 lg:p-2 ${textColor} hover:opacity-70 transition-all duration-200`}
+            className={`p-1.5 lg:p-2 ${textColor} hover:opacity-70 transition-all duration-200 relative`}
             aria-label="Shopping bag"
             onClick={() => setIsShoppingBagOpen(true)}
           >
-            <span className="relative inline-flex">
-              <ShoppingBagIcon className="w-4 h-4 lg:w-5 lg:h-5" strokeWidth={1.5} />
-              {totalItems > 0 && (
-                <span className="absolute inset-0 flex items-center justify-center pt-[2px] lg:pt-[3px] text-[0.45rem] lg:text-[0.5rem] font-semibold pointer-events-none leading-none">
-                  {totalItems}
-                </span>
-              )}
-            </span>
+            <ShoppingBagIcon className="w-4 h-4 lg:w-5 lg:h-5" strokeWidth={1.5} />
+            {totalItems > 0 && (
+              <span className="absolute -top-0.5 -right-0.5 lg:top-0 lg:right-0 min-w-[14px] h-[14px] flex items-center justify-center rounded-full bg-foreground text-background text-[0.55rem] font-semibold leading-none pointer-events-none">
+                {totalItems}
+              </span>
+            )}
           </button>
         </div>
       </div>
@@ -366,7 +364,7 @@ const Navigation = ({ isTransparent = false }: NavigationProps) => {
             >
               <ShoppingBagIcon className="w-4 h-4" strokeWidth={1.5} />
               {totalItems > 0 && (
-                <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[45%] text-[0.5rem] font-medium pointer-events-none leading-none">
+                <span className="absolute -top-0.5 -right-0.5 min-w-[14px] h-[14px] flex items-center justify-center rounded-full bg-foreground text-background text-[0.55rem] font-semibold leading-none pointer-events-none">
                   {totalItems}
                 </span>
               )}
