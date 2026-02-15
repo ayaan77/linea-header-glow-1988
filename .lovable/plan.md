@@ -1,20 +1,20 @@
 
 
-## Slow Down Mobile Drawer Animation (Open and Close)
+## Change Mobile Drawer to Slide Down from Top ("Paper Fall" Animation)
 
-### Problem
-The mobile drawer currently opens and closes too quickly at `650ms`. It needs a slower, more elegant "paper-falling" feel for both opening and closing.
+Currently the mobile drawer slides in from the left (`-translate-x-full` to `translate-x-0`). The user wants it to slide down from the top slowly, like paper falling -- matching the Diptyque reference.
 
-### Changes
+### What Changes
 
-**File: `src/components/header/MobileDrawer.tsx`**
+**File: `src/components/header/MobileDrawer.tsx`** (line 44-47)
 
-1. **Increase animation duration** from `650ms` to `900ms` for a noticeably slower, graceful motion
-2. **Refine the easing curve** to `cubic-bezier(0.16, 1, 0.3, 1)` -- this curve starts even more gently and settles smoothly, giving a beautiful paper-drift effect on both open and close
-3. **Slow down the overlay fade** by adding `duration-700` to the dark overlay (line ~37) so it fades in/out in sync with the drawer rather than snapping
+- Change the drawer's closed state from `-translate-x-full` to `-translate-y-full` (hidden above the viewport)
+- Change the open state from `translate-x-0` to `translate-y-0` (slides down into view)
+- Slow down the animation duration from `600ms` to `800ms` for a more "paper falling" feel
+- Use a softer easing curve: `cubic-bezier(0.22, 1, 0.36, 1)` -- this starts slow, then settles gently, mimicking paper drifting down
 
-### What Does NOT Change
-- Desktop and tablet layouts (everything stays scoped to `lg:hidden`)
-- Drawer content, typography, or layout
-- Body scroll lock behavior
+No changes to desktop or tablet (already scoped to `lg:hidden`).
 
+### Summary
+
+One line change in the drawer panel's className to swap the X-axis slide for a Y-axis slide-down with adjusted timing.
