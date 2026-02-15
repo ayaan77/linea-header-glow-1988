@@ -42,8 +42,8 @@ const MobileDrawer = ({ isOpen, onClose, onOpenBag, totalItems }: MobileDrawerPr
 
       {/* Drawer panel */}
       <div
-        className={`fixed inset-0 z-[70] bg-limestone lg:hidden flex flex-col transition-transform duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
+        className={`fixed inset-0 z-[70] bg-limestone lg:hidden flex flex-col transition-transform duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          isOpen ? "translate-y-0" : "-translate-y-full"
         }`}
       >
         {/* Drawer header */}
