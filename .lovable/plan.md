@@ -1,68 +1,66 @@
 
 
-## Redesign Mobile Navigation: Diptyque-Inspired Full-Screen Drawer
+## Redesign Mobile Header and Navigation Drawer (Diptyque-Inspired)
 
-Redesign the mobile navigation from a simple dropdown menu into a premium full-screen slide-in drawer, inspired by the Diptyque Paris reference images. The desktop navigation remains unchanged.
+Redesign the mobile navigation in `src/components/header/Navigation.tsx` to match the Diptyque Paris reference. Desktop navigation stays unchanged.
 
-### What Changes
+### Changes
 
-**Mobile Header Bar (closed state)**
-- Left side: Hamburger icon + Search icon (moved from right side on mobile)
+**1. Mobile Header Bar (closed state)**
+
+Rearrange the mobile-only header icons to match the reference:
+- Left side: Hamburger menu + Search icon (search moves from right to left on mobile)
 - Center: "SIFAR" serif logo (unchanged)
-- Right side: User icon + Shopping Bag icon (Bookmark hidden on mobile to reduce clutter)
-- White/limestone background, minimalist black icons
+- Right side: User icon + Shopping Bag icon (hide Bookmark on mobile to reduce clutter)
 
-**Mobile Drawer (open state)**
-- Full-screen overlay sliding in from the left with a slow, premium cubic-bezier animation (~0.6s)
-- Dark overlay on background with body scroll lock
+**2. Full-Screen Slide-In Drawer (replaces current dropdown menu)**
+
+Replace the current simple dropdown mobile menu (lines 318-340) with a full-screen drawer that slides in from the left:
+
 - **Top bar**: Close (X) icon on left, centered "SIFAR" logo, User + Bag icons on right
-- **Search bar**: Full-width rounded input field with search icon, placeholder "Search for jewelry..."
-- **Primary nav links**: Vertical list with right chevrons (Woman, Man, Looks, Journal) -- each item separated by subtle borders
-- **Secondary section**: "About Sifar" link with chevron, separated by a divider
-- **Footer links**: Help Center (with question mark icon), Find a Boutique (with map pin icon), Country/Language selector
-- Slow fade-in overlay + translateX slide animation using cubic-bezier for premium feel
+- **Search bar**: Full-width input with search icon, rounded border, placeholder "Search for jewelry..."
+- **Primary nav links**: Vertical list -- Woman, Man, Looks, Journal -- each as a full-width row with a right ChevronRight icon and bottom border separator
+- **Secondary section**: Divider, then "About Sifar" link with chevron
+- **Footer utility links**: Help Center (HelpCircle icon), Find a Boutique (MapPin icon), GB / English (Globe icon) -- at bottom of drawer
+
+**3. Premium Animation**
+
+- Drawer slides from `translateX(-100%)` to `translateX(0)` with a 600ms cubic-bezier transition for a slow, elegant feel
+- Dark overlay (`bg-black/40`) fades in behind the drawer over 500ms
+- Body scroll is locked when drawer is open via `useEffect` toggling `document.body.style.overflow`
+- Use always-rendered markup with CSS transitions (not conditional rendering) so exit animations work
+
+**4. Tailwind Keyframes**
+
+Add a `slide-in-left` keyframe in `tailwind.config.ts` for the drawer entrance animation.
 
 ### Technical Details
 
 **File: `src/components/header/Navigation.tsx`**
 
-1. **Rearrange mobile header icons**: On mobile (`lg:hidden`), move Search icon to the left group next to the hamburger. Keep only User and Bag on the right. Hide Bookmark on mobile.
+- Add imports: `ChevronRight`, `HelpCircle`, `MapPin`, `Globe` from lucide-react
+- Wrap mobile hamburger + search in a left-side `div` visible only on `lg:hidden`
+- Hide Bookmark button on mobile (`hidden lg:block`)
+- Replace lines 318-340 (mobile menu dropdown) with a fixed full-screen drawer panel:
+  - Overlay div: `fixed inset-0 z-[60] bg-black/40 transition-opacity duration-500`
+  - Drawer div: `fixed inset-y-0 left-0 z-[60] w-full max-w-md bg-[#F2F0E9] transition-transform duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)]`
+  - Both rendered always, visibility toggled via state classes (`opacity-0 pointer-events-none` when closed, `opacity-100` when open; `translate-x-[-100%]` when closed, `translate-x-0` when open)
+- Add `useEffect` to toggle `document.body.style.overflow` based on `isMobileMenuOpen`
 
-2. **Replace the mobile menu dropdown** (lines 318-340) with a full-screen fixed drawer:
-   - Fixed overlay with `bg-black/40` backdrop, transitioning opacity
-   - Drawer panel: `fixed inset-0 z-50 bg-[#F2F0E9]` sliding from left via `transform translateX`
-   - Use CSS transition classes toggled by state, not conditional rendering, to enable exit animations
-   - Add `overflow-y-auto` for scrollable content
+**File: `tailwind.config.ts`**
+- Add `slide-in-left` keyframe (`translateX(-100%)` to `translateX(0)`) -- optional, since inline Tailwind transition classes handle the animation directly.
 
-3. **Drawer content structure**:
-   - Header row: X button, logo, user/bag icons
-   - Search input: rounded border, full-width, with Search icon inside
-   - Nav items with `ChevronRight` icons, each as a full-width row with bottom border
-   - Divider, then "About Sifar" link
-   - Promotional image area (placeholder using existing collection images)
-   - Footer utility links with icons (HelpCircle, MapPin, Globe)
-
-4. **Animation**: Add custom CSS transition classes for the drawer:
-   - `transition-transform duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)]`
-   - Overlay: `transition-opacity duration-500`
-   - Body scroll lock via `document.body.style.overflow = 'hidden'` in a useEffect
-
-5. **Keep desktop navigation completely unchanged** -- all changes scoped to `lg:hidden` / mobile breakpoints.
-
-**File: `src/index.css`** (optional)
-- Add any needed keyframe or utility classes for the premium slide animation if Tailwind inline isn't sufficient.
-
-### Summary of Layout
+### Layout Reference
 
 ```text
 CLOSED HEADER (mobile):
-[ Hamburger | Search ]  [ SIFAR ]  [ User | Bag ]
+[ = | Q ]          SIFAR          [ U | B ]
 
-OPEN DRAWER (full screen):
+OPEN DRAWER (full screen from left):
 +----------------------------------+
 | [X]          SIFAR      [U] [B]  |
 +----------------------------------+
-| [ Search for jewelry...       ]  |
+| [Q  Search for jewelry...     ]  |
 +----------------------------------+
 | Woman                        >   |
 | Man                          >   |
@@ -71,7 +69,9 @@ OPEN DRAWER (full screen):
 +----------------------------------+
 | About Sifar                  >   |
 +----------------------------------+
-| [Promo image carousel area]     |
+|                                  |
+| (spacer)                         |
+|                                  |
 +----------------------------------+
 | ? Help Center                    |
 | @ Find a Boutique                |
