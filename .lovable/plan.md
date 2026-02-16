@@ -1,30 +1,42 @@
 
 
-## Add Expandable Sub-Menus to Mobile Navigation
+## Create a Dedicated About Page
 
-Currently, tapping "Woman", "Man", "Looks", or "Journal" in the mobile drawer navigates away immediately. The desktop version shows rich dropdowns with sub-categories, but mobile has no equivalent. This plan adds accordion-style expandable menus for items that have sub-content.
+Build a new standalone About page inspired by the reference image, adapted to match the Sifar brand identity. The footer "About" heading will link to this page.
 
-### What Will Change
+### Page Layout (3 Sections)
 
-- **Woman** and **Man** will expand on tap to reveal "By Collection" and "Featured" sub-links
-- **Looks** will expand to show "Woman" and "Man" season links
-- **Journal** (no sub-items) will remain a direct link
+**1. Hero Section**
+- Large bold centered heading: "ABOUT SIFAR" using Playfair Display, uppercase
+- Clean limestone background, generous vertical padding
+
+**2. Manifesto Section (Two-Column)**
+- **Left column**: A collage/grid of editorial images using existing assets (editorial-closeup, editorial-shoulder, editorial-face, editorial-front) arranged in a 2x2 grid with thin borders
+- **Right column**: "THE MANIFESTO" heading in Space Mono (uppercase, tracked), a short decorative line, followed by 3 paragraphs of brand manifesto text in Space Mono uppercase -- adapted to Sifar's brand voice (architecture, line, form)
+- On mobile: stacks vertically (image grid on top, text below)
+
+**3. Disciplines Row (Three Columns)**
+- Three equal columns separated by thin borders
+- Each shows a discipline title (e.g., "JEWELRY", "ARCHITECTURE", "SCULPTURE") in bold mono with a location subtitle ("London, UK")
+- On mobile: stacks to single column
+
+### Routing and Linking
+
+- New route: `/about` mapped to new `src/pages/About.tsx`
+- Footer "About" heading (line 12) becomes a clickable link to `/about`
 
 ### Technical Details
 
-**File: `src/components/header/Navigation.tsx`**
+**New file: `src/pages/About.tsx`**
+- Full-width immersive layout (no sidebar, consistent with Heritage/People pages)
+- Uses Header and Footer components
+- Imports existing editorial assets for the image grid
+- Responsive: single-column stack on mobile, two-column on tablet/desktop
 
-1. Add a `mobileExpanded` state to track which nav item is currently expanded (e.g., `"WOMAN" | "MAN" | "LOOKS" | null`)
+**Modified file: `src/App.tsx`**
+- Add import for About page
+- Add route: `<Route path="/about" element={<About />} />`
 
-2. Replace the mobile nav links section (lines 388-402) with conditional logic:
-   - For items with sub-content (`byCollection` or name === "LOOKS"): render a button that toggles `mobileExpanded`, with a Plus/Minus icon. When expanded, show the sub-links in a collapsible section with smooth animation.
-   - For items without sub-content ("JOURNAL"): keep as a direct `Link`.
-
-3. Sub-link structure when expanded:
-   - **Woman/Man**: Two groups -- "By Collection" (Rings, Necklaces, etc.) and "Featured" (New Arrivals, Spring '26, etc.)
-   - **Looks**: Two groups -- "Woman" seasons and "Man" seasons (from existing `looksMenu` data)
-
-4. Each sub-link closes the mobile menu on tap and navigates to the appropriate route.
-
-5. Styling will follow the existing mobile drawer aesthetic: light font weights, wide letter-spacing, subtle borders, and the Plus/Minus toggle icons already imported from lucide-react.
+**Modified file: `src/components/footer/Footer.tsx`**
+- Wrap the "About" h4 heading (line 12) in a `<Link to="/about">` so tapping it navigates to the About page
 
