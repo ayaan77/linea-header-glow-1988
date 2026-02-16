@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
         {/* Column 1 - About */}
         <div className="space-y-3">
-          <h4 className={headingClass}>About</h4>
+          <Link to="/about" className="block"><h4 className={headingClass}>About</h4></Link>
           <ul className="space-y-2.5">
             <li><Link to="/about/our-story" className={linkClass}>Articles &amp; Exhibitions</Link></li>
             <li><Link to="/about/store-locator" className={linkClass}>Find a Shop</Link></li>

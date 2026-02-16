@@ -23,6 +23,7 @@ import Heritage from "./pages/about/Heritage";
 import Timeline from "./pages/about/Timeline";
 import Innovation from "./pages/about/Innovation";
 import People from "./pages/about/People";
+import About from "./pages/About";
 
 const queryClient = new QueryClient();
 
@@ -48,6 +49,7 @@ const App = () => (
           <Route path="/about/timeline" element={<Timeline />} />
           <Route path="/about/innovation" element={<Innovation />} />
           <Route path="/about/people" element={<People />} />
+          <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
